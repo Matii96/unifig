@@ -1977,18 +1977,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nrwl/cli@npm:14.8.3":
-  version: 14.8.3
-  resolution: "@nrwl/cli@npm:14.8.3"
+"@nrwl/cli@npm:14.8.4":
+  version: 14.8.4
+  resolution: "@nrwl/cli@npm:14.8.4"
   dependencies:
-    nx: 14.8.3
-  checksum: 0f8f0dcb9acd6da9fab605135d506a5f140df0ad47ae4360559f02136a726d339dd20817e89bdce91e76eca199fe4ac1a0523e2f7758d5e66f11bba136419ae4
+    nx: 14.8.4
+  checksum: f2146664c63ef1f07a591dafa496d8ab763b7761de7b3b8c1a7b525737eb21c6256c4ef6a54253e24881f111b5c8478332c1da2424cb84b799721fb663bf9aac
   languageName: node
   linkType: hard
 
 "@nrwl/devkit@npm:>=14.8.1 < 16":
-  version: 14.8.3
-  resolution: "@nrwl/devkit@npm:14.8.3"
+  version: 14.8.4
+  resolution: "@nrwl/devkit@npm:14.8.4"
   dependencies:
     "@phenomnomnominal/tsquery": 4.1.1
     ejs: ^3.1.7
@@ -1996,18 +1996,18 @@ __metadata:
     tslib: ^2.3.0
   peerDependencies:
     nx: ">= 13.10 <= 15"
-  checksum: 37a386e24a07dd302536fe116de9ae3a33b91fb911cbde23f9fdcb10be2d0e04caecbc8d33a97fb4335027ba2b2c8d2bf4facc3a2260dbbd33e85773d0ddfee1
+  checksum: 7da82be7577aa2f52a5f10d519e395d7a186643aa7c37be833456c54a49538b7c521e770371382f1c79a140d6c6ba9ce8ab45bf4dfa361ab80cb6befb8fc04d4
   languageName: node
   linkType: hard
 
-"@nrwl/tao@npm:14.8.3":
-  version: 14.8.3
-  resolution: "@nrwl/tao@npm:14.8.3"
+"@nrwl/tao@npm:14.8.4":
+  version: 14.8.4
+  resolution: "@nrwl/tao@npm:14.8.4"
   dependencies:
-    nx: 14.8.3
+    nx: 14.8.4
   bin:
     tao: index.js
-  checksum: 193bfd943357634285ae848247c8382cf1d3202934f2a543b4d64db3dd5c1fe863cc05e313514b1a7913327499c719831a4c400c0387bec453b5a5662eb01391
+  checksum: 8be3ba083b7a7a9960abe0c0ab43f2f4af37d719cc60700f872eacbd3b77c19d711f638961525373b8ff168b9e9c4f85d501629de7d67986fffae9144f4a6b0c
   languageName: node
   linkType: hard
 
@@ -2527,7 +2527,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@unifig/core@workspace:packages/core":
+"@unifig/core@workspace:^, @unifig/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@unifig/core@workspace:packages/core"
   dependencies:
@@ -2536,9 +2536,22 @@ __metadata:
     class-validator: ^0.13.2
     reflect-metadata: ^0.1.13
   peerDependencies:
+    "@types/validator": ^13.7.7
     class-transformer: ^0.5.1
     class-validator: ^0.13.2
     reflect-metadata: ^0.1.13
+  languageName: unknown
+  linkType: soft
+
+"@unifig/env@workspace:packages/env-adapter":
+  version: 0.0.0-use.local
+  resolution: "@unifig/env@workspace:packages/env-adapter"
+  dependencies:
+    "@unifig/core": "workspace:^"
+    dotenv: ^16.0.3
+    dotenv-expand: ^9.0.0
+  peerDependencies:
+    "@unifig/core": ^1.0.0
   languageName: unknown
   linkType: soft
 
@@ -2822,6 +2835,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"asynckit@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "asynckit@npm:0.4.0"
+  checksum: 7b78c451df768adba04e2d02e63e2d0bf3b07adcd6e42b4cf665cb7ce899bedd344c69a1dcbce355b5f972d597b25aaa1c1742b52cffd9caccb22f348114f6be
+  languageName: node
+  linkType: hard
+
 "at-least-node@npm:^1.0.0":
   version: 1.0.0
   resolution: "at-least-node@npm:1.0.0"
@@ -2829,12 +2849,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:0.21.1":
-  version: 0.21.1
-  resolution: "axios@npm:0.21.1"
+"axios@npm:^1.0.0":
+  version: 1.1.2
+  resolution: "axios@npm:1.1.2"
   dependencies:
-    follow-redirects: ^1.10.0
-  checksum: c87915fa0b18c15c63350112b6b3563a3e2ae524d7707de0a73d2e065e0d30c5d3da8563037bc29d4cc1b7424b5a350cb7274fa52525c6c04a615fe561c6ab11
+    follow-redirects: ^1.15.0
+    form-data: ^4.0.0
+    proxy-from-env: ^1.1.0
+  checksum: 136c25a5031aa2845fdbda3006c36888bbe351b11d1195f1f898a23c5df1430febbdb1ad034a61f27967e83762d5b5a3e851fff8a363cb4badeb883f8ff21461
   languageName: node
   linkType: hard
 
@@ -3399,6 +3421,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"combined-stream@npm:^1.0.8":
+  version: 1.0.8
+  resolution: "combined-stream@npm:1.0.8"
+  dependencies:
+    delayed-stream: ~1.0.0
+  checksum: 49fa4aeb4916567e33ea81d088f6584749fc90c7abec76fd516bf1c5aa5c79f3584b5ba3de6b86d26ddd64bae5329c4c7479343250cfe71c75bb366eae53bb7c
+  languageName: node
+  linkType: hard
+
 "commitizen@npm:^4.0.3, commitizen@npm:^4.2.5":
   version: 4.2.5
   resolution: "commitizen@npm:4.2.5"
@@ -3787,6 +3818,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"delayed-stream@npm:~1.0.0":
+  version: 1.0.0
+  resolution: "delayed-stream@npm:1.0.0"
+  checksum: 46fe6e83e2cb1d85ba50bd52803c68be9bd953282fa7096f51fc29edd5d67ff84ff753c51966061e5ba7cb5e47ef6d36a91924eddb7f3f3483b1c560f77a0020
+  languageName: node
+  linkType: hard
+
 "delegates@npm:^1.0.0":
   version: 1.0.0
   resolution: "delegates@npm:1.0.0"
@@ -3896,6 +3934,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv-expand@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "dotenv-expand@npm:9.0.0"
+  checksum: 76f669b87da73d6980d1235cb18e9ccd94b294927784a0c06db5e9e98d1090b0605e75ade70880f0cd812af7f61e41367a80feea223d23fd3bd0b82f3409b9ed
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^16.0.3":
+  version: 16.0.3
+  resolution: "dotenv@npm:16.0.3"
+  checksum: afcf03f373d7a6d62c7e9afea6328e62851d627a4e73f2e12d0a8deae1cd375892004f3021883f8aec85932cd2834b091f568ced92b4774625b321db83b827f8
+  languageName: node
+  linkType: hard
+
 "dotenv@npm:~10.0.0":
   version: 10.0.0
   resolution: "dotenv@npm:10.0.0"
@@ -3922,9 +3974,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.251":
-  version: 1.4.276
-  resolution: "electron-to-chromium@npm:1.4.276"
-  checksum: 9cd4448f68a37e598ad7ce193c982e8dd428c5e67e09cf780c0e13f23d689f7aec9b33718a61ea522b51ec2a8c835a0c25bbb0214ac62627fe7e4771a8650600
+  version: 1.4.277
+  resolution: "electron-to-chromium@npm:1.4.277"
+  checksum: 05002adf87dbaa6beb3895b7d64a1ee9442d46d5765582c71fc47c9aa8a4e710ada9939ce33bcd92da7c6fe61099462e036890b2edd21200c7f694309b31ea08
   languageName: node
   linkType: hard
 
@@ -4464,13 +4516,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.10.0":
+"follow-redirects@npm:^1.15.0":
   version: 1.15.2
   resolution: "follow-redirects@npm:1.15.2"
   peerDependenciesMeta:
     debug:
       optional: true
   checksum: faa66059b66358ba65c234c2f2a37fcec029dc22775f35d9ad6abac56003268baf41e55f9ee645957b32c7d9f62baf1f0b906e68267276f54ec4b4c597c2b190
+  languageName: node
+  linkType: hard
+
+"form-data@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "form-data@npm:4.0.0"
+  dependencies:
+    asynckit: ^0.4.0
+    combined-stream: ^1.0.8
+    mime-types: ^2.1.12
+  checksum: 01135bf8675f9d5c61ff18e2e2932f719ca4de964e3be90ef4c36aacfc7b9cb2fceb5eca0b7e0190e3383fe51c5b37f4cb80b62ca06a99aaabfcfd6ac7c9328c
   languageName: node
   linkType: hard
 
@@ -6349,6 +6412,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mime-db@npm:1.52.0":
+  version: 1.52.0
+  resolution: "mime-db@npm:1.52.0"
+  checksum: 0d99a03585f8b39d68182803b12ac601d9c01abfa28ec56204fa330bc9f3d1c5e14beb049bafadb3dbdf646dfb94b87e24d4ec7b31b7279ef906a8ea9b6a513f
+  languageName: node
+  linkType: hard
+
+"mime-types@npm:^2.1.12":
+  version: 2.1.35
+  resolution: "mime-types@npm:2.1.35"
+  dependencies:
+    mime-db: 1.52.0
+  checksum: 89a5b7f1def9f3af5dad6496c5ed50191ae4331cc5389d7c521c8ad28d5fdad2d06fd81baf38fed813dc4e46bb55c8145bb0ff406330818c9cf712fb2e9b3836
+  languageName: node
+  linkType: hard
+
 "mimic-fn@npm:^2.1.0":
   version: 2.1.0
   resolution: "mimic-fn@npm:2.1.0"
@@ -6836,17 +6915,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nx@npm:14.8.3, nx@npm:>=14.8.1 < 16":
-  version: 14.8.3
-  resolution: "nx@npm:14.8.3"
+"nx@npm:14.8.4, nx@npm:>=14.8.1 < 16":
+  version: 14.8.4
+  resolution: "nx@npm:14.8.4"
   dependencies:
-    "@nrwl/cli": 14.8.3
-    "@nrwl/tao": 14.8.3
+    "@nrwl/cli": 14.8.4
+    "@nrwl/tao": 14.8.4
     "@parcel/watcher": 2.0.4
     "@yarnpkg/lockfile": ^1.1.0
     "@yarnpkg/parsers": ^3.0.0-rc.18
     "@zkochan/js-yaml": 0.0.6
-    axios: 0.21.1
+    axios: ^1.0.0
     chalk: 4.1.0
     chokidar: ^3.5.1
     cli-cursor: 3.1.0
@@ -6885,7 +6964,7 @@ __metadata:
       optional: true
   bin:
     nx: bin/nx.js
-  checksum: e946f121814ae9513e78a28e67a308457d5002c6804d38757b784cdda50e0c7fc4ef8d097bff786a3a67a30a26d7c4ca76afda839214def3657552fd572adf89
+  checksum: 28026fa22c527f466a38ccc583bcf12cb5bdf971d69d4db51e2eac2b79784fe4709f315fdaae8700eae691dbc8a80e1f91b2d475f9f1b34d49b81f7b83667e0a
   languageName: node
   linkType: hard
 
@@ -7407,6 +7486,13 @@ __metadata:
   version: 2.0.1
   resolution: "protocols@npm:2.0.1"
   checksum: 4a9bef6aa0449a0245ded319ac3cbfd032c3e76ebb562777037a3a832c99253d0e8bc2847f7be350236df620a11f7d4fe683ea7f59a2cc14c69f746b6259eda4
+  languageName: node
+  linkType: hard
+
+"proxy-from-env@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "proxy-from-env@npm:1.1.0"
+  checksum: ed7fcc2ba0a33404958e34d95d18638249a68c430e30fcb6c478497d72739ba64ce9810a24f53a7d921d0c065e5b78e3822759800698167256b04659366ca4d4
   languageName: node
   linkType: hard
 
