@@ -7,7 +7,6 @@ Universal, typed and validated configuration manager.
 [![MIT Licensed](https://img.shields.io/badge/License-MIT-brightgreen)](/LICENSE)
 [![NPM version](https://img.shields.io/npm/v/@unifig/core.svg)](https://www.npmjs.com/package/@unifig/core)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli)
-[![codecov](https://codecov.io/gh/Matii96/unifig/branch/main/graph/badge.svg?token=RMLVVV7C0O)](https://codecov.io/gh/Matii96/unifig)
 [![Build Status](https://github.com/Matii96/unifig/workflows/main-build/badge.svg?branch=main)](https://github.com/Matii96/unifig/actions?workflow=main-build)
 
 </div>
@@ -27,7 +26,7 @@ Universal, typed and validated configuration manager.
 
 <a name="goal"></a>
 
-Unifig aims to provides simple and abstract way of handling app's configuration. It allows to load configuration data from multiple sources without changing defined config template. Many templates an be defined to further organize code eg. `MainConfiguration` and `ModuleConfiguration`.
+Unifig aims to provides simple and abstract way of handling app's configuration. It allows to load configuration data from multiple sources without changing defined config template. Many templates an be defined to further organize the code eg. MainConfiguration and ModuleConfiguration.
 
 Adapted configuration data is transformed into templates and validated via [class-transformer](https://github.com/typestack/class-transformer) and [class-validator](https://github.com/typestack/class-validator).
 
