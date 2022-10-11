@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/Matii96/unifig",
   "devDependencies": {
+    "@types/validator": "^13.7.7",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     "reflect-metadata": "^0.1.13"

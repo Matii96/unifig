@@ -2386,6 +2386,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/validator@npm:^13.7.7":
+  version: 13.7.7
+  resolution: "@types/validator@npm:13.7.7"
+  checksum: e32d2bc3b86317da2dff7565e371a2bd0108cdbd7c0b426070c9b9fab30cf07572eea4fb193cb7420261b2eb99b2fc112bf021d48f98eee181844a47533f817a
+  languageName: node
+  linkType: hard
+
 "@types/yargs-parser@npm:*":
   version: 21.0.0
   resolution: "@types/yargs-parser@npm:21.0.0"
@@ -2524,10 +2531,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@unifig/core@workspace:packages/core"
   dependencies:
+    "@types/validator": ^13.7.7
     class-transformer: ^0.5.1
     class-validator: ^0.13.2
     reflect-metadata: ^0.1.13
   peerDependencies:
+    class-transformer: ^0.5.1
+    class-validator: ^0.13.2
     reflect-metadata: ^0.1.13
   languageName: unknown
   linkType: soft
