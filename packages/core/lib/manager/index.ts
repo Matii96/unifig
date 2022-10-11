@@ -1,3 +1,1 @@
-import { ConfigManager } from './config.manager';
-
-export const Config = new ConfigManager();
+export * from './config.manager';
