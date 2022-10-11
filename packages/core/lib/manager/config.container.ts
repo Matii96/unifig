@@ -4,7 +4,7 @@ import { ConfigValidator } from '../validator/config.validator';
 import { IConfigAdapter } from '../adapters/config-adapter.interface';
 import { ConfigLoader } from './config.loader';
 
-export class ConfigInstance<TTemplate extends Record<string, any> = any> {
+export class ConfigContainer<TTemplate extends Record<string, any> = any> {
   private readonly _validator = new ConfigValidator();
   private readonly _loader: ConfigLoader<TTemplate>;
   private readonly _adapter: IConfigAdapter;
