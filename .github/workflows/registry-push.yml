@@ -1,0 +1,62 @@
+name: registry-push
+
+on:
+  push:
+    tags:
+      - v**
+
+jobs:
+  setup:
+    uses: ./.github/workflows/setup.yml
+
+  build:
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - uses: actions/checkout@v3
+      - name: Load yarn & node modules
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-yarn-node-modules
+        with:
+          path: ./node_modules
+          key: lock-${{ hashFiles('./yarn.lock') }}
+      - name: Cache build output
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-build
+        with:
+          path: ./packages/*/dist
+          key: packages-${{ hashFiles('./packages/**') }}
+      - name: Build changed projects
+        run: yarn lerna run --stream build
+
+  npm-release:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout current branch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Load yarn & node modules
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-yarn-node-modules
+        with:
+          path: ./node_modules
+          key: lock-${{ hashFiles('./yarn.lock') }}
+      - name: Load build output
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-build
+        with:
+          path: ./packages/*/dist
+          key: packages-${{ hashFiles('./packages/**') }}
+      - name: Publish version
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo "access=public" >> .npmrc
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
+          yarn lerna publish from-package -y

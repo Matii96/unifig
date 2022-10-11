@@ -1,0 +1,39 @@
+name: "\U0001F4DA Docs Improvement"
+description: "Suggestions regarding project's documentation and code examples."
+title: '[Docs]: '
+labels: ['enhancement']
+body:
+  - type: checkboxes
+    attributes:
+      label: 'Is there an existing issue for this?'
+      description: 'Before submitting new issue please search [here](../issues?q=is%3Aissue) to see if simmilar issue already exists'
+      options:
+        - label: "I've not found one"
+          required: true
+
+  - type: checkboxes
+    validations:
+      required: true
+    attributes:
+      label: 'Package'
+      description: |
+        Which package (or packages) the change applies to?
+      options:
+        - label: '<code>@unifig/core</code>'
+        - label: '<code>@unifig/nest</code>'
+        - label: '<code>unifig-example-express</code>'
+        - label: 'New example'
+
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: 'What current docs / examples miss?'
+      description: 'Describe the ambiguity or lack of needed information'
+
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: 'Suggestion'
+      description: 'Describe what to add or update'

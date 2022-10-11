@@ -1,0 +1,14 @@
+{
+  "packages": ["packages/*"],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "command": {
+    "version": {
+      "conventionalCommits": true,
+      "createRelease": "github",
+      "message": "chore(release): %s"
+    }
+  },
+  "ignoreChanges": ["**/*.md"],
+  "version": "0.1.0"
+}

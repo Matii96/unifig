@@ -1,0 +1,33 @@
+name: "\U0001F4A1 Feature Request"
+description: 'An idea how to improve Unifig.'
+title: '[Feature]: '
+labels: ['enhancement']
+body:
+  - type: checkboxes
+    attributes:
+      label: 'Is there an existing issue for this?'
+      description: 'Before submitting new issue please search [here](../issues?q=is%3Aissue) to see if simmilar issue already exists'
+      options:
+        - label: "I've not found one"
+          required: true
+
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: 'What is a reason behind changing the behavior?'
+      description: 'Describe the motivation / use case'
+
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: 'Propose the solution'
+      description: 'A clear and concise description of the solution with considered benefits and drawbacks'
+
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: 'Adoption'
+      description: 'Does the feature introduce breaking changes? If so describe migration strategy'
