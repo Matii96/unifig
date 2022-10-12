@@ -47,6 +47,7 @@ export class ConfigLoader<TTemplate> {
     let value = source as ConfigSourceEntry;
     for (const keyPart of keyParts) {
       value = (value as ConfigSource)[keyPart];
+      if (typeof value === 'undefined') break;
     }
     return value;
   }

@@ -15,7 +15,7 @@ export class ConfigContainer<TTemplate extends Record<string, any> = any> {
     this._adapter = adapter;
   }
 
-  get value() {
+  get values() {
     return deepReadonly(this._value);
   }
 

@@ -10,7 +10,7 @@ import { ConfigContainer } from './config.container';
 export class ConfigManager {
   private readonly _instances = new Map<Type<any>, ConfigContainer>();
 
-  async register<TTemplate>(...configs: { template: Type<TTemplate>; adapter: IConfigAdapter }[]) {
+  async register(...configs: { template: Type<any>; adapter: IConfigAdapter }[]) {
     const newConfigs = configs.filter(({ template }) => !this._instances.has(template));
     const instances = newConfigs.map((opts) => new ConfigContainer(opts.template, opts.adapter));
     await Promise.all(instances.map((instance) => instance.refresh()));
@@ -18,22 +18,22 @@ export class ConfigManager {
   }
 
   /**
-   * Retrieves readonly template value.
+   * Retrieves readonly template values.
    * @param {Type<TTemplate>} template
    * @returns {TTemplate} value
    */
-  get<TTemplate>(template: Type<TTemplate>) {
-    const instance = this.acquire(template);
-    if (!instance) throw new ConfigNotInitializedException(template);
-    return instance.value;
+  values<TTemplate>(template: Type<TTemplate>) {
+    return this.container(template).values;
   }
 
   /**
-   * Retrieves config template manager.
+   * Retrieves container to manage configuration.
    * @param {Type<TTemplate>} template
    * @returns {ConfigContainer<TTemplate>}
    */
-  acquire<TTemplate>(template: Type<TTemplate>) {
-    return this._instances.get(template) as ConfigContainer<TTemplate>;
+  container<TTemplate>(template: Type<TTemplate>) {
+    const instance = this._instances.get(template) as ConfigContainer<TTemplate>;
+    if (!instance) throw new ConfigNotInitializedException(template);
+    return instance;
   }
 }
