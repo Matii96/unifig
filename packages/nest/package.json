@@ -38,7 +38,7 @@
   "peerDependencies": {
     "@nestjs/common": "^8.0.0",
     "@nestjs/core": "^8.0.0",
-    "@unifig/core": "^1.0.0",
+    "@unifig/core": "^0.1.0",
     "reflect-metadata": "^0.1.13"
   }
 }
