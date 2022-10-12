@@ -64,7 +64,7 @@ export class Settings {
 ```
 
 ```ts
-import { Config } from '@unifig/core';
+import { Config, PlainConfigAdapter } from '@unifig/core';
 
 async function bootstrap() {
   await Config.register({
