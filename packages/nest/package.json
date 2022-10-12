@@ -1,0 +1,44 @@
+{
+  "name": "@unifig/nest",
+  "version": "0.1.0",
+  "description": "Unifig module for Nest",
+  "keywords": [
+    "unifig",
+    "node",
+    "nest"
+  ],
+  "author": "Matii96",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matii96/unifig.git"
+  },
+  "scripts": {
+    "build": "tsc --build tsconfig.build.json",
+    "test": "jest --config ../../jest-units.config.json packages/core",
+    "test:e2e": "jest --config ../../jest-e2e.config.json packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/Matii96/unifig/issues"
+  },
+  "homepage": "https://github.com/Matii96/unifig",
+  "devDependencies": {
+    "@nestjs/common": "^8.0.0",
+    "@nestjs/core": "^8.0.0",
+    "@nestjs/platform-express": "^8.0.0",
+    "@nestjs/testing": "^8.0.0",
+    "@unifig/core": "workspace:^",
+    "reflect-metadata": "^0.1.13"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^8.0.0",
+    "@nestjs/core": "^8.0.0",
+    "@unifig/core": "^1.0.0",
+    "reflect-metadata": "^0.1.13"
+  }
+}
