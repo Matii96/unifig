@@ -1,0 +1,39 @@
+{
+  "name": "@unifig/env",
+  "version": "0.1.0",
+  "description": "Environmental variables adapter for unifig",
+  "keywords": [
+    "unifig",
+    "env"
+  ],
+  "author": "Matii96",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matii96/unifig.git"
+  },
+  "scripts": {
+    "build": "tsc --build tsconfig.build.json",
+    "test": "jest --config ../../jest-units.config.json packages/core",
+    "test:e2e": "jest --config ../../jest-e2e.config.json packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/Matii96/unifig/issues"
+  },
+  "homepage": "https://github.com/Matii96/unifig",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "dotenv-expand": "^9.0.0"
+  },
+  "devDependencies": {
+    "@unifig/core": "workspace:^"
+  },
+  "peerDependencies": {
+    "@unifig/core": "^1.0.0"
+  }
+}
