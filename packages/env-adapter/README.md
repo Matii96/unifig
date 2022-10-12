@@ -1,7 +1,5 @@
 # Env variables & files adapter for [Unifig](https://github.com/Matii96/unifig)
 
-Utilizes Nest's DI system to manage configurations.
-
 ## Table of contents
 
 - [Goal](#goal)
@@ -16,9 +14,9 @@ Utilizes Nest's DI system to manage configurations.
 <a name="installation"></a>
 
 ```bash
-npm i @unifig/core @unifig/env
+npm i @unifig/env
 # or
-yarn add @unifig/core @unifig/env
+yarn add @unifig/env
 ```
 
 ## Quick Start

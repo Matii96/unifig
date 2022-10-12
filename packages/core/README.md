@@ -75,7 +75,7 @@ async function bootstrap() {
     }),
   });
 
-  console.log(Config.get(Settings).port); // output: 3000
+  console.log(Config.values(Settings).port); // output: 3000
 }
 
 bootstrap();
@@ -94,8 +94,8 @@ async function bootstrap() {
     { template: ModuleConfiguration, adapter: ... },
   );
 
-  Config.get(MainConfiguration).globalProperty
-  Config.get(ModuleConfiguration).moduleProperty
+  Config.values(MainConfiguration).globalProperty
+  Config.values(ModuleConfiguration).moduleProperty
 }
 ```
 
@@ -108,7 +108,7 @@ Additional configs may be registered with separate `.register()` calls.
 Upon changing application's configuration one must be usually restared to re-fetch new values. Unifig delivers an option to reload registered configurations in real time without app's restart.
 
 ```ts
-await Config.acquire(Settings).refresh();
+await Config.container(Settings).refresh();
 ```
 
 ## License

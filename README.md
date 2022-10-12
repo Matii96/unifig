@@ -35,6 +35,7 @@ Adapted configuration data is transformed into templates and validated via [clas
 <a name="packages"></a>
 
 - [Core](https://github.com/Matii96/unifig/tree/main/packages/core) - project implementation for vanilla typescript
+- [Nest](https://github.com/Matii96/unifig/tree/main/packages/nest) - nestjs integration
 - [Env Adapter](https://github.com/Matii96/unifig/tree/main/packages/env-adapter) - adapter for environment variables and .env files
 
 ## Local development
