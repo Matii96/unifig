@@ -43,6 +43,10 @@ yarn add @unifig/core
 <a name="quick_start"></a>
 
 ```ts
+import { From, Nested } from '@unifig/core';
+import { Transform } from 'class-transformer';
+import { IsString, IsArray } from 'class-validator';
+
 class DbSettings {
   @From('global.dbUrl')
   @IsString()
@@ -58,6 +62,10 @@ export class Settings {
   @IsInt()
   port: number;
 
+  @Transform(({ value }) => value.split(',').map((n) => Number(n)))
+  @IsArray()
+  intervals: number[];
+
   @Nested(DbSettings)
   db: DbSettings;
 }
@@ -72,6 +80,7 @@ async function bootstrap() {
     adapter: new PlainConfigAdapter({
       local: { port: 3000 },
       global: { dbUrl: 'localhost:5467', dbPassword: 'password' },
+      intervals: '56,98,34,72',
     }),
   });
 
