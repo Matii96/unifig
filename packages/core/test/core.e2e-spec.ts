@@ -1,5 +1,4 @@
-import { ConfigManager, ConfigValidationException, PlainConfigAdapter } from '../lib';
-import { ConfigNotInitializedException } from '../lib/manager/exceptions/config-not-initialized.exception';
+import { ConfigManager, ConfigValidationException, PlainConfigAdapter, ConfigNotInitializedException } from '../lib';
 import { TransformationTemplate } from './templates/transformation.template';
 import { ValidationTemplate } from './templates/validation.template';
 
