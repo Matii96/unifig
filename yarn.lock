@@ -2653,7 +2653,7 @@ __metadata:
     dotenv: ^16.0.3
     dotenv-expand: ^9.0.0
   peerDependencies:
-    "@unifig/core": ^1.0.0
+    "@unifig/core": ^0.1.0
   languageName: unknown
   linkType: soft
 
@@ -2670,7 +2670,7 @@ __metadata:
   peerDependencies:
     "@nestjs/common": ^8.0.0
     "@nestjs/core": ^8.0.0
-    "@unifig/core": ^1.0.0
+    "@unifig/core": ^0.1.0
     reflect-metadata: ^0.1.13
   languageName: unknown
   linkType: soft
