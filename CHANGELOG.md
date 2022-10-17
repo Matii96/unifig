@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/Matii96/unifig/compare/v0.2.0...v0.2.1) (2022-10-17)
+
+### Bug Fixes
+
+- **nest:** added missing index of exported files ([ccce631](https://github.com/Matii96/unifig/commit/ccce63105a8b5add1010b5deb03584d4b9fdb3d4))
+
 # 0.2.0 (2022-10-12)
 
 ### Bug Fixes
