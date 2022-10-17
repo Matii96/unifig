@@ -1,6 +1,6 @@
 {
   "name": "@unifig/nest",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Unifig module for Nest",
   "keywords": [
     "unifig",
