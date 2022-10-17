@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { ConfigContainer } from '@unifig/core/dist/manager/config.container';
-import { InjectConfig } from '../../../lib/injection/inject-container.decorator';
+import { ConfigContainer } from '@unifig/core';
+import { InjectConfig } from '../../../lib';
 import { AppConfig } from '../app.config';
 import { CatsConfig } from './cats.config';
 
