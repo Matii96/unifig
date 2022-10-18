@@ -12,7 +12,7 @@ export class EnvConfigAdapter implements IConfigAdapter {
   private readonly _options!: EnvConfigAdapterOptions;
   private readonly _envFilesPaths!: string[];
 
-  constructor(options: EnvConfigAdapterOptions) {
+  constructor(options: EnvConfigAdapterOptions = {}) {
     this._options = options;
     this._envFilesPaths = [...(options.envFilesPaths ?? []), resolve(process.cwd(), '.env')];
   }
