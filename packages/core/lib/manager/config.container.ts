@@ -1,31 +1,24 @@
-import { Type } from '../utils/type.interface';
 import { deepReadonly } from '../utils/deep-readonly';
-import { ConfigValidator } from '../validator/config.validator';
-import { IConfigAdapter } from '../adapters/config-adapter.interface';
-import { ConfigLoader } from './config.loader';
+import { IConfigContainer } from './config.container.interface';
+import { ConfigSourceGroup } from './config.source-group';
 
-export class ConfigContainer<TTemplate extends Record<string, any> = any> {
-  private readonly _validator = new ConfigValidator();
-  private readonly _loader: ConfigLoader<TTemplate>;
-  private readonly _adapter: IConfigAdapter;
+export class ConfigContainer<TTemplate extends Record<string, any> = any> implements IConfigContainer<TTemplate> {
   private _value: TTemplate;
+  private readonly _sourceGroup: ConfigSourceGroup;
 
-  constructor(template: Type<TTemplate>, adapter: IConfigAdapter) {
-    this._loader = new ConfigLoader(template);
-    this._adapter = adapter;
+  constructor(sourceGroup: ConfigSourceGroup) {
+    this._sourceGroup = sourceGroup;
   }
 
   get values() {
     return deepReadonly(this._value);
   }
 
-  /**
-   * Reload config values.
-   */
-  async refresh() {
-    const source = await this._adapter.load();
-    const value = this._loader.load(source);
-    this._validator.validate(value);
+  setValue(value: TTemplate) {
     this._value = value;
+  }
+
+  refresh() {
+    return this._sourceGroup.refresh();
   }
 }

@@ -1,6 +1,6 @@
 export * from './adapters';
 export * from './manager';
-export * from './properties-mapping';
+export * from './loader';
 export * from './validator';
 
 import { ConfigManager } from './manager';

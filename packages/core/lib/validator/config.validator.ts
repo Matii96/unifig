@@ -2,7 +2,7 @@ import { validateSync, ValidationError } from 'class-validator';
 import { ConfigValidationException } from './config.validation.exception';
 
 export class ConfigValidator {
-  validate<TConfig extends object>(config: TConfig) {
+  validate(configs: object[]) {
     const errors = validateSync(config, { skipMissingProperties: false });
     if (errors.length === 0) {
       return;

@@ -1,3 +1,3 @@
 export * from './exceptions';
-export * from './config.container';
+export * from './config.container.interface';
 export * from './config.manager';

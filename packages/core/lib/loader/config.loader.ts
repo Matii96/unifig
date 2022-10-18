@@ -1,23 +1,13 @@
 import { plainToInstance } from 'class-transformer';
 import { Type } from '../utils/type.interface';
-import { PropertiesMapping, PropertiesNesting, PropertySource } from '../properties-mapping/types';
+import { PropertiesMapping, PropertiesNesting, PropertySource } from './types';
 import { ConfigSource, ConfigSourceEntry } from '../adapters/config-adapter.interface';
-import {
-  mappedPropertyKey,
-  PROPERTIES_MAPPING_METADATA,
-  PROPERTIES_NESTING_METADATA,
-} from '../properties-mapping/constants';
+import { mappedPropertyKey, PROPERTIES_MAPPING_METADATA, PROPERTIES_NESTING_METADATA } from './constants';
 
-export class ConfigLoader<TTemplate> {
-  private readonly _template: Type<TTemplate>;
-
-  constructor(template: Type<TTemplate>) {
-    this._template = template;
-  }
-
-  load(source: ConfigSource) {
-    const plain = this.formatObject(this._template, source, source);
-    return plainToInstance(this._template, plain, { enableImplicitConversion: true });
+export class ConfigLoader {
+  load<TTemplate>(template: Type<TTemplate>, source: ConfigSource) {
+    const plain = this.formatObject(template, source, source);
+    return plainToInstance(template, plain, { enableImplicitConversion: true });
   }
 
   private formatObject(template: Type<any>, skeleton: ConfigSource, source: ConfigSource) {
