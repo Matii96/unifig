@@ -1,8 +1,8 @@
 import { plainToInstance } from 'class-transformer';
 import { Type } from '../utils/type.interface';
-import { PropertiesMapping, PropertiesNesting, PropertySource } from './types';
 import { ConfigSource, ConfigSourceEntry } from '../adapters/config-adapter.interface';
 import { mappedPropertyKey, PROPERTIES_MAPPING_METADATA, PROPERTIES_NESTING_METADATA } from './constants';
+import { PropertiesMapping, PropertiesNesting, PropertySource } from './types';
 
 export class ConfigLoader {
   load<TTemplate>(template: Type<TTemplate>, source: ConfigSource) {
