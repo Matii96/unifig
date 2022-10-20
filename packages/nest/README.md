@@ -67,7 +67,7 @@ After above setup configs containers are available to be injected by using
 // app.service.ts
 @Injectable()
 export class AppService {
-  constructor(@InjectConfig() private config: ConfigContainer<AppConfig>) {}
+  constructor(@InjectConfig() private config: IConfigContainer<AppConfig>) {}
 
   sayHello() {
     return this.config.values.helloMessage;
@@ -102,7 +102,7 @@ export class CatsModule {}
 // cats.service.ts
 @Injectable()
 export class CatsService {
-  constructor(@InjectConfig(CatsConfig) private catsConfig: ConfigContainer<CatsConfig>) {}
+  constructor(@InjectConfig(CatsConfig) private catsConfig: IConfigContainer<CatsConfig>) {}
 }
 ```
 
