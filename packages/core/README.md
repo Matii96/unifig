@@ -99,12 +99,15 @@ Above example uses built-in adapter which transforms static object into Settings
 ```ts
 async function bootstrap() {
   await Config.register(
-    { template: MainConfiguration, adapter: ... },
-    { template: ModuleConfiguration, adapter: ... },
+    { template: Settings, adapter: ... },
+    { template: AnotherSettings, adapter: ... },
+    { templates: [MoreAnotherSettings, YetMoreAnotherSettings], adapter: ... },
   );
 
-  Config.values(MainConfiguration).globalProperty
-  Config.values(ModuleConfiguration).moduleProperty
+  config.log(Config.values(Settings).someProperty)
+  config.log(Config.values(AnotherSettings).someProperty)
+  config.log(Config.values(MoreAnotherSettings).someProperty)
+  config.log(Config.values(YetMoreAnotherSettings).someProperty)
 }
 ```
 
@@ -117,7 +120,7 @@ Additional configs may be registered with separate `.register()` calls.
 Upon changing application's configuration one must be usually restared to re-fetch new values. Unifig delivers an option to reload registered configurations in real time without app's restart.
 
 ```ts
-await Config.container(Settings).refresh();
+await Config.getContainer(Settings).refresh();
 ```
 
 ## License

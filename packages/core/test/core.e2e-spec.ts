@@ -18,8 +18,8 @@ describe('@unifig/core (e2e)', () => {
           global: { dbUrl: 'localhost:5467', dbPassword: 'password' },
         }),
       });
-      expect(manager.values(TransformationTemplate).port).toBe(3000);
-      expect(manager.values(TransformationTemplate).db).toEqual({ url: 'localhost:5467', password: 'password' });
+      expect(manager.getValues(TransformationTemplate).port).toBe(3000);
+      expect(manager.getValues(TransformationTemplate).db).toEqual({ url: 'localhost:5467', password: 'password' });
     });
 
     it('should leave missing properties blank', async () => {
@@ -30,7 +30,7 @@ describe('@unifig/core (e2e)', () => {
           global: { dbUrl: 'localhost:5467', dbPassword: 'password' },
         }),
       });
-      expect(manager.values(TransformationTemplate).port).not.toBeDefined();
+      expect(manager.getValues(TransformationTemplate).port).not.toBeDefined();
     });
   });
 
@@ -40,7 +40,7 @@ describe('@unifig/core (e2e)', () => {
         template: ValidationTemplate,
         adapter: new PlainConfigAdapter({ port: 3000, db: { url: 'db://localhost:5467' } }),
       });
-      expect(manager.values(ValidationTemplate)).toBeDefined();
+      expect(manager.getValues(ValidationTemplate)).toBeDefined();
     });
 
     it('should fail to validate config', () => {
@@ -55,7 +55,7 @@ describe('@unifig/core (e2e)', () => {
 
   describe('registration', () => {
     it('should fail to get config before initialization', () => {
-      expect(() => manager.values(class {})).toThrow(ConfigNotInitializedException);
+      expect(() => manager.getValues(class {})).toThrow(ConfigNotInitializedException);
     });
   });
 });

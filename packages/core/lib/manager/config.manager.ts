@@ -3,11 +3,11 @@ import { Type } from '../utils/type.interface';
 import { ConfigValidator } from '../validator/config.validator';
 import { ConfigNotInitializedException } from './exceptions/config-not-initialized.exception';
 import { ConfigSourceGroup } from './source-group/config.source-group';
-import { ConfigContainer } from './container/config.container';
 import {
   ConfigManagerRegisterMultipleTemplatesOptions,
   ConfigManagerRegisterSingleTemplateOptions,
 } from './config.manager.options';
+import { IConfigContainer } from './container';
 
 export class ConfigManager {
   private readonly _validator = new ConfigValidator();
@@ -39,8 +39,8 @@ export class ConfigManager {
    * @param {Type<TTemplate>} template
    * @returns {TTemplate} value
    */
-  values<TTemplate>(template: Type<TTemplate>) {
-    return this.container(template).values;
+  getValues<TTemplate>(template: Type<TTemplate>) {
+    return this.getContainer(template).values;
   }
 
   /**
@@ -48,9 +48,9 @@ export class ConfigManager {
    * @param {Type<TTemplate>} template
    * @returns {ConfigContainer<TTemplate>}
    */
-  container<TTemplate>(template: Type<TTemplate>) {
+  getContainer<TTemplate>(template: Type<TTemplate>): IConfigContainer<TTemplate> {
     const group = this._groups.get(template);
     if (!group) throw new ConfigNotInitializedException(template);
-    return group.getContainer(template) as ConfigContainer<TTemplate>;
+    return group.getContainer(template);
   }
 }
