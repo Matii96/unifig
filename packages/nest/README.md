@@ -81,7 +81,7 @@ export class AppService {
 
 Configurations need to be loaded before `AppModule` import in case of using global `Config` manager instance to configure application outside of Nest's DI.
 
-An example would be [task scheduling](https://docs.nestjs.com/techniques/task-scheduling). Decorator `@Cron('45 * * * * *')` is being called at the moment of .ts file import and needs the config to be already loaded.
+An example would be [task scheduling](https://docs.nestjs.com/techniques/task-scheduling). Decorator `@Cron('45 * * * * *')` is being called at the moment of containing file import and needs the config to be already loaded.
 
 ## Scoped Configurations
 
