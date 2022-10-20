@@ -1,23 +1,19 @@
-import { validateSync, ValidationError } from 'class-validator';
+import { validateSync } from 'class-validator';
+import { Type } from '../utils/type.interface';
 import { ConfigValidationException } from './config.validation.exception';
+import { ConfigValidationExceptionOptions } from './config.validation.exception.options';
 
 export class ConfigValidator {
-  validate<TConfig extends object>(config: TConfig) {
-    const errors = validateSync(config, { skipMissingProperties: false });
-    if (errors.length === 0) {
-      return;
-    }
-    const errorFormatted = '\n' + errors.map((error) => this.format(error)).join('');
-    throw new ConfigValidationException(config, errorFormatted);
-  }
+  validate(configs: object[]) {
+    const failedValidations = configs
+      .map<ConfigValidationExceptionOptions>((config) => ({
+        template: config.constructor as Type<any>,
+        errors: validateSync(config, { skipMissingProperties: false }),
+      }))
+      .filter(({ errors }) => errors.length > 0);
 
-  private format(error: ValidationError, parentPath = '') {
-    let msg = error.constraints
-      ? ` - ${parentPath}${error.property} has failed the following constraints:` +
-        ` ${Object.keys(error.constraints).join(', ')}.` +
-        ` Current value: ${error.value}\n`
-      : '';
-    msg += error.children?.map((child) => this.format(child, parentPath + `${error.property}.`)).join('');
-    return msg;
+    if (failedValidations.length > 0) {
+      throw new ConfigValidationException(failedValidations);
+    }
   }
 }
