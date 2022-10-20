@@ -55,7 +55,7 @@ bootstrap();
 ```ts
 // app.module.ts
 @Module({
-  imports: [ConfigModule.forRoot(AppConfig)],
+  imports: [ConfigModule.forRoot({ default: AppConfig })],
   providers: [AppService],
 })
 export class AppModule {}
@@ -83,6 +83,45 @@ Configurations need to be loaded before `AppModule` import in case of using glob
 
 An example would be [task scheduling](https://docs.nestjs.com/techniques/task-scheduling). Decorator `@Cron('45 * * * * *')` is being called at the moment of containing file import and needs the config to be already loaded.
 
+## Multiple templates
+
+<a name="multiple_templates"></a>
+
+```ts
+// main.ts
+...
+await Config.register({
+  templates: [AppConfig, AnotherAppConfig, YetAnotherAppConfig],
+  adapter: new PlainConfigAdapter({ ... }),
+});
+...
+```
+
+```ts
+// app.module.ts
+@Module({
+  imports: [
+    ConfigModule.forRoot({
+      templates: [AnotherAppConfig, YetAnotherAppConfig],
+      default: AppConfig,
+    }),
+  ],
+  providers: [AppService],
+})
+export class AppModule {}
+```
+
+```ts
+// app.service.ts
+@Injectable()
+export class AppService {
+  constructor(
+    @InjectConfig() private appConfig: IConfigContainer<AppConfig>,
+    @InjectConfig(AnotherAppConfig) private anotherAppConfig: IConfigContainer<AnotherAppConfig>
+  ) {}
+}
+```
+
 ## Scoped Configurations
 
 <a name="scoped_configurations"></a>
@@ -92,7 +131,7 @@ In addition to globally-accessible, configs can be injected with module scope.
 ```ts
 // cats.module.ts
 @Module({
-  imports: [ConfigModule.forFeature(CatsConfig)],
+  imports: [ConfigModule.forFeature(CatsConfig, AnotherCatsConfig)],
   providers: [CatsService],
 })
 export class CatsModule {}

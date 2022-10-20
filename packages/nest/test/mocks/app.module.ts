@@ -4,6 +4,6 @@ import { AppConfig } from './app.config';
 import { CatsModule } from './cats/cats.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(AppConfig), CatsModule],
+  imports: [ConfigModule.forRoot({ default: AppConfig }), CatsModule],
 })
 export class AppModule {}
