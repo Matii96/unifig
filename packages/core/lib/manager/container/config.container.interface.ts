@@ -1,4 +1,4 @@
-import { DeepReadonly } from '../utils/deep-readonly';
+import { DeepReadonly } from '../../utils/deep-readonly';
 
 export interface IConfigContainer<TTemplate extends Record<string, any> = any> {
   values: DeepReadonly<TTemplate>;

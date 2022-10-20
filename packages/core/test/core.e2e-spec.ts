@@ -38,10 +38,7 @@ describe('@unifig/core (e2e)', () => {
     it('should accept config values', async () => {
       await manager.register({
         template: ValidationTemplate,
-        adapter: new PlainConfigAdapter({
-          port: 3000,
-          db: { url: 'db://localhost:5467' },
-        }),
+        adapter: new PlainConfigAdapter({ port: 3000, db: { url: 'db://localhost:5467' } }),
       });
       expect(manager.values(ValidationTemplate)).toBeDefined();
     });
@@ -50,10 +47,7 @@ describe('@unifig/core (e2e)', () => {
       expect(
         manager.register({
           template: ValidationTemplate,
-          adapter: new PlainConfigAdapter({
-            port: 3000,
-            db: { port: 5000 },
-          }),
+          adapter: new PlainConfigAdapter({ port: 3000, db: { port: 5000 } }),
         })
       ).rejects.toThrow(ConfigValidationException);
     });

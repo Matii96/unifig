@@ -1,18 +1,75 @@
 import { ValidationError } from 'class-validator';
+import { getBorderCharacters, SpanningCellConfig, table } from 'table';
+import { PROPERTIES_MAPPING_METADATA } from '../loader/constants';
+import { PropertiesMapping, PropertySource, PropertyTarget } from '../loader/types';
+import { ConfigValidationExceptionOptions } from './config.validation.exception.options';
+
+interface ValidationReportRow {
+  propertyTarget: PropertyTarget;
+  propertySource: PropertySource;
+  failedConstraints: string[];
+  currentValue: any;
+}
 
 export class ConfigValidationException extends Error {
-  constructor(configs: object[], errors: ValidationError[]) {
-    super(`Validation failed for ${config.constructor.name}:${msg}`);
+  constructor(failedValidations: ConfigValidationExceptionOptions[]) {
+    super();
     this.name = ConfigValidationException.name;
+    this.message = this.formatMessage(failedValidations);
   }
 
-  private formatMessage(error: ValidationError, parentPath = '') {
-    let msg = error.constraints
-      ? ` - ${parentPath}${error.property} has failed the following constraints:` +
-        ` ${Object.keys(error.constraints).join(', ')}.` +
-        ` Current value: ${error.value}\n`
-      : '';
-    msg += error.children?.map((child) => this.format(child, parentPath + `${error.property}.`)).join('');
-    return msg;
+  private formatMessage(failedValidations: ConfigValidationExceptionOptions[]) {
+    const tableRows = this.formatTableRows(failedValidations);
+    const header = ['Template', 'Property', 'Source', 'Current Value', 'Failed constraints'];
+    const tableData = [header, ...tableRows.flatMap(({ templateTableData }) => templateTableData)];
+
+    return table(tableData, {
+      columns: [{ alignment: 'left', width: 16 }],
+      spanningCells: tableRows.map(({ spanningCells }) => spanningCells),
+      border: getBorderCharacters('ramac'),
+    });
+  }
+
+  private formatTableRows(failedValidations: ConfigValidationExceptionOptions[]) {
+    let spanningCellsRowIdx = 1;
+    return failedValidations.map((failedValidation) => {
+      const templateTableData = this.formatExceptionsReport(failedValidation.errors).map((row) => [
+        '',
+        row.propertyTarget,
+        row.propertySource || '',
+        row.currentValue,
+        row.failedConstraints,
+      ]);
+      templateTableData[0][0] = failedValidation.template.name;
+
+      const spanningCells: SpanningCellConfig = {
+        col: 0,
+        row: spanningCellsRowIdx,
+        rowSpan: templateTableData.length,
+        verticalAlignment: 'middle',
+      };
+      spanningCellsRowIdx += templateTableData.length;
+      return { templateTableData, spanningCells };
+    });
+  }
+
+  private formatExceptionsReport(errors: ValidationError[], parentPath = ''): ValidationReportRow[] {
+    return errors.flatMap<ValidationReportRow>((error) => {
+      const propertyTarget = parentPath + error.property;
+      if (error.children?.length > 0) {
+        return this.formatExceptionsReport(error.children, `${propertyTarget}.`);
+      }
+
+      const propertiesMapping: PropertiesMapping = Reflect.getMetadata(
+        PROPERTIES_MAPPING_METADATA,
+        error.target.constructor
+      );
+      return {
+        propertyTarget,
+        propertySource: propertiesMapping?.get(error.property),
+        failedConstraints: Object.keys(error.constraints),
+        currentValue: error.value,
+      };
+    });
   }
 }
