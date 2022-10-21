@@ -15,7 +15,7 @@ export class ConfigValidationException extends Error {
   constructor(failedValidations: ConfigValidationExceptionOptions[]) {
     super();
     this.name = ConfigValidationException.name;
-    this.message = this.formatMessage(failedValidations);
+    this.message = '\n' + this.formatMessage(failedValidations);
   }
 
   private formatMessage(failedValidations: ConfigValidationExceptionOptions[]) {
