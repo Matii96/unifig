@@ -1,6 +1,6 @@
 export interface EnvConfigAdapterOptions {
   /**
-   * Path to optional environment files to be loaded in given order. Values from them will be overwritten by process envs.
+   * Path to optional environment files to be loaded in given order. Glob patterns are accepted. Values from them will be overwritten by process envs.
    */
   envFilesPaths?: string[];
 
