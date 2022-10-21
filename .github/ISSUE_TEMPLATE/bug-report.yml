@@ -47,6 +47,8 @@ body:
         Which package (or packages) do you think your issue is related to?
       options:
         - label: '<code>@unifig/core</code>'
+        - label: '<code>@unifig/nest</code>'
+        - label: '<code>@unifig/env</code>'
         - label: 'Not sure'
 
   - type: input

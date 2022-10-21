@@ -21,7 +21,7 @@ body:
       options:
         - label: '<code>@unifig/core</code>'
         - label: '<code>@unifig/nest</code>'
-        - label: '<code>unifig-example-express</code>'
+        - label: '<code>@unifig/env</code>'
         - label: 'New example'
 
   - type: textarea
