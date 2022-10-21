@@ -20,8 +20,8 @@
   },
   "scripts": {
     "build": "tsc --build tsconfig.build.json",
-    "test": "jest --config ../../jest-units.config.json packages/core",
-    "test:e2e": "jest --config ../../jest-e2e.config.json packages/core"
+    "test": "jest --config ../../jest-units.config.json packages/nest",
+    "test:e2e": "jest --config ../../jest-e2e.config.json packages/nest"
   },
   "bugs": {
     "url": "https://github.com/Matii96/unifig/issues"
