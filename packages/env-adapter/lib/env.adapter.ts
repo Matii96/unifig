@@ -1,5 +1,6 @@
-import { resolve } from 'path';
-import { existsSync, readFileSync } from 'fs';
+import { join } from 'path';
+import { readFileSync } from 'fs';
+import * as fg from 'fast-glob';
 import { parse } from 'dotenv';
 import { expand } from 'dotenv-expand';
 import { ConfigSource, IConfigAdapter } from '@unifig/core';
@@ -14,23 +15,25 @@ export class EnvConfigAdapter implements IConfigAdapter {
 
   constructor(options: EnvConfigAdapterOptions = {}) {
     this._options = options;
-    this._envFilesPaths = [...(options.envFilesPaths ?? []), resolve(process.cwd(), '.env')];
+    this._envFilesPaths = [...(options.envFilesPaths ?? []), join(process.cwd(), '.env')];
   }
 
   async load(): Promise<ConfigSource> {
     let config: ReturnType<typeof parse> = {};
-    for (const envFilePath of this._envFilesPaths) {
-      if (!existsSync(envFilePath)) {
-        continue;
-      }
-      config = Object.assign(config, parse(readFileSync(envFilePath)));
-      if (this._options.expandVariables) {
-        config = expand({ parsed: config }).parsed || config;
-      }
+    const paths = await fg(this._envFilesPaths, { dot: true, unique: true });
+    for (const envFilePath of paths) {
+      this.parseEnvFile(config, envFilePath);
     }
     if (!this._options.ignoreEnvVars) {
       Object.assign(config, process.env);
     }
     return config;
+  }
+
+  private parseEnvFile(config: ReturnType<typeof parse>, envFilePath: string) {
+    Object.assign(config, parse(readFileSync(envFilePath)));
+    if (this._options.expandVariables) {
+      Object.assign(config, expand({ parsed: config, ignoreProcessEnv: true }).parsed || config);
+    }
   }
 }

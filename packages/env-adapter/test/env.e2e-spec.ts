@@ -15,9 +15,10 @@ describe('@unifig/env (e2e)', () => {
       template: Settings,
       adapter: new EnvConfigAdapter({
         envFilesPaths: [join(__dirname, '.env'), join(__dirname, '.env.overwrite')],
+        expandVariables: true,
       }),
     });
-    expect(manager.get(Settings).port).toBe(3000);
+    expect(manager.getValues(Settings).port).toBe(300010);
   });
 
   it('should overwrite file configuration with environment variables', async () => {
@@ -28,7 +29,7 @@ describe('@unifig/env (e2e)', () => {
         envFilesPaths: [join(__dirname, '.env')],
       }),
     });
-    expect(manager.get(Settings).port).toBe(4588);
+    expect(manager.getValues(Settings).port).toBe(4588);
     process.env.PORT = undefined;
   });
 });
