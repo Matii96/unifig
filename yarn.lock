@@ -2653,6 +2653,7 @@ __metadata:
     "@unifig/core": "workspace:^"
     dotenv: ^16.0.3
     dotenv-expand: ^9.0.0
+    fast-glob: ^3.2.12
   peerDependencies:
     "@unifig/core": ^0.1.0
   languageName: unknown
@@ -4708,7 +4709,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.2.9":
+"fast-glob@npm:^3.2.12, fast-glob@npm:^3.2.9":
   version: 3.2.12
   resolution: "fast-glob@npm:3.2.12"
   dependencies:
