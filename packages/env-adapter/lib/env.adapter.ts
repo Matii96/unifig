@@ -19,7 +19,7 @@ export class EnvConfigAdapter implements IConfigAdapter {
   }
 
   async load(): Promise<ConfigSource> {
-    let config: ReturnType<typeof parse> = {};
+    const config: ReturnType<typeof parse> = {};
     const paths = await fg(this._envFilesPaths, { dot: true, unique: true });
     for (const envFilePath of paths) {
       this.parseEnvFile(config, envFilePath);
