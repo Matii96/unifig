@@ -8,11 +8,10 @@
   "scripts": {
     "postinstall": "husky install",
     "build": "lerna run build --stream",
-    "lint:staged": "scripts/lint-staged.sh",
     "test": "lerna run test --stream --since HEAD --exclude-dependents",
     "test:e2e": "lerna run test:e2e --stream --since HEAD",
     "test:cov": "jest --config jest-units.config.json --coverage",
-    "precommit": "concurrently \"yarn:lint:staged\" \"yarn:test\" \"yarn:test:e2e\""
+    "precommit": "concurrently \"yarn:lint-staged\" \"yarn:test\" \"yarn:test:e2e\""
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
@@ -29,6 +28,7 @@
     "husky": "^8.0.1",
     "jest": "^29.1.2",
     "lerna": "^5.6.1",
+    "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "ts-jest": "^29.0.3",
