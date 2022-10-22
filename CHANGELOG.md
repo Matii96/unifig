@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/Matii96/unifig/compare/v0.3.0...v0.3.1) (2022-10-22)
+
+### Bug Fixes
+
+- **core:** typo fix for quick start ([6e5c9a5](https://github.com/Matii96/unifig/commit/6e5c9a5ed19bbc9fdf2b2f8431ecd9fedfcfa1c7))
+
 # [0.3.0](https://github.com/Matii96/unifig/compare/v0.2.3...v0.3.0) (2022-10-22)
 
 ### Bug Fixes
