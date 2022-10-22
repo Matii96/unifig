@@ -7,6 +7,7 @@ Universal, typed and validated configuration manager.
 [![MIT Licensed](https://img.shields.io/badge/License-MIT-brightgreen)](/LICENSE)
 [![NPM version](https://img.shields.io/npm/v/@unifig/core.svg)](https://www.npmjs.com/package/@unifig/core)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli)
+[![codecov](https://codecov.io/gh/Matii96/unifig/branch/main/graph/badge.svg?token=B7P8F8GUU8)](https://codecov.io/gh/Matii96/unifig)
 [![Build Status](https://github.com/Matii96/unifig/workflows/main-build/badge.svg?branch=main)](https://github.com/Matii96/unifig/actions?workflow=main-build)
 
 </div>
