@@ -85,7 +85,7 @@ async function bootstrap() {
     }),
   });
 
-  console.log(Config.values(Settings).port); // output: 3000
+  console.log(Config.getValues(Settings).port); // output: 3000
 }
 
 bootstrap();
@@ -105,10 +105,10 @@ async function bootstrap() {
     { templates: [MoreAnotherSettings, YetMoreAnotherSettings], adapter: ... },
   );
 
-  config.log(Config.values(Settings).someProperty)
-  config.log(Config.values(AnotherSettings).someProperty)
-  config.log(Config.values(MoreAnotherSettings).someProperty)
-  config.log(Config.values(YetMoreAnotherSettings).someProperty)
+  config.log(Config.getValues(Settings).someProperty)
+  config.log(Config.getValues(AnotherSettings).someProperty)
+  config.log(Config.getValues(MoreAnotherSettings).someProperty)
+  config.log(Config.getValues(YetMoreAnotherSettings).someProperty)
 }
 ```
 
