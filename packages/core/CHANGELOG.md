@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Matii96/unifig/compare/v0.2.3...v0.3.0) (2022-10-22)
+
+### Bug Fixes
+
+- **core:** configValidationException message formatting ([2b8c9f8](https://github.com/Matii96/unifig/commit/2b8c9f88d73bd47413a9fc4ed18728aa43625f33))
+
+### Features
+
+- **core:** config manager rework ([bee49e3](https://github.com/Matii96/unifig/commit/bee49e396f83e6263d82b449515fe9ccd54babce))
+- **core:** sharing config values sources ([#2](https://github.com/Matii96/unifig/issues/2)) ([5d8187c](https://github.com/Matii96/unifig/commit/5d8187c8b999b61b2dc7a02c7cf895c2313a66bc))
+
+### BREAKING CHANGES
+
+- **core:** new methods names in interface
+
 ## [0.2.2](https://github.com/Matii96/unifig/compare/v0.2.1...v0.2.2) (2022-10-17)
 
 ### Bug Fixes

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Matii96/unifig/compare/v0.2.3...v0.3.0) (2022-10-22)
+
+### Bug Fixes
+
+- **nest:** ensured no templates names overlap ([fea793e](https://github.com/Matii96/unifig/commit/fea793ea4b094005d426b847afb74bf0b3889618))
+
+### Features
+
+- **nest:** config module initialization rework ([c7330fc](https://github.com/Matii96/unifig/commit/c7330fcf765dc9fae991377a1a075ab02494b760))
+
+### BREAKING CHANGES
+
+- **nest:** new forRoot method interface
+
 ## [0.2.3](https://github.com/Matii96/unifig/compare/v0.2.2...v0.2.3) (2022-10-17)
 
 ### Bug Fixes
