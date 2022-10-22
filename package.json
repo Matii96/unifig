@@ -11,7 +11,7 @@
     "test": "lerna run test --stream --since HEAD --exclude-dependents",
     "test:e2e": "lerna run test:e2e --stream --since HEAD",
     "test:cov": "jest --config jest-units.config.json --coverage",
-    "precommit": "concurrently \"yarn:lint-staged\" \"yarn:test\" \"yarn:test:e2e\""
+    "precommit": "yarn lint-staged && concurrently \"yarn:test\" \"yarn:test:e2e\""
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
