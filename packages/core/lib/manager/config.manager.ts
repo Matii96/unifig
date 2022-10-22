@@ -11,7 +11,7 @@ import { IConfigContainer } from './container';
 
 export class ConfigManager {
   private readonly _validator = new ConfigValidator();
-  private readonly _groups = new Map<Type<any>, ConfigSourceGroup>();
+  private readonly _groups = new Map<Type, ConfigSourceGroup>();
 
   async register(
     ...configs: (ConfigManagerRegisterSingleTemplateOptions | ConfigManagerRegisterMultipleTemplatesOptions)[]

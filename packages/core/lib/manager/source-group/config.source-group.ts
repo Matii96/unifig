@@ -8,9 +8,9 @@ export class ConfigSourceGroup {
   private readonly _validator = new ConfigValidator();
   private readonly _loader = new ConfigLoader();
   private readonly _adapter: IConfigAdapter;
-  private readonly _containers = new Map<Type<any>, ConfigContainer>();
+  private readonly _containers = new Map<Type, ConfigContainer>();
 
-  constructor(adapter: IConfigAdapter, templates: Type<any>[]) {
+  constructor(adapter: IConfigAdapter, templates: Type[]) {
     this._adapter = adapter;
     templates.forEach((template) => this._containers.set(template, new ConfigContainer(this)));
   }
@@ -19,7 +19,7 @@ export class ConfigSourceGroup {
     return Array.from(this._containers.keys());
   }
 
-  getContainer(template: Type<any>) {
+  getContainer(template: Type) {
     return this._containers.get(template);
   }
 

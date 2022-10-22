@@ -10,7 +10,7 @@ export class ConfigLoader {
     return plainToInstance(template, plain, { enableImplicitConversion: true });
   }
 
-  private formatObject(template: Type<any>, skeleton: ConfigSource, source: ConfigSource) {
+  private formatObject(template: Type, skeleton: ConfigSource, source: ConfigSource) {
     const properties: PropertiesMapping = Reflect.getMetadata(PROPERTIES_MAPPING_METADATA, template);
     if (!properties) {
       return skeleton;

@@ -7,7 +7,7 @@ export class ConfigValidator {
   validate(configs: object[]) {
     const failedValidations = configs
       .map<ConfigValidationExceptionOptions>((config) => ({
-        template: config.constructor as Type<any>,
+        template: config.constructor as Type,
         errors: validateSync(config, { skipMissingProperties: false }),
       }))
       .filter(({ errors }) => errors.length > 0);
