@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Matii96/unifig/compare/v0.2.3...v0.3.0) (2022-10-22)
+
+### Bug Fixes
+
+- **core:** configValidationException message formatting ([2b8c9f8](https://github.com/Matii96/unifig/commit/2b8c9f88d73bd47413a9fc4ed18728aa43625f33))
+- **nest:** ensured no templates names overlap ([fea793e](https://github.com/Matii96/unifig/commit/fea793ea4b094005d426b847afb74bf0b3889618))
+
+### Features
+
+- **core:** config manager rework ([bee49e3](https://github.com/Matii96/unifig/commit/bee49e396f83e6263d82b449515fe9ccd54babce))
+- **core:** sharing config values sources ([#2](https://github.com/Matii96/unifig/issues/2)) ([5d8187c](https://github.com/Matii96/unifig/commit/5d8187c8b999b61b2dc7a02c7cf895c2313a66bc))
+- **env:** added support for glob path patterns ([#3](https://github.com/Matii96/unifig/issues/3)) ([edbdc5f](https://github.com/Matii96/unifig/commit/edbdc5fc110e865319a4ec78c83580817058fb58))
+- **env:** allowed empty adapter options ([551afc1](https://github.com/Matii96/unifig/commit/551afc10f1a2ad35f78f6c750ffb6a467b0c7adb))
+- **nest:** config module initialization rework ([c7330fc](https://github.com/Matii96/unifig/commit/c7330fcf765dc9fae991377a1a075ab02494b760))
+
+### BREAKING CHANGES
+
+- **nest:** new forRoot method interface
+- **core:** new methods names in interface
+
 ## [0.2.3](https://github.com/Matii96/unifig/compare/v0.2.2...v0.2.3) (2022-10-17)
 
 ### Bug Fixes
