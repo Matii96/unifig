@@ -27,9 +27,9 @@ Universal, typed and validated configuration manager.
 
 <a name="goal"></a>
 
-Unifig aims to provides simple and abstract way of handling app's configuration. It allows to load configuration data from multiple sources without changing defined config template. Many templates an be defined to further organize the code eg. MainConfiguration and ModuleConfiguration.
+Unifig aims to provides simple and abstract way of handling app's configuration. It allows to load configuration data from multiple sources without changing defined config template. Many templates can be defined to further organize the code eg. MainConfiguration and ModuleConfiguration.
 
-Adapted configuration data is transformed into templates and validated via [class-transformer](https://github.com/typestack/class-transformer) and [class-validator](https://github.com/typestack/class-validator).
+Adapted configuration data is transformed into templates and validated via [class-transformer](https://github.com/typestack/class-transformer) and [class-validator](https://github.com/typestack/class-validator). Once initialized configurations can be reloaded without app restart.
 
 ## Packages
 

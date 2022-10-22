@@ -19,15 +19,16 @@ Universal, typed and validated configuration manager.
 - [Quick Start](#quick_start)
 - [Multiple Configurations](#multiple_configurations)
 - [Stale Data](#stale_data)
+- [Todo Before 1.0.0](#100todo)
 - [License](#license)
 
 ## 💡 Goal
 
 <a name="goal"></a>
 
-Unifig aims to provides simple and abstract way of handling app's configuration. It allows to load configuration data from multiple sources without changing defined config template. Many templates an be defined to further organize the code eg. MainConfiguration and ModuleConfiguration.
+Unifig aims to provides simple and abstract way of handling app's configuration. It allows to load configuration data from multiple sources without changing defined config template. Many templates can be defined to further organize the code eg. MainConfiguration and ModuleConfiguration.
 
-Adapted configuration data is transformed into templates and validated via [class-transformer](https://github.com/typestack/class-transformer) and [class-validator](https://github.com/typestack/class-validator).
+Adapted configuration data is transformed into templates and validated via [class-transformer](https://github.com/typestack/class-transformer) and [class-validator](https://github.com/typestack/class-validator). Once initialized configurations can be reloaded without app restart.
 
 ## Installation
 
@@ -123,6 +124,14 @@ Upon changing application's configuration one must be usually restared to re-fet
 ```ts
 await Config.getContainer(Settings).refresh();
 ```
+
+## Todo before 1.0.0 release
+
+<a name="100todo"></a>
+
+- allow to automate configurations values reloads in user-defined source group scoped intervals
+- add hook for config refreshed event to allow an app react to the change. Pass difference between old and new values?
+- add example project under `/examples` directory
 
 ## License
 
