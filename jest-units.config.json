@@ -4,7 +4,12 @@
   "testEnvironment": "node",
   "passWithNoTests": true,
   "testRegex": "\\.spec.ts$",
-  "coveragePathIgnorePatterns": ["<rootDir>/examples", "<rootDir>/.*/dist/", "<rootDir>/.*\\.mocks\\.ts"],
+  "coveragePathIgnorePatterns": [
+    "<rootDir>/examples",
+    "<rootDir>/.*/dist/",
+    "<rootDir>/.*\\.mock\\.ts",
+    "<rootDir>/.*\\.mocks\\.ts"
+  ],
   "coverageThreshold": {
     "global": {
       "lines": 95

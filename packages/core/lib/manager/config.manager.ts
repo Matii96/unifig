@@ -3,19 +3,18 @@ import { Type } from '../utils/type.interface';
 import { ConfigValidator } from '../validator/config.validator';
 import { ConfigNotInitializedException } from './exceptions/config-not-initialized.exception';
 import { ConfigSourceGroup } from './source-group/config.source-group';
+import { IConfigContainer } from './container/config.container.interface';
 import {
-  ConfigManagerRegisterMultipleTemplatesOptions,
-  ConfigManagerRegisterSingleTemplateOptions,
+  ConfigManagerRegisterOptions,
+  RegisterSingleTemplateOptions,
+  RegisterMultipleTemplatesOptions,
 } from './config.manager.options';
-import { IConfigContainer } from './container';
 
 export class ConfigManager {
   private readonly _validator = new ConfigValidator();
   private readonly _groups = new Map<Type, ConfigSourceGroup>();
 
-  async register(
-    ...configs: (ConfigManagerRegisterSingleTemplateOptions | ConfigManagerRegisterMultipleTemplatesOptions)[]
-  ) {
+  async register(...configs: ConfigManagerRegisterOptions[]) {
     const groups = configs.map((config) => this.initSourceGroup(config));
     const loadResults = await Promise.all(groups.map((group) => group.load(true)));
     const configsValues = [].concat(...loadResults);
@@ -23,11 +22,9 @@ export class ConfigManager {
     groups.forEach((group) => group.templates.forEach((template) => this._groups.set(template, group)));
   }
 
-  private initSourceGroup(
-    config: ConfigManagerRegisterSingleTemplateOptions | ConfigManagerRegisterMultipleTemplatesOptions
-  ) {
-    let templates = (config as ConfigManagerRegisterMultipleTemplatesOptions).templates;
-    if (!templates) templates = [(config as ConfigManagerRegisterSingleTemplateOptions).template];
+  private initSourceGroup(config: ConfigManagerRegisterOptions) {
+    let templates = (config as RegisterMultipleTemplatesOptions).templates;
+    if (!templates) templates = [(config as RegisterSingleTemplateOptions).template];
     return new ConfigSourceGroup(
       config.adapter,
       templates.filter((template) => !this._groups.has(template))
