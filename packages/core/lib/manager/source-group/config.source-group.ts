@@ -1,12 +1,12 @@
 import { Type } from '../../utils/type.interface';
-import { IConfigAdapter } from '../../adapters/config-adapter.interface';
-import { ConfigValidator } from '../../validator/config.validator';
-import { ConfigContainer } from '../container/config.container';
 import { ConfigLoader } from '../../loader/config.loader';
+import { ConfigValidator } from '../../validator/config.validator';
+import { IConfigAdapter } from '../../adapters/config-adapter.interface';
+import { ConfigContainer } from '../container/config.container';
 
 export class ConfigSourceGroup {
-  private readonly _validator = new ConfigValidator();
   private readonly _loader = new ConfigLoader();
+  private readonly _validator = new ConfigValidator();
   private readonly _adapter: IConfigAdapter;
   private readonly _containers = new Map<Type, ConfigContainer>();
 
@@ -25,7 +25,7 @@ export class ConfigSourceGroup {
 
   /**
    * @param {boolean} skipValidation
-   * @returns List of templates new instances.
+   * @returns List of new instances of templates.
    */
   async load(skipValidation = false) {
     const source = await this._adapter.load();

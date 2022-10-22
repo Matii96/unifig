@@ -1,7 +1,7 @@
 import { IsDefined, IsInt, IsString } from 'class-validator';
 import { From, Nested } from './loader';
 
-class DbConfig {
+export class DbConfigMock {
   @From('DB_URL')
   @IsString()
   url: string;
@@ -16,9 +16,9 @@ export class TemplateMock {
   @IsInt()
   port: number;
 
-  @Nested(DbConfig)
+  @Nested(DbConfigMock)
   @IsDefined()
-  db: DbConfig;
+  db: DbConfigMock;
 }
 
 export const mockFailedValidation = [
@@ -34,13 +34,13 @@ export const mockFailedValidation = [
     property: 'db',
     children: [
       {
-        target: new DbConfig(),
+        target: new DbConfigMock(),
         property: 'url',
         children: [] as any[],
         constraints: { isString: 'url must be a string' },
       },
       {
-        target: new DbConfig(),
+        target: new DbConfigMock(),
         property: 'password',
         children: [],
         constraints: { isString: 'password must be a string' },
@@ -53,23 +53,23 @@ export const mockFailedValidation = [
     property: 'db2',
     children: [
       {
-        target: new DbConfig(),
+        target: new DbConfigMock(),
         property: 'url',
         children: [] as any[],
         constraints: { isDefined: 'url must be a defined', isString: 'url must be a string' },
       },
       {
-        target: new DbConfig(),
+        target: new DbConfigMock(),
         property: 'subdb',
         children: [
           {
-            target: new DbConfig(),
+            target: new DbConfigMock(),
             property: 'url',
             children: [] as any[],
             constraints: { isString: 'url must be a string' },
           },
           {
-            target: new DbConfig(),
+            target: new DbConfigMock(),
             property: 'password',
             children: [],
             constraints: { isString: 'password must be a string' },
