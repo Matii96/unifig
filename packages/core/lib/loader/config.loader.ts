@@ -12,21 +12,18 @@ export class ConfigLoader {
 
   private formatObject(template: Type, skeleton: ConfigSource, source: ConfigSource) {
     const properties: PropertiesMapping = Reflect.getMetadata(PROPERTIES_MAPPING_METADATA, template);
-    if (!properties) {
-      return skeleton;
-    }
-    for (const [targetKey, sourceKey] of properties) {
-      skeleton[mappedPropertyKey(targetKey)] = this.getSourceValue(source, sourceKey);
+    if (properties) {
+      for (const [targetKey, sourceKey] of properties) {
+        skeleton[mappedPropertyKey(targetKey)] = this.getSourceValue(source, sourceKey);
+      }
     }
 
     const nesting: PropertiesNesting = Reflect.getMetadata(PROPERTIES_NESTING_METADATA, template);
-    if (!nesting) {
-      return skeleton;
-    }
-
-    for (const [targetKey, subTemplate] of nesting) {
-      skeleton[targetKey] = skeleton[targetKey] ?? {};
-      Object.assign(skeleton[targetKey], this.formatObject(subTemplate, skeleton[targetKey] as ConfigSource, source));
+    if (nesting) {
+      for (const [targetKey, subTemplate] of nesting) {
+        skeleton[targetKey] = skeleton[targetKey] ?? {};
+        Object.assign(skeleton[targetKey], this.formatObject(subTemplate, skeleton[targetKey] as ConfigSource, source));
+      }
     }
 
     return skeleton;
