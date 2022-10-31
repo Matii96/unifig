@@ -4,7 +4,7 @@ import { Type } from '../../utils/type.interface';
 import { PROPERTIES_NESTING_METADATA } from '../constants';
 import { PropertiesNesting } from '../types';
 
-export const Nested = <T>(type: Type<T>): PropertyDecorator => {
+export function Nested<T>(type: Type<T>): PropertyDecorator {
   return (target, key: string) => {
     let mapping: PropertiesNesting = Reflect.getMetadata(PROPERTIES_NESTING_METADATA, target.constructor);
     if (!mapping) {
@@ -16,4 +16,4 @@ export const Nested = <T>(type: Type<T>): PropertyDecorator => {
     TransformType(() => type)(target, key);
     ValidateNested()(target, key);
   };
-};
+}
