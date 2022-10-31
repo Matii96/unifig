@@ -13,7 +13,7 @@ export const Nested = <T>(type: Type<T>): PropertyDecorator => {
     }
     mapping.set(key, type);
 
-    TransformType(() => type);
+    TransformType(() => type)(target, key);
     ValidateNested()(target, key);
   };
 };
