@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/Matii96/unifig/compare/v0.3.1...v0.4.0) (2022-10-31)
+
+### Bug Fixes
+
+- **core:** nesting explicit typing ([3d5e194](https://github.com/Matii96/unifig/commit/3d5e1948eb0458dc8d0a53bf4db9c345a555e673))
+- **core:** proper loading nested properties only templates ([8229c86](https://github.com/Matii96/unifig/commit/8229c86b4664f00832a72f596bfd7bdab073601b))
+
+### Features
+
+- **core:** option to define properties default values ([7e884ee](https://github.com/Matii96/unifig/commit/7e884ee2120734ca4fa497b9348c4d15004f0967))
+
 ## [0.3.1](https://github.com/Matii96/unifig/compare/v0.3.0...v0.3.1) (2022-10-22)
 
 ### Bug Fixes
