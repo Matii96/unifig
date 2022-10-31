@@ -4,7 +4,7 @@ import { PropertiesMapping } from '../types';
 
 interface FromOptions {
   key: string;
-  default?: string;
+  default?: any;
 }
 
 export function From(key: string): PropertyDecorator;
