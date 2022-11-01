@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/Matii96/unifig/compare/v0.4.1...v0.5.0) (2022-11-01)
+
+### Features
+
+- **nest:** backwards compatibility with nest < 8.0.0 ([ebb4346](https://github.com/Matii96/unifig/commit/ebb434656a5969dbc83e58681bbee356c75d5b7f))
+
 ## [0.4.1](https://github.com/Matii96/unifig/compare/v0.4.0...v0.4.1) (2022-10-31)
 
 ### Bug Fixes
