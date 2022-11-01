@@ -4,6 +4,6 @@ export interface ConfigModuleForRootOptions {
   /**
    * Global configuration accessible via `@InjectConfig()` decorator without parameter.
    */
-  default?: Type;
-  templates?: Type[];
+  default?: Type<any>;
+  templates?: Type<any>[];
 }

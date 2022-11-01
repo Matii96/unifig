@@ -3,7 +3,7 @@ import { Type } from '@nestjs/common';
 let globalIdCounter = 0;
 const TEMPLATE_ID = '__unifigNestTemplateId__';
 
-export const getConfigContainerToken = (template?: Type) => {
+export const getConfigContainerToken = (template?: Type<any>) => {
   if (!template) {
     return 'Unifig_container_GLOBAL';
   }

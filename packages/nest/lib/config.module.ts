@@ -28,10 +28,10 @@ export class ConfigModule {
 
   /**
    * Register module-scoped configurations.
-   * @param {Type[]} templates
+   * @param {Type<any>[]} templates
    * @returns {DynamicModule}
    */
-  static forFeature(...templates: Type[]): DynamicModule {
+  static forFeature(...templates: Type<any>[]): DynamicModule {
     const providers = templates.map<FactoryProvider>((template) => ({
       provide: getConfigContainerToken(template),
       useFactory: () => Config.getContainer(template),
