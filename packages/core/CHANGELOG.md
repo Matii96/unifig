@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/Matii96/unifig/compare/v0.5.0...v0.5.1) (2022-11-02)
+
+### Bug Fixes
+
+- **core:** older class-transformer naming compatibility ([3df11a4](https://github.com/Matii96/unifig/commit/3df11a47e8b4d6cc9fb661bf64b178bd5a126a97))
+
 # [0.5.0](https://github.com/Matii96/unifig/compare/v0.4.1...v0.5.0) (2022-11-01)
 
 **Note:** Version bump only for package @unifig/core
