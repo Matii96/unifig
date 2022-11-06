@@ -20,7 +20,7 @@ export class ConfigModule {
     if (opts.default) {
       providers.push({
         provide: getConfigContainerToken(),
-        useFactory: () => Config.getContainer(opts.default),
+        useFactory: () => Config.getContainer(opts.default as Type<any>),
       });
     }
     return { global: true, module: ConfigModule, providers, exports: providers.map(({ provide }) => provide) };

@@ -1,4 +1,4 @@
-import { IsDefined, IsInt, IsString } from 'class-validator';
+import { IsDefined, IsInt, IsString, ValidationError } from 'class-validator';
 import { From, Nested } from './loader';
 
 export class DbConfigMock {
@@ -21,7 +21,7 @@ export class TemplateMock {
   db: DbConfigMock;
 }
 
-export const mockFailedValidation = [
+export const mockFailedValidation: ValidationError[] = [
   {
     target: new TemplateMock(),
     property: 'port',

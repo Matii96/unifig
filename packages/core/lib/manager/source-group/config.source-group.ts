@@ -31,7 +31,9 @@ export class ConfigSourceGroup {
     const source = await this._adapter.load();
     const values = this.templates.map((template) => this._loader.load(template, source));
     if (!skipValidation) this._validator.validate(values);
-    this.templates.forEach((template, idx) => this._containers.get(template).setValue(values[idx]));
+    this.templates.forEach((template, idx) =>
+      (this.getContainer(template) as ConfigContainer<any>).setValue(values[idx])
+    );
     return values;
   }
 }

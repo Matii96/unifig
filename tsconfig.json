@@ -4,6 +4,7 @@
     "target": "es2019",
     "baseUrl": "./lib",
     "declaration": true,
+    "strictNullChecks": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "noImplicitAny": true,

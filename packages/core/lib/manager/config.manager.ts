@@ -9,6 +9,7 @@ import {
   RegisterSingleTemplateOptions,
   RegisterMultipleTemplatesOptions,
 } from './config.manager.options';
+import { ConfigContainer } from './container/config.container';
 
 export class ConfigManager {
   private readonly _validator = new ConfigValidator();
@@ -17,7 +18,7 @@ export class ConfigManager {
   async register(...configs: ConfigManagerRegisterOptions[]) {
     const groups = configs.map((config) => this.initSourceGroup(config));
     const loadResults = await Promise.all(groups.map((group) => group.load(true)));
-    const configsValues = [].concat(...loadResults);
+    const configsValues = ([] as any[]).concat(...loadResults);
     this._validator.validate(configsValues);
     groups.forEach((group) => group.templates.forEach((template) => this._groups.set(template, group)));
   }
@@ -36,7 +37,7 @@ export class ConfigManager {
    * @param {Type<TTemplate>} template
    * @returns {TTemplate} value
    */
-  getValues<TTemplate>(template: Type<TTemplate>) {
+  getValues<TTemplate extends Record<string, any>>(template: Type<TTemplate>) {
     return this.getContainer(template).values;
   }
 
@@ -45,9 +46,9 @@ export class ConfigManager {
    * @param {Type<TTemplate>} template
    * @returns {ConfigContainer<TTemplate>}
    */
-  getContainer<TTemplate>(template: Type<TTemplate>): IConfigContainer<TTemplate> {
+  getContainer<TTemplate extends Record<string, any>>(template: Type<TTemplate>): IConfigContainer<TTemplate> {
     const group = this._groups.get(template);
     if (!group) throw new ConfigNotInitializedException(template);
-    return group.getContainer(template);
+    return group.getContainer(template) as ConfigContainer<TTemplate>;
   }
 }

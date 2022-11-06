@@ -6,7 +6,7 @@ import { ConfigValidationExceptionOptions } from './config.validation.exception.
 
 interface ValidationReportRow {
   propertyTarget: PropertyTarget;
-  propertySource: PropertySource;
+  propertySource?: PropertySource;
   failedConstraints: string[];
   currentValue: any;
 }
@@ -56,18 +56,17 @@ export class ConfigValidationException extends Error {
   private formatExceptionsReport(errors: ValidationError[], parentPath = ''): ValidationReportRow[] {
     return errors.flatMap<ValidationReportRow>((error) => {
       const propertyTarget = parentPath + error.property;
-      if (error.children?.length > 0) {
+      if (error.children && error.children.length > 0) {
         return this.formatExceptionsReport(error.children, `${propertyTarget}.`);
       }
 
-      const propertiesMapping: PropertiesMapping = Reflect.getMetadata(
-        PROPERTIES_MAPPING_METADATA,
-        error.target.constructor
-      );
+      const propertiesMapping: PropertiesMapping = error.target
+        ? Reflect.getMetadata(PROPERTIES_MAPPING_METADATA, error.target.constructor)
+        : undefined;
       return {
         propertyTarget,
         propertySource: propertiesMapping?.get(error.property),
-        failedConstraints: Object.keys(error.constraints),
+        failedConstraints: error.constraints ? Object.keys(error.constraints) : [],
         currentValue: error.value,
       };
     });
