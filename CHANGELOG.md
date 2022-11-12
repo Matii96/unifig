@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/Matii96/unifig/compare/v0.5.1...v0.6.0) (2022-11-12)
+
+### Features
+
+- **core:** support for circular references between templates ([34d8ed5](https://github.com/Matii96/unifig/commit/34d8ed51e4820eb711bba8fdfa5a3042729f83cb))
+
 ## [0.5.1](https://github.com/Matii96/unifig/compare/v0.5.0...v0.5.1) (2022-11-02)
 
 ### Bug Fixes
