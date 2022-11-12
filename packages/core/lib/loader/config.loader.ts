@@ -22,7 +22,10 @@ export class ConfigLoader {
     if (nesting) {
       for (const [targetKey, subTemplate] of nesting) {
         skeleton[targetKey] = skeleton[targetKey] ?? {};
-        Object.assign(skeleton[targetKey], this.formatObject(subTemplate, skeleton[targetKey] as ConfigSource, source));
+        Object.assign(
+          skeleton[targetKey],
+          this.formatObject(subTemplate(), skeleton[targetKey] as ConfigSource, source)
+        );
       }
     }
 

@@ -68,7 +68,7 @@ export class Settings {
   @IsArray()
   intervals: number[];
 
-  @Nested(DbSettings)
+  @Nested(() => DbSettings)
   db: DbSettings;
 }
 ```

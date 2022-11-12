@@ -10,6 +10,6 @@ export class ValidationTemplate {
   @IsInt()
   port: number;
 
-  @Nested(DbConfig)
+  @Nested(() => DbConfig)
   db: DbConfig;
 }

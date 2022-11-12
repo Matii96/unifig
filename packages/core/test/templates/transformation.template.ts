@@ -12,6 +12,6 @@ export class TransformationTemplate {
   @From('local.port')
   port: number;
 
-  @Nested(DbConfig)
+  @Nested(() => DbConfig)
   db: DbConfig;
 }

@@ -16,7 +16,7 @@ export class TemplateMock {
   @IsInt()
   port: number;
 
-  @Nested(DbConfigMock)
+  @Nested(() => DbConfigMock)
   @IsDefined()
   db: DbConfigMock;
 }
