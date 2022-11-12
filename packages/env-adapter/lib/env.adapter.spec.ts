@@ -12,7 +12,9 @@ describe('EnvConfigAdapter', () => {
   // @ts-ignore
   fg.mockResolvedValue(['']);
   jest.spyOn(dotenv, 'parse').mockReturnValue({ someValue: 'true' });
-  jest.spyOn(dotenvExpand, 'expand').mockImplementation((options: dotenvExpand.DotenvExpandOptions) => options.parsed);
+  jest
+    .spyOn(dotenvExpand, 'expand')
+    .mockImplementation((options: dotenvExpand.DotenvExpandOptions) => options.parsed as Record<string, string>);
 
   it('should load config from file', async () => {
     const adapter = new EnvConfigAdapter({ envFilesPaths: ['path/env'], ignoreEnvVars: true });
