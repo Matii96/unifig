@@ -35,6 +35,6 @@
     "@unifig/core": "workspace:^"
   },
   "peerDependencies": {
-    "@unifig/core": "^0.1.0"
+    "@unifig/core": ">=0.1.0"
   }
 }
