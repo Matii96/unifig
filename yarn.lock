@@ -2655,7 +2655,7 @@ __metadata:
     dotenv-expand: ^9.0.0
     fast-glob: ^3.2.12
   peerDependencies:
-    "@unifig/core": ^0.1.0
+    "@unifig/core": ">=0.1.0"
   languageName: unknown
   linkType: soft
 
@@ -2670,9 +2670,9 @@ __metadata:
     "@unifig/core": "workspace:^"
     reflect-metadata: ^0.1.13
   peerDependencies:
-    "@nestjs/common": ^8.0.0
-    "@nestjs/core": ^8.0.0
-    "@unifig/core": ^0.1.0
+    "@nestjs/common": ">=8.0.0"
+    "@nestjs/core": ">=8.0.0"
+    "@unifig/core": ">=0.1.0"
     reflect-metadata: ^0.1.13
   languageName: unknown
   linkType: soft
