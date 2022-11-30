@@ -29,10 +29,24 @@ PORT=3000
 ```
 
 ```ts
+export class DbSettings {
+  @From('DB_URL')
+  @IsString()
+  url: string;
+
+  @From('DB_PASSWORD')
+  @IsString()
+  password: string;
+}
+
 export class Settings {
   @From('PORT')
   @IsInt()
   port: number;
+
+  @Nested(() => DbSettings)
+  @IsDefined()
+  db: DbSettings;
 }
 ```
 
