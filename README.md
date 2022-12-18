@@ -68,7 +68,7 @@ yarn lint:staged  # linting staged files
 yarn test         # running unit tests for packages changed since HEAD
 yarn test:cov     # running unit tests for whole repo with coverage report
 yarn test:e2e     # running e2e tests for packages changed since HEAD with packages dependent on them
-yarn precommit    # combining lint:staged, test and test:e2e
+yarn test:all     # combining test and test:e2e
 ```
 
 ### Committing
