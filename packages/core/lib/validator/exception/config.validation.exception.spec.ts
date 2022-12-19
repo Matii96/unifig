@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { TemplateMock, mockFailedValidation } from '../core.mocks';
+import { mockFailedValidation, TemplateMock } from '../../core.mocks';
 import { ConfigValidationException } from './config.validation.exception';
 
 describe('ConfigValidationException', () => {

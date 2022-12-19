@@ -1,1 +1,1 @@
-export * from './config.validation.exception';
+export * from './exception';
