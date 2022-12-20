@@ -45,7 +45,7 @@ describe('@unifig/core (e2e)', () => {
 
     it('should fail to validate config', () => {
       expect(
-        manager.register({
+        manager.registerOrReject({
           template: ValidationTemplate,
           adapter: new PlainConfigAdapter({ port: 3000, db: { port: 5000 } }),
         })

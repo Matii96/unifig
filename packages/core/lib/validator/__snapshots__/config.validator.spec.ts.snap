@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfigValidator should structure validation errors 1`] = `
+[
+  {
+    "errors": [
+      {
+        "currentValue": undefined,
+        "failedConstraints": [
+          {
+            "details": "port must be an integer number",
+            "name": "isInt",
+          },
+        ],
+        "property": "port",
+        "source": "PORT",
+      },
+      {
+        "children": [
+          {
+            "currentValue": undefined,
+            "failedConstraints": [
+              {
+                "details": "url must be a string",
+                "name": "isString",
+              },
+            ],
+            "property": "url",
+            "source": "DB_URL",
+          },
+          {
+            "currentValue": undefined,
+            "failedConstraints": [
+              {
+                "details": "password must be a string",
+                "name": "isString",
+              },
+            ],
+            "property": "password",
+            "source": "DB_PASSWORD",
+          },
+        ],
+        "failedConstraints": undefined,
+        "property": "db",
+      },
+    ],
+    "template": [Function],
+  },
+]
+`;

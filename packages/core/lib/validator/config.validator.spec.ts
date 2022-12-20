@@ -1,6 +1,6 @@
 import 'reflect-metadata';
-import { TemplateMock } from '../core.mocks';
-import { ConfigValidationException } from './exception/config.validation.exception';
+import { DbConfigMock, TemplateMock } from '../core.mocks';
+import { ConfigValidationException } from './errors/config.validation.exception';
 import { ConfigValidator } from './config.validator';
 
 describe('ConfigValidator', () => {
@@ -10,8 +10,15 @@ describe('ConfigValidator', () => {
     validator = new ConfigValidator();
   });
 
-  it('should throw ConfigValidationException', () => {
+  it('should return ConfigValidationException', () => {
     const config = new TemplateMock();
-    expect(() => validator.validate([config])).toThrow(ConfigValidationException);
+    expect(validator.validate([config])).toBeInstanceOf(ConfigValidationException);
+  });
+
+  it('should structure validation errors', () => {
+    const config = new TemplateMock();
+    config.db = new DbConfigMock();
+    const validationResult = validator.validate([config])!;
+    expect(validationResult.errors).toMatchSnapshot();
   });
 });

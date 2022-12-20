@@ -19,8 +19,19 @@ export class ConfigManager {
     const groups = configs.map((config) => this.initSourceGroup(config));
     const loadResults = await Promise.all(groups.map((group) => group.load(true)));
     const configsValues = ([] as any[]).concat(...loadResults);
-    this._validator.validate(configsValues);
+
+    const validationResult = this._validator.validate(configsValues);
+    if (validationResult) {
+      return validationResult;
+    }
     groups.forEach((group) => group.templates.forEach((template) => this._groups.set(template, group)));
+  }
+
+  async registerOrReject(...configs: ConfigManagerRegisterOptions[]) {
+    const validationResult = await this.register(...configs);
+    if (validationResult) {
+      throw validationResult;
+    }
   }
 
   private initSourceGroup(config: ConfigManagerRegisterOptions) {
