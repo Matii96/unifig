@@ -20,7 +20,9 @@ export class ConfigValidator {
   private validateTemplate(config: object): ConfigTemplateValidationError {
     return {
       template: config.constructor as Type,
-      errors: validateSync(config, { skipMissingProperties: false }).map((error) => this.toPropertyError(error)),
+      errors: validateSync(config, { skipMissingProperties: false, forbidUnknownValues: false }).map((error) =>
+        this.toPropertyError(error)
+      ),
     };
   }
 
