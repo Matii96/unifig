@@ -1,10 +1,11 @@
 import 'reflect-metadata';
 import { DbConfigMock, TemplateMock } from '../core.mocks';
-import { ConfigValidationException } from './errors/config.validation.exception';
-import { ConfigValidator } from './config.validator';
+import { ConfigValidationException } from './errors/validation.exception';
+import { ConfigValidator } from './validator.impl';
+import { Validator } from './validator';
 
 describe('ConfigValidator', () => {
-  let validator: ConfigValidator;
+  let validator: Validator;
 
   beforeEach(() => {
     validator = new ConfigValidator();

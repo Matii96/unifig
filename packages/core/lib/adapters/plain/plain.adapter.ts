@@ -1,9 +1,9 @@
-import { ConfigSource, IConfigAdapter } from './config-adapter.interface';
+import { ConfigAdapter, ConfigSource } from '../adapter';
 
 /**
  * Loads configuration from object.
  */
-export class PlainConfigAdapter implements IConfigAdapter {
+export class PlainConfigAdapter implements ConfigAdapter {
   private readonly _source: ConfigSource;
 
   constructor(source: ConfigSource) {

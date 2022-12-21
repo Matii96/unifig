@@ -1,4 +1,4 @@
-import { ConfigTemplateValidationError } from './config.template.validation.error';
+import { ConfigTemplateValidationError } from './template.validation.error';
 
 export class ConfigValidationException extends Error {
   readonly errors: ConfigTemplateValidationError[];

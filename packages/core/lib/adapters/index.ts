@@ -1,2 +1,2 @@
-export * from './config-adapter.interface';
-export * from './plain.adapter';
+export * from './adapter';
+export * from './plain';

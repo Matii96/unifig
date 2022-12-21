@@ -1,13 +1,14 @@
 import { validateSync, ValidationError } from 'class-validator';
 import { PROPERTIES_MAPPING_METADATA } from '../loader/constants';
 import { PropertiesMapping } from '../loader/types';
-import { Type } from '../utils/type.interface';
-import { ConfigPropertyValidationError } from './errors/config.property.validation.error';
-import { ConfigSubtemplateValidationError } from './errors/config.subtemplate.validation.error';
-import { ConfigTemplateValidationError } from './errors/config.template.validation.error';
-import { ConfigValidationException } from './errors/config.validation.exception';
+import { ClassConstructor } from '../utils/class-constructor.interface';
+import { ConfigPropertyValidationError } from './errors/property.validation.error';
+import { ConfigSubtemplateValidationError } from './errors/subtemplate.validation.error';
+import { ConfigTemplateValidationError } from './errors/template.validation.error';
+import { ConfigValidationException } from './errors/validation.exception';
+import { Validator } from './validator';
 
-export class ConfigValidator {
+export class ConfigValidator implements Validator {
   validate(configs: object[]) {
     const failedValidations = configs
       .map((config) => this.validateTemplate(config))
@@ -19,7 +20,7 @@ export class ConfigValidator {
 
   private validateTemplate(config: object): ConfigTemplateValidationError {
     return {
-      template: config.constructor as Type,
+      template: config.constructor as ClassConstructor,
       errors: validateSync(config, { skipMissingProperties: false, forbidUnknownValues: false }).map((error) =>
         this.toPropertyError(error)
       ),

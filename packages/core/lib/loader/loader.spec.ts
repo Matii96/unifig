@@ -1,10 +1,11 @@
 import 'reflect-metadata';
 import { TemplateMock, DbConfigMock } from '../core.mocks';
-import { ConfigLoader } from './config.loader';
+import { ConfigLoader } from './loader.impl';
+import { Loader } from './loader';
 import { From } from './decorators';
 
 describe('ConfigLoader', () => {
-  let loader: ConfigLoader;
+  let loader: Loader;
 
   beforeEach(() => {
     loader = new ConfigLoader();

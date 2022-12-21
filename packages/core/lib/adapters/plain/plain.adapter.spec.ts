@@ -1,9 +1,9 @@
-import { IConfigAdapter } from './config-adapter.interface';
+import { ConfigAdapter } from '../adapter';
 import { PlainConfigAdapter } from './plain.adapter';
 
 describe('PlainConfigAdapter', () => {
   const plain = { PORT: 3000, DB_URL: 'db://localhost', DB_PASSWORD: 'password' };
-  let adapter: IConfigAdapter;
+  let adapter: ConfigAdapter;
 
   beforeEach(() => {
     adapter = new PlainConfigAdapter(plain);

@@ -1,4 +1,10 @@
-import { ConfigManager, ConfigValidationException, PlainConfigAdapter, ConfigNotInitializedException } from '../lib';
+import {
+  ConfigValidationException,
+  PlainConfigAdapter,
+  ConfigNotInitializedException,
+  ConfigManager,
+  ConfigManagerFactory,
+} from '../lib';
 import { TransformationTemplate } from './templates/transformation.template';
 import { ValidationTemplate } from './templates/validation.template';
 
@@ -6,7 +12,7 @@ describe('@unifig/core (e2e)', () => {
   let manager: ConfigManager;
 
   beforeEach(() => {
-    manager = new ConfigManager();
+    manager = ConfigManagerFactory.create();
   });
 
   describe('transformation', () => {
