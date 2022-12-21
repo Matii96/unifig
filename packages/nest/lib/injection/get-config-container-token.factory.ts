@@ -1,16 +1,19 @@
 import { Type } from '@nestjs/common';
+import { CONFIG_CONTAINER_TOKEN } from './constants';
 
-let globalIdCounter = 0;
-const TEMPLATE_ID = '__unifigNestTemplateId__';
+const getToken = (name: string) => `Config_container_${name}`;
+const DEFAULT_CONTAINER_TOKEN = Symbol(getToken('DEFAULT'));
 
 export const getConfigContainerToken = (template?: Type<any>) => {
   if (!template) {
-    return 'Unifig_container_GLOBAL';
+    return DEFAULT_CONTAINER_TOKEN;
   }
-  let id: number = Reflect.getMetadata(TEMPLATE_ID, template);
-  if (id === undefined) {
-    id = globalIdCounter++;
-    Reflect.defineMetadata(TEMPLATE_ID, id, template);
+
+  let token: symbol = Reflect.getMetadata(CONFIG_CONTAINER_TOKEN, template);
+  if (!token) {
+    token = Symbol(getToken(template.name));
+    Reflect.defineMetadata(CONFIG_CONTAINER_TOKEN, token, template);
   }
-  return `Unifig_container_${template.name}${id}`;
+
+  return token;
 };
