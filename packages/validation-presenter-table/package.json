@@ -1,0 +1,38 @@
+{
+  "name": "@unifig/validation-presenter-table",
+  "version": "0.0.1",
+  "description": "Table validation presenter for unifig",
+  "keywords": [
+    "unifig",
+    "env"
+  ],
+  "author": "Matii96",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matii96/unifig.git"
+  },
+  "scripts": {
+    "build": "tsc --build tsconfig.build.json",
+    "test": "jest --config ../../jest-units.config.json packages/validation-presenter-table",
+    "test:e2e": "jest --config ../../jest-e2e.config.json packages/validation-presenter-table"
+  },
+  "bugs": {
+    "url": "https://github.com/Matii96/unifig/issues"
+  },
+  "homepage": "https://github.com/Matii96/unifig",
+  "dependencies": {
+    "table": "^6.8.1"
+  },
+  "devDependencies": {
+    "@unifig/core": "workspace:^"
+  },
+  "peerDependencies": {
+    "@unifig/core": ">=0.1.0"
+  }
+}
