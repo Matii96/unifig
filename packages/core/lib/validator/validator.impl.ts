@@ -19,32 +19,32 @@ export class ConfigValidator implements Validator {
   }
 
   private validateTemplate(config: object): ConfigTemplateValidationError {
-    return {
+    return new ConfigTemplateValidationError({
       template: config.constructor as ClassConstructor,
       errors: validateSync(config, { skipMissingProperties: false, forbidUnknownValues: false }).map((error) =>
         this.toPropertyError(error)
       ),
-    };
+    });
   }
 
   private toPropertyError(error: ValidationError): ConfigPropertyValidationError | ConfigSubtemplateValidationError {
     if (error.children && error.children.length > 0) {
-      return {
+      return new ConfigSubtemplateValidationError({
         property: error.property,
         failedConstraints: this.toFailedConstraints(error.constraints),
         children: error.children.map((child) => this.toPropertyError(child)),
-      } satisfies ConfigSubtemplateValidationError;
+      });
     }
 
     const propertiesMapping: PropertiesMapping = error.target
       ? Reflect.getMetadata(PROPERTIES_MAPPING_METADATA, error.target.constructor)
       : undefined;
-    return {
+    return new ConfigPropertyValidationError({
       property: error.property,
       source: propertiesMapping?.get(error.property),
       currentValue: error.value,
       failedConstraints: this.toFailedConstraints(error.constraints) ?? [],
-    } satisfies ConfigPropertyValidationError;
+    });
   }
 
   private toFailedConstraints(constraints: ValidationError['constraints']) {

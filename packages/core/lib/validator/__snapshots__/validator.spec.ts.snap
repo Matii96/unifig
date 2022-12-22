@@ -2,9 +2,9 @@
 
 exports[`ConfigValidator should structure validation errors 1`] = `
 [
-  {
+  ConfigTemplateValidationError {
     "errors": [
-      {
+      ConfigPropertyValidationError {
         "currentValue": undefined,
         "failedConstraints": [
           {
@@ -15,9 +15,9 @@ exports[`ConfigValidator should structure validation errors 1`] = `
         "property": "port",
         "source": "PORT",
       },
-      {
+      ConfigSubtemplateValidationError {
         "children": [
-          {
+          ConfigPropertyValidationError {
             "currentValue": undefined,
             "failedConstraints": [
               {
@@ -28,7 +28,7 @@ exports[`ConfigValidator should structure validation errors 1`] = `
             "property": "url",
             "source": "DB_URL",
           },
-          {
+          ConfigPropertyValidationError {
             "currentValue": undefined,
             "failedConstraints": [
               {
