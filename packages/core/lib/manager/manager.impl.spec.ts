@@ -2,7 +2,6 @@ import 'reflect-metadata';
 import { TemplateMock } from '../core.mocks';
 import { ConfigAdapterMock } from '../adapters/adapter.mock';
 import { ValidatorMock } from '../validator/validator.mock';
-import { LoaderMock } from '../loader/loader.mock';
 import { Validator } from '../validator/validator';
 import { ConfigValidationException } from '../validator';
 import { SourceGroup } from './source-group/source-group';
@@ -20,12 +19,7 @@ describe('InternalConfigManager', () => {
   beforeEach(() => {
     validator = new ValidatorMock();
     sourceGroupFactory = jest.fn(() => new SourceGroupMock());
-    manager = new InternalConfigManager(
-      validator,
-      new LoaderMock(),
-      () => new ConfigContainerMock(),
-      sourceGroupFactory
-    );
+    manager = new InternalConfigManager(validator, sourceGroupFactory);
   });
 
   describe('registration', () => {
