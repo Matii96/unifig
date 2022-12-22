@@ -37,7 +37,7 @@ Adapted configuration data is transformed into templates and validated via [clas
 
 - [Core](https://github.com/Matii96/unifig/tree/main/packages/core) - project implementation for vanilla typescript
 - [Nest](https://github.com/Matii96/unifig/tree/main/packages/nest) - nestjs integration
-- [Env Adapter](https://github.com/Matii96/unifig/tree/main/packages/env-adapter) - adapter for environment variables and .env files
+- [Adapter: env](https://github.com/Matii96/unifig/tree/main/packages/adapter-env) - adapter for environment variables and .env files
 - [Validation presenter: table](https://github.com/Matii96/unifig/tree/main/packages/validation-presenter-table) - transforms configuration validation errors into
 
 ## Local development

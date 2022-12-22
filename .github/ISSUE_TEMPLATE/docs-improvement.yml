@@ -21,7 +21,8 @@ body:
       options:
         - label: '<code>@unifig/core</code>'
         - label: '<code>@unifig/nest</code>'
-        - label: '<code>@unifig/env</code>'
+        - label: '<code>@unifig/adapter-env</code>'
+        - label: '<code>@unifig/validation-presenter-table</code>'
         - label: 'New example'
 
   - type: textarea
