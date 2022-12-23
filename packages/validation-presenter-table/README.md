@@ -29,12 +29,12 @@ import { Config, PlainConfigAdapter } from '@unifig/core';
 import { toTable } from '@unifig/validation-presenter-table';
 
 async function bootstrap() {
-  const validationResult = await Config.register({
-    template: Settings,
+  const validationError = await Config.register({
+    template: AppSettings,
     adapter: new PlainConfigAdapter({}),
   });
-  if (validationResult) {
-    console.error(toTable(validationResult));
+  if (validationError) {
+    console.error(toTable(validationError));
     process.exit(1);
   }
 }
