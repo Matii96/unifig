@@ -6,6 +6,7 @@ export class ConfigValidationException extends Error {
   constructor(errors: ConfigTemplateValidationError[]) {
     super();
     this.errors = errors;
-    this.message = 'Following templates failed validation: ' + errors.map(({ template }) => template.name).join(', ');
+    this.message =
+      'Following configurations failed validation: ' + errors.map(({ template }) => template.name).join(', ');
   }
 }

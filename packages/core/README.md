@@ -14,10 +14,13 @@ Universal, typed and validated configuration manager.
 
 ## Table of contents
 
-- [Goal](#goal)
 - [Installation](#installation)
-- [Quick Start](#quick_start)
-- [Multiple Configurations](#multiple_configurations)
+- [Setting up Templates](#templates)
+  - [Subtemplates](#templates_subtemplates)
+- [Loading](#loading)
+  - [Values Adapters](#loading_adapters)
+  - [Multiple Configurations](#loading_multiple_configurations)
+  - [Inline Validation Rejection](#loading_inline_rejection)
 - [Stale Data](#stale_data)
 - [Todo Before 1.0.0](#100todo)
 - [License](#license)
@@ -40,9 +43,11 @@ npm i @unifig/core
 yarn add @unifig/core
 ```
 
-## Quick Start
+## Setting up Templates
 
-<a name="quick_start"></a>
+<a name="templates"></a>
+
+Unifig centralizes configuration management in classes called templates. They are resposible for deserializing config values from sources into rich js / ts objects and validating them afterwards.
 
 ```ts
 import { From, Nested } from '@unifig/core';
@@ -50,43 +55,64 @@ import { Transform } from 'class-transformer';
 import { IsString, IsArray } from 'class-validator';
 
 class DbSettings {
-  @From('global.dbUrl')
+  @From({ key: 'DB_URL', default: 'localhost' })
   @IsString()
   url: string;
 
-  @From('global.dbPassword')
+  @From('DB_PASSWORD')
   @IsString()
   password: string;
-}
 
-export class Settings {
-  @From('local.port')
-  @IsInt()
-  port: number;
-
+  @From('DB_RECONNECT_DELAYS')
   @Transform(({ value }) => value.split(',').map((n) => Number(n)))
   @IsArray()
-  intervals: number[];
+  reconnectDelays: number[];
+}
+```
+
+### Subtemplates
+
+<a name="templates_subtemplates"></a>
+
+They allow to keep config structure organized by grouping inseparable properties and allowing reusing of them. The subtemplate itself is declared just as regular template, including option to nest further subtemplates in it.
+
+```ts
+export class AppSettings {
+  @From('PORT')
+  @IsInt()
+  port: number;
 
   @Nested(() => DbSettings)
   db: DbSettings;
 }
 ```
 
+## Loading configuration
+
+<a name="loading"></a>
+
+After defining template they should be loaded before any other action in the application takes place.
+
 ```ts
 import { Config, PlainConfigAdapter } from '@unifig/core';
 
 async function bootstrap() {
-  await Config.register({
-    template: Settings,
+  const validationError = await Config.register({
+    template: AppSettings,
     adapter: new PlainConfigAdapter({
-      local: { port: 3000 },
-      global: { dbUrl: 'localhost:5467', dbPassword: 'password' },
-      intervals: '56,98,34,72',
+      PORT: 3000,
+      DB_URL: 'localhost:5467',
+      DB_PASSWORD: 'password',
+      DB_RECONNECT_DELAYS: '56,98,34,72',
     }),
   });
 
-  console.log(Config.getValues(Settings).port); // output: 3000
+  if (validationError) {
+    console.error(validationError.message);
+    process.exit(1);
+  }
+
+  console.log(Config.getValues(AppSettings).port); // output: 3000
 }
 
 bootstrap();
@@ -94,26 +120,58 @@ bootstrap();
 
 Above example uses built-in adapter which transforms static object into Settings. See full list of adapters [here](https://github.com/Matii96/unifig#packages).
 
-## Multiple Configurations
+### Values adapters
 
-<a name="multiple_configurations"></a>
+<a name="loading_adapters"></a>
+
+Unifig allows to easily swap config values sources or introduce new ones.
+Implementation of the adapter consist of class which exposes `load` method, which is called upon config initialization. The method should return dictionary with keys used in `@From` decorators in templates and underlying values.
 
 ```ts
-async function bootstrap() {
-  await Config.register(
-    { template: Settings, adapter: ... },
-    { template: AnotherSettings, adapter: ... },
-    { templates: [MoreAnotherSettings, YetMoreAnotherSettings], adapter: ... },
-  );
+import { ConfigAdapter, ConfigSource } from '@unifig/core';
 
-  config.log(Config.getValues(Settings).someProperty)
-  config.log(Config.getValues(AnotherSettings).someProperty)
-  config.log(Config.getValues(MoreAnotherSettings).someProperty)
-  config.log(Config.getValues(YetMoreAnotherSettings).someProperty)
+export class CustomAdapter implements ConfigAdapter {
+  async load(): Promise<ConfigSource> {
+    return {
+      PORT: '3000', // will be parsed to number as declared in template
+      DB_URL: 'localhost:5467',
+      DB_PASSWORD: 'password',
+      DB_RECONNECT_DELAYS: '56,98,34,72',
+    };
+  }
 }
 ```
 
-Additional configs may be registered with separate `.register()` calls.
+```ts
+await Config.register({
+  template: AppSettings,
+  adapter: new CustomAdapter(),
+});
+```
+
+### Multiple Configurations
+
+<a name="loading_multiple_configurations"></a>
+
+In case no single configuration root (`AppSettings` in above example), templates need to be registered separately.
+
+```ts
+await Config.register(
+  { template: DbSettings, adapter: ... },
+  { template: AuthSettings, adapter: ... },
+  { templates: [FilesStorageSettings, CacheSettings], adapter: ... },
+);
+```
+
+### Inline validation rejection
+
+<a name="loading_inline_rejection"></a>
+
+To throw validation exception right away after encountering errors instead of returning it use
+
+```ts
+await Config.registerOrReject({ template: DbSettings, adapter: ... });
+```
 
 ## Stale Data
 
