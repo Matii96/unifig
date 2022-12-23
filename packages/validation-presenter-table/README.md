@@ -30,7 +30,7 @@ import { toTable } from '@unifig/validation-presenter-table';
 
 async function bootstrap() {
   const validationError = await Config.register({
-    template: AppSettings,
+    templates: [StorageOptions, NetworkOptions],
     adapter: new PlainConfigAdapter({}),
   });
   if (validationError) {
