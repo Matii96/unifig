@@ -26,7 +26,7 @@ yarn add @unifig/validation-presenter-table
 ```ts
 // main.ts
 import { Config, PlainConfigAdapter } from '@unifig/core';
-import { Config, PlainConfigAdapter } from '@unifig/validation-presenter-table';
+import { toTable } from '@unifig/validation-presenter-table';
 
 async function bootstrap() {
   const validationResult = await Config.register({
