@@ -14,9 +14,9 @@
 <a name="installation"></a>
 
 ```bash
-npm i @unifig/env
+npm i @unifig/adapter-env
 # or
-yarn add @unifig/env
+yarn add @unifig/adapter-env
 ```
 
 ## Quick Start
@@ -52,7 +52,7 @@ export class Settings {
 
 ```ts
 import { Config } from '@unifig/core';
-import { EnvConfigAdapter } from '@unifig/env';
+import { EnvConfigAdapter } from '@unifig/adapter-env';
 
 async function bootstrap() {
   await Config.register({
