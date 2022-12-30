@@ -25,24 +25,13 @@ yarn add @unifig/core @unifig/nest
 <a name="quick_start"></a>
 
 ```ts
-// app.config.ts
-export class AppConfig {
-  @IsInt()
-  port: number;
-
-  @IsString()
-  helloMessage: string;
-}
-```
-
-```ts
 // main.ts
 import { NestFactory } from '@nestjs/core';
 import { Config, PlainConfigAdapter } from '@unifig/core';
 
 async function bootstrap() {
   await Config.register({
-    template: AppConfig,
+    template: AppSettings,
     adapter: new PlainConfigAdapter({ port: 3000, helloMessage: 'hello world' }),
   });
   const { AppModule } = await import('./app.module');
@@ -55,7 +44,7 @@ bootstrap();
 ```ts
 // app.module.ts
 @Module({
-  imports: [ConfigModule.forRoot({ default: AppConfig })],
+  imports: [ConfigModule.forRoot({ default: AppSettings })],
   providers: [AppService],
 })
 export class AppModule {}
@@ -67,7 +56,7 @@ After above setup configs containers are available to be injected by using
 // app.service.ts
 @Injectable()
 export class AppService {
-  constructor(@InjectConfig() private config: IConfigContainer<AppConfig>) {}
+  constructor(@InjectConfig() private config: IConfigContainer<AppSettings>) {}
 
   sayHello() {
     return this.config.values.helloMessage;
@@ -91,7 +80,7 @@ An example would be [task scheduling](https://docs.nestjs.com/techniques/task-sc
 // main.ts
 ...
 await Config.register({
-  templates: [AppConfig, AnotherAppConfig, YetAnotherAppConfig],
+  templates: [AppSettings, AuthSettings, FilesStorageSettings],
   adapter: new PlainConfigAdapter({ ... }),
 });
 ...
@@ -102,8 +91,8 @@ await Config.register({
 @Module({
   imports: [
     ConfigModule.forRoot({
-      templates: [AnotherAppConfig, YetAnotherAppConfig],
-      default: AppConfig,
+      templates: [AuthSettings, FilesStorageSettings],
+      default: AppSettings,
     }),
   ],
   providers: [AppService],
@@ -116,8 +105,8 @@ export class AppModule {}
 @Injectable()
 export class AppService {
   constructor(
-    @InjectConfig() private appConfig: IConfigContainer<AppConfig>,
-    @InjectConfig(AnotherAppConfig) private anotherAppConfig: IConfigContainer<AnotherAppConfig>
+    @InjectConfig() private appSettings: IConfigContainer<AppSettings>,
+    @InjectConfig(AuthSettings) private authSettings: IConfigContainer<AnotherAppSettings>
   ) {}
 }
 ```
@@ -131,7 +120,7 @@ In addition to globally-accessible, configs can be injected with module scope.
 ```ts
 // cats.module.ts
 @Module({
-  imports: [ConfigModule.forFeature(CatsConfig, AnotherCatsConfig)],
+  imports: [ConfigModule.forFeature(CatsConfig, CatsAuthSettings)],
   providers: [CatsService],
 })
 export class CatsModule {}

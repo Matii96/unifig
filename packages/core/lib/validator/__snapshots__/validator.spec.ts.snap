@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ConfigValidator should structure validation errors 1`] = `
+exports[`ClassValidator should structure validation errors 1`] = `
 [
   ConfigTemplateValidationError {
     "errors": [

@@ -1,7 +1,6 @@
 import 'reflect-metadata';
 import { ClassConstructor } from '../utils/class-constructor.interface';
 import { Validator } from '../validator/validator';
-import { Loader } from '../loader/loader';
 import { ConfigNotInitializedException } from './exceptions/config-not-initialized.exception';
 import {
   ConfigManagerRegisterOptions,
@@ -10,7 +9,6 @@ import {
 } from './manager.options';
 import { SourceGroup } from './source-group/source-group';
 import { sourceGroupFactory } from './source-group/source-group.factory';
-import { containerFactory } from './container/container.factory';
 import { ConfigContainer } from './container';
 import { ConfigManager } from './manager';
 
@@ -19,8 +17,6 @@ export class InternalConfigManager implements ConfigManager {
 
   constructor(
     private readonly _validator: Validator,
-    private readonly _loader: Loader,
-    private readonly _containerFactory: typeof containerFactory,
     private readonly _sourceGroupFactory: typeof sourceGroupFactory
   ) {}
 
@@ -47,7 +43,7 @@ export class InternalConfigManager implements ConfigManager {
     let templates = (config as RegisterMultipleTemplatesOptions).templates;
     if (!templates) templates = [(config as RegisterSingleTemplateOptions).template];
 
-    const sourceGroup = this._sourceGroupFactory(this._loader, this._validator, this._containerFactory);
+    const sourceGroup = this._sourceGroupFactory();
 
     // Register only templates that were not registered already
     sourceGroup.init(

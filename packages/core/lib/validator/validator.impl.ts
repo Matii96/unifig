@@ -8,7 +8,7 @@ import { ConfigTemplateValidationError } from './errors/template.validation.erro
 import { ConfigValidationException } from './errors/validation.exception';
 import { Validator } from './validator';
 
-export class ConfigValidator implements Validator {
+export class ClassValidator implements Validator {
   validate(configs: object[]) {
     const failedValidations = configs
       .map((config) => this.validateTemplate(config))

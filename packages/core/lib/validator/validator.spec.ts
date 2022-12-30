@@ -1,14 +1,14 @@
 import 'reflect-metadata';
 import { DbConfigMock, TemplateMock } from '../core.mocks';
 import { ConfigValidationException } from './errors/validation.exception';
-import { ConfigValidator } from './validator.impl';
+import { ClassValidator } from './validator.impl';
 import { Validator } from './validator';
 
-describe('ConfigValidator', () => {
+describe('ClassValidator', () => {
   let validator: Validator;
 
   beforeEach(() => {
-    validator = new ConfigValidator();
+    validator = new ClassValidator();
   });
 
   it('should return ConfigValidationException', () => {
