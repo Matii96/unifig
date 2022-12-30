@@ -3,7 +3,7 @@ import { ConfigManager, ConfigManagerFactory } from '@unifig/core';
 import { EnvConfigAdapter } from '../lib';
 import { Settings } from './settings';
 
-describe('@unifig/env (e2e)', () => {
+describe('@unifig/adapter-env (e2e)', () => {
   let manager: ConfigManager;
 
   beforeEach(() => {
