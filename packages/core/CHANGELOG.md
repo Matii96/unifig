@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/Matii96/unifig/compare/v0.6.1...v0.7.0) (2023-01-02)
+
+### Features
+
+- **core:** changed validation errors from POJOs to classes ([957330c](https://github.com/Matii96/unifig/commit/957330c2a8b45177bae4d81b71ca445e603491fe))
+- **core:** compatibility with new versions of class-transformer ([689e26b](https://github.com/Matii96/unifig/commit/689e26b4190f81b5a555aa0a319552c8d2fa62da))
+- **core:** new registration variations ([657220f](https://github.com/Matii96/unifig/commit/657220f6240ccd9ee9635eb2755bee3ad1fda7ff))
+- **core:** validator rework ([acf2baf](https://github.com/Matii96/unifig/commit/acf2baf8084754b4ac33294b355e7419a7d161d3))
+
+### BREAKING CHANGES
+
+- **core:** Added new variation of register method - registerOrReject. Second one continues the
+  current behavior whereas register returns validation exception or undefined in plac of throwing it.
+- **core:** Rich validation report was removed from the exception itself and rich object
+  containing abstract report was added in it's place. Register method doesn't throw validation
+  exception and returns it if one occurs. To utilize previous behavior use registerOrReject method.
+
 # [0.6.0](https://github.com/Matii96/unifig/compare/v0.5.1...v0.6.0) (2022-11-12)
 
 ### Features
