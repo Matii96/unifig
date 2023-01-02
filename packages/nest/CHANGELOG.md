@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/Matii96/unifig/compare/v0.6.1...v0.7.0) (2023-01-02)
+
+### Features
+
+- **nest:** adjusted to new ConfigContainer interface ([d729e93](https://github.com/Matii96/unifig/commit/d729e93c09851d005e8677f99a566403ccea2d9b))
+
+### Performance Improvements
+
+- **nest:** used Symbols for injection tokens ([7fca521](https://github.com/Matii96/unifig/commit/7fca5217f636a6cd5284fc8c8da7ba9152fe219f))
+
 ## [0.6.1](https://github.com/Matii96/unifig/compare/v0.6.0...v0.6.1) (2022-11-24)
 
 ### Bug Fixes

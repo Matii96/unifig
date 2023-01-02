@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/Matii96/unifig/compare/v0.6.1...v0.7.0) (2023-01-02)
+
+### Features
+
+- **core:** changed validation errors from POJOs to classes ([957330c](https://github.com/Matii96/unifig/commit/957330c2a8b45177bae4d81b71ca445e603491fe))
+- **core:** compatibility with new versions of class-transformer ([689e26b](https://github.com/Matii96/unifig/commit/689e26b4190f81b5a555aa0a319552c8d2fa62da))
+- **core:** new registration variations ([657220f](https://github.com/Matii96/unifig/commit/657220f6240ccd9ee9635eb2755bee3ad1fda7ff))
+- **core:** validator rework ([acf2baf](https://github.com/Matii96/unifig/commit/acf2baf8084754b4ac33294b355e7419a7d161d3))
+- **env:** adjusted to new ConfigAdapter interface ([46593b4](https://github.com/Matii96/unifig/commit/46593b48300e1328df9e7b061263b586856837a5))
+- **nest:** adjusted to new ConfigContainer interface ([d729e93](https://github.com/Matii96/unifig/commit/d729e93c09851d005e8677f99a566403ccea2d9b))
+- **validation-presenter-table:** package release ([ce81cb3](https://github.com/Matii96/unifig/commit/ce81cb34842ffc1b8941708dcbcdb43ed5b9470b))
+
+### Performance Improvements
+
+- **nest:** used Symbols for injection tokens ([7fca521](https://github.com/Matii96/unifig/commit/7fca5217f636a6cd5284fc8c8da7ba9152fe219f))
+
+### BREAKING CHANGES
+
+- **core:** Added new variation of register method - registerOrReject. Second one continues the
+  current behavior whereas register returns validation exception or undefined in plac of throwing it.
+- **core:** Rich validation report was removed from the exception itself and rich object
+  containing abstract report was added in it's place. Register method doesn't throw validation
+  exception and returns it if one occurs. To utilize previous behavior use registerOrReject method.
+
 ## [0.6.1](https://github.com/Matii96/unifig/compare/v0.6.0...v0.6.1) (2022-11-24)
 
 ### Bug Fixes

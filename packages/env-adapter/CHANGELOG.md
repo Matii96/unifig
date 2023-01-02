@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/Matii96/unifig/compare/v0.6.1...v0.7.0) (2023-01-02)
+
+### Features
+
+- **env:** adjusted to new ConfigAdapter interface ([46593b4](https://github.com/Matii96/unifig/commit/46593b48300e1328df9e7b061263b586856837a5))
+
 ## [0.6.1](https://github.com/Matii96/unifig/compare/v0.6.0...v0.6.1) (2022-11-24)
 
 ### Bug Fixes
