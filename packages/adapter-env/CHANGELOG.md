@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/Matii96/unifig/compare/v0.7.0...v0.8.0) (2023-01-02)
+
+### Features
+
+- **adapter-env:** package rename from @unifig/adapter-env ([a2a5cf6](https://github.com/Matii96/unifig/commit/a2a5cf6dbb8b11c54744a9c0bddfa6d7776be87b))
+
 # [0.7.0](https://github.com/Matii96/unifig/compare/v0.6.1...v0.7.0) (2023-01-02)
 
 ### Features
