@@ -58,7 +58,7 @@ jobs:
       group: create-release
       cancel-in-progress: false
     outputs:
-      changed_packages: ${{ steps.changed_packages.outputs.changed_packages }}
+      changed_packages: ${{ steps.changed_packages.outputs.CHANGED_PACKAGES }}
     steps:
       - name: Checkout current branch
         uses: actions/checkout@v3
@@ -73,7 +73,7 @@ jobs:
           key: lock-${{ hashFiles('./yarn.lock') }}
       - name: Check for changes
         id: changed_packages
-        run: echo "::set-output name=changed_packages::$(yarn lerna changed -p | wc -l | xargs)"
+        run: echo "CHANGED_PACKAGES=$(yarn lerna changed -p | wc -l | xargs)" >> $GITHUB_OUTPUT
       - name: Preview versions changes
         run: yarn lerna version --no-push --no-git-tag-version -y
       - name: Preview changelogs

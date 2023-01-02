@@ -1,5 +1,5 @@
 import { join } from 'path';
-import { ConfigManager } from '@unifig/core';
+import { ConfigManager, ConfigManagerFactory } from '@unifig/core';
 import { EnvConfigAdapter } from '../lib';
 import { Settings } from './settings';
 
@@ -7,7 +7,7 @@ describe('@unifig/env (e2e)', () => {
   let manager: ConfigManager;
 
   beforeEach(() => {
-    manager = new ConfigManager();
+    manager = ConfigManagerFactory.create();
   });
 
   it('should load configuration from 2 .env files', async () => {

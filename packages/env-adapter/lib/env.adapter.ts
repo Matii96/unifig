@@ -3,13 +3,13 @@ import { readFileSync } from 'fs';
 import * as fg from 'fast-glob';
 import { parse } from 'dotenv';
 import { expand } from 'dotenv-expand';
-import { ConfigSource, IConfigAdapter } from '@unifig/core';
+import { ConfigSource, ConfigAdapter } from '@unifig/core';
 import { EnvConfigAdapterOptions } from './env.adapter.options';
 
 /**
  * Loads configuration from object.
  */
-export class EnvConfigAdapter implements IConfigAdapter {
+export class EnvConfigAdapter implements ConfigAdapter {
   private readonly _options!: EnvConfigAdapterOptions;
   private readonly _envFilesPaths!: string[];
 

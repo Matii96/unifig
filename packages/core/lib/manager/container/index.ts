@@ -1,1 +1,1 @@
-export * from './config.container.interface';
+export * from './container';
