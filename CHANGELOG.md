@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/Matii96/unifig/compare/v0.8.0...v0.9.0) (2023-01-03)
+
+### Bug Fixes
+
+- **validation-presenter-json:** added missing options type export ([5863778](https://github.com/Matii96/unifig/commit/58637784b2beb714d66876cdb856df306e4d1a7f))
+- **validation-presenter-json:** corrected package keywords ([acf6009](https://github.com/Matii96/unifig/commit/acf6009e5ebb0802de12a09288b7e943c90c0df4))
+- **validation-presenter-table:** added missing options type export ([305eb97](https://github.com/Matii96/unifig/commit/305eb977b7a73e92c29b9b65866e6d5bd474e94a))
+- **validation-presenter-table:** corrected package keywords ([e726370](https://github.com/Matii96/unifig/commit/e7263706780a5db568116800b97c42eed5bb5e8b))
+
+### Features
+
+- **validation-presenter-json:** package setup ([48b0490](https://github.com/Matii96/unifig/commit/48b04900a2dab22771d5500364e95db8fe8615b2))
+
 # [0.8.0](https://github.com/Matii96/unifig/compare/v0.7.0...v0.8.0) (2023-01-02)
 
 ### Features
