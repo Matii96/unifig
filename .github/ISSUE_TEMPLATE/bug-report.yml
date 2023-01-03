@@ -50,6 +50,7 @@ body:
         - label: '<code>@unifig/nest</code>'
         - label: '<code>@unifig/adapter-env</code>'
         - label: '<code>@unifig/validation-presenter-table</code>'
+        - label: '<code>@unifig/validation-presenter-json</code>'
         - label: 'Not sure'
 
   - type: input

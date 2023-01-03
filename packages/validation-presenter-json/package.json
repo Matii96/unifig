@@ -1,11 +1,11 @@
 {
-  "name": "@unifig/validation-presenter-table",
+  "name": "@unifig/validation-presenter-json",
   "version": "0.8.0",
-  "description": "Table validation presenter for unifig",
+  "description": "JSON validation presenter for unifig",
   "keywords": [
     "unifig",
     "validation",
-    "table"
+    "json"
   ],
   "author": "Matii96",
   "license": "MIT",
@@ -20,16 +20,13 @@
   },
   "scripts": {
     "build": "tsc --build tsconfig.build.json",
-    "test": "jest --config ../../jest-units.config.json packages/validation-presenter-table",
-    "test:e2e": "jest --config ../../jest-e2e.config.json packages/validation-presenter-table"
+    "test": "jest --config ../../jest-units.config.json packages/validation-presenter-json",
+    "test:e2e": "jest --config ../../jest-e2e.config.json packages/validation-presenter-json"
   },
   "bugs": {
     "url": "https://github.com/Matii96/unifig/issues"
   },
   "homepage": "https://github.com/Matii96/unifig",
-  "dependencies": {
-    "table": "^6.8.1"
-  },
   "devDependencies": {
     "@unifig/core": "workspace:^"
   },

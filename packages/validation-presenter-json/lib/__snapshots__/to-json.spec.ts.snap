@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`toJSON should format json from 1d error 1`] = `"[{"template":"StorageOptions","errors":[{"property":"port","source":"PORT","currentValue":"not-a-port","failedConstraints":[{"details":"port must be an integer number","name":"isInt"}]}]}]"`;
