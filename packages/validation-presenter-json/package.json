@@ -4,7 +4,8 @@
   "description": "JSON validation presenter for unifig",
   "keywords": [
     "unifig",
-    "env"
+    "validation",
+    "json"
   ],
   "author": "Matii96",
   "license": "MIT",
