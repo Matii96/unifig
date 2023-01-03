@@ -4,7 +4,8 @@
   "description": "Table validation presenter for unifig",
   "keywords": [
     "unifig",
-    "env"
+    "validation",
+    "table"
   ],
   "author": "Matii96",
   "license": "MIT",
