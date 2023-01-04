@@ -1,5 +1,5 @@
 import {
-  ConfigValidationException,
+  ConfigValidationError,
   PlainConfigAdapter,
   ConfigNotInitializedException,
   ConfigManager,
@@ -55,7 +55,7 @@ describe('@unifig/core (e2e)', () => {
           template: ValidationTemplate,
           adapter: new PlainConfigAdapter({ port: 3000, db: { port: 5000 } }),
         })
-      ).rejects.toThrow(ConfigValidationException);
+      ).rejects.toThrow(ConfigValidationError);
     });
   });
 

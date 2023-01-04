@@ -1,5 +1,5 @@
-import { ConfigValidationException } from './errors/validation.exception';
+import { ConfigValidationError } from './errors/validation.error';
 
 export interface Validator {
-  validate(configs: object[]): ConfigValidationException | undefined;
+  validate(configs: object[]): ConfigValidationError | undefined;
 }

@@ -1,11 +1,11 @@
 import { DeepReadonly } from '../utils';
 import { ClassConstructor } from '../utils/class-constructor.interface';
-import { ConfigValidationException } from '../validator';
+import { ConfigValidationError } from '../validator';
 import { ConfigManagerRegisterOptions } from './manager.options';
 import { ConfigContainer } from './container';
 
 export interface ConfigManager {
-  register(...configs: ConfigManagerRegisterOptions[]): Promise<ConfigValidationException | undefined>;
+  register(...configs: ConfigManagerRegisterOptions[]): Promise<ConfigValidationError | undefined>;
   registerOrReject(...configs: ConfigManagerRegisterOptions[]): Promise<void>;
 
   /**

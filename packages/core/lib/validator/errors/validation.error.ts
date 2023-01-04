@@ -1,6 +1,6 @@
 import { ConfigTemplateValidationError } from './template.validation.error';
 
-export class ConfigValidationException extends Error {
+export class ConfigValidationError extends Error {
   readonly errors: ConfigTemplateValidationError[];
 
   constructor(errors: ConfigTemplateValidationError[]) {

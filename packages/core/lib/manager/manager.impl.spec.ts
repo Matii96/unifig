@@ -3,7 +3,7 @@ import { TemplateMock } from '../core.mocks';
 import { ConfigAdapterMock } from '../adapters/adapter.mock';
 import { ValidatorMock } from '../validator/validator.mock';
 import { Validator } from '../validator/validator';
-import { ConfigValidationException } from '../validator';
+import { ConfigValidationError } from '../validator';
 import { SourceGroup } from './source-group/source-group';
 import { SourceGroupMock } from './source-group/source-group.mock';
 import { ConfigContainerMock } from './container/container.mock';
@@ -31,8 +31,8 @@ describe('InternalConfigManager', () => {
 
     it('should throw validation exception', async () => {
       const adapter = new ConfigAdapterMock();
-      jest.spyOn(manager, 'register').mockResolvedValueOnce(new ConfigValidationException([]));
-      expect(manager.registerOrReject({ template: TemplateMock, adapter })).rejects.toThrow(ConfigValidationException);
+      jest.spyOn(manager, 'register').mockResolvedValueOnce(new ConfigValidationError([]));
+      expect(manager.registerOrReject({ template: TemplateMock, adapter })).rejects.toThrow(ConfigValidationError);
     });
   });
 

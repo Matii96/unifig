@@ -5,7 +5,7 @@ import { ClassConstructor } from '../utils/class-constructor.interface';
 import { ConfigPropertyValidationError } from './errors/property.validation.error';
 import { ConfigSubtemplateValidationError } from './errors/subtemplate.validation.error';
 import { ConfigTemplateValidationError } from './errors/template.validation.error';
-import { ConfigValidationException } from './errors/validation.exception';
+import { ConfigValidationError } from './errors/validation.error';
 import { Validator } from './validator';
 
 export class ClassValidator implements Validator {
@@ -14,7 +14,7 @@ export class ClassValidator implements Validator {
       .map((config) => this.validateTemplate(config))
       .filter(({ errors }) => errors.length > 0);
     if (failedValidations.length > 0) {
-      return new ConfigValidationException(failedValidations);
+      return new ConfigValidationError(failedValidations);
     }
   }
 

@@ -1,6 +1,6 @@
 import {
   ConfigTemplateValidationError,
-  ConfigValidationException,
+  ConfigValidationError,
   ConfigPropertyValidationError,
   ConfigSubtemplateValidationError,
 } from '@unifig/core';
@@ -10,7 +10,7 @@ import { ToTableOptions } from './to-table.options';
 
 const HEADER = ['Template', 'Property', 'Source', 'Current Value', 'Failed constraints'];
 
-export const toTable = (validationException: ConfigValidationException, options: ToTableOptions = {}): string => {
+export const toTable = (validationException: ConfigValidationError, options: ToTableOptions = {}): string => {
   const tableRows = formatTableRowsGroup(validationException.errors);
   const tableData = [HEADER, ...tableRows.flatMap(({ templateTableData }) => templateTableData)];
 

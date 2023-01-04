@@ -1,7 +1,7 @@
-import { ConfigValidationException } from '@unifig/core';
+import { ConfigValidationError } from '@unifig/core';
 import { ToJSONOptions } from './to-json.options';
 
-export const toJSON = (validationException: ConfigValidationException, options: ToJSONOptions = {}): string =>
+export const toJSON = (validationException: ConfigValidationError, options: ToJSONOptions = {}): string =>
   JSON.stringify(
     validationException.errors.map((templateError) => ({
       template: templateError.template.name,

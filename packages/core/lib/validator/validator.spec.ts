@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { DbConfigMock, TemplateMock } from '../core.mocks';
-import { ConfigValidationException } from './errors/validation.exception';
+import { ConfigValidationError } from './errors/validation.error';
 import { ClassValidator } from './validator.impl';
 import { Validator } from './validator';
 
@@ -11,9 +11,9 @@ describe('ClassValidator', () => {
     validator = new ClassValidator();
   });
 
-  it('should return ConfigValidationException', () => {
+  it('should return ConfigValidationError', () => {
     const config = new TemplateMock();
-    expect(validator.validate([config])).toBeInstanceOf(ConfigValidationException);
+    expect(validator.validate([config])).toBeInstanceOf(ConfigValidationError);
   });
 
   it('should structure validation errors', () => {
