@@ -3,12 +3,16 @@ import { ClassConstructor } from '../utils/class-constructor.interface';
 import { ConfigSource, ConfigSourceEntry } from '../adapters/adapter';
 import { mappedPropertyKey, PROPERTIES_MAPPING_METADATA, PROPERTIES_NESTING_METADATA } from './constants';
 import { PropertiesMapping, PropertiesNesting, PropertySource } from './types';
+import { LoaderOptions } from './loader.options';
 import { Loader } from './loader';
 
 export class ConfigLoader implements Loader {
-  load<TTemplate>(template: ClassConstructor<TTemplate>, source: ConfigSource) {
+  load<TTemplate>(template: ClassConstructor<TTemplate>, source: ConfigSource, options: LoaderOptions) {
     const plain = this.formatObject(template, source, source);
-    return (plainToInstance ?? plainToClass)(template, plain, { enableImplicitConversion: true });
+    return (plainToInstance ?? plainToClass)(template, plain, {
+      enableImplicitConversion: options.autoConvertTypes ?? true,
+      enableCircularCheck: true,
+    });
   }
 
   private formatObject(template: ClassConstructor, skeleton: ConfigSource, source: ConfigSource) {

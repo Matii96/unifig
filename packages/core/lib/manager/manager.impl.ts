@@ -20,8 +20,8 @@ export class InternalConfigManager implements ConfigManager {
     private readonly _sourceGroupFactory: typeof sourceGroupFactory
   ) {}
 
-  async register(...configs: ConfigManagerRegisterOptions[]) {
-    const groups = configs.map((config) => this.initSourceGroups(config));
+  async register(...options: ConfigManagerRegisterOptions[]) {
+    const groups = options.map((config) => this.initSourceGroups(config));
     const loadResults = await Promise.all(groups.map((group) => group.load(true)));
     const configsValues = ([] as any[]).concat(...loadResults);
 
@@ -39,16 +39,17 @@ export class InternalConfigManager implements ConfigManager {
     }
   }
 
-  private initSourceGroups(config: ConfigManagerRegisterOptions) {
-    let templates = (config as RegisterMultipleTemplatesOptions).templates;
-    if (!templates) templates = [(config as RegisterSingleTemplateOptions).template];
+  private initSourceGroups(options: ConfigManagerRegisterOptions) {
+    let templates = (options as RegisterMultipleTemplatesOptions).templates;
+    if (!templates) templates = [(options as RegisterSingleTemplateOptions).template];
 
     const sourceGroup = this._sourceGroupFactory();
 
     // Register only templates that were not registered already
     sourceGroup.init(
-      config.adapter,
-      templates.filter((template) => !this._groups.has(template))
+      options.adapter,
+      templates.filter((template) => !this._groups.has(template)),
+      options
     );
     return sourceGroup;
   }
