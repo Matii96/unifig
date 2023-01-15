@@ -1,1 +1,1 @@
-export { DeepReadonly } from './deep-readonly';
+export { DeepReadonly } from './deep-readonly/deep-readonly';
