@@ -23,6 +23,7 @@ export class ConfigLoader implements Loader {
     const nesting: PropertiesNesting = Reflect.getMetadata(PROPERTIES_NESTING_METADATA, template);
     if (nesting) {
       for (const [targetKey, subTemplate] of nesting) {
+        if (Array.isArray(skeleton[targetKey])) continue;
         skeleton[targetKey] = skeleton[targetKey] ?? {};
         Object.assign(
           skeleton[targetKey],

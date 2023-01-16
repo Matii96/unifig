@@ -1,3 +1,4 @@
+import { Type } from 'class-transformer';
 import { From, Nested } from '../../lib';
 
 class DbConfig {
@@ -14,4 +15,13 @@ export class TransformationTemplate {
 
   @Nested(() => DbConfig)
   db: DbConfig;
+}
+
+class SubConfig {
+  port: number;
+}
+
+export class TransformationArrayTemplate {
+  @Type(() => SubConfig)
+  ports: SubConfig[];
 }

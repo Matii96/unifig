@@ -1,4 +1,4 @@
-import { Type as TransformType } from 'class-transformer';
+import { Type } from 'class-transformer';
 import { ValidateNested } from 'class-validator';
 import { ClassConstructor } from '../../utils/class-constructor.interface';
 import { PROPERTIES_NESTING_METADATA } from '../constants';
@@ -13,7 +13,7 @@ export function Nested<T>(type: () => ClassConstructor<T>): PropertyDecorator {
     }
     mapping.set(key, type);
 
-    TransformType(type)(target, key);
+    Type(type)(target, key);
     ValidateNested()(target, key);
   };
 }
