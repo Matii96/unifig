@@ -1,5 +1,6 @@
 import { plainToInstance, plainToClass } from 'class-transformer';
 import { ClassConstructor } from '../utils/class-constructor.interface';
+import { overrideObject } from '../utils/override-object/override-object';
 import { ConfigSource, ConfigSourceEntry } from '../adapters/adapter';
 import { mappedPropertyKey, PROPERTIES_MAPPING_METADATA, PROPERTIES_NESTING_METADATA } from './constants';
 import { PropertiesMapping, PropertiesNesting, PropertySource } from './types';
@@ -8,7 +9,7 @@ import { Loader } from './loader';
 
 export class ConfigLoader implements Loader {
   load<TTemplate>(template: ClassConstructor<TTemplate>, source: ConfigSource, options: LoaderOptions) {
-    const plain = this.formatObject(template, source, source);
+    const plain = this.formatObject(template, overrideObject({}, source), source);
     return (plainToInstance ?? plainToClass)(template, plain, {
       enableImplicitConversion: options.autoConvertTypes ?? true,
       enableCircularCheck: true,

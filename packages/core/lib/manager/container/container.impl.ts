@@ -1,4 +1,4 @@
-import { deepReadonly } from '../../utils/deep-readonly';
+import { deepReadonly } from '../../utils/deep-readonly/deep-readonly';
 import { SourceGroup } from '../source-group/source-group';
 import { EditableConfigContainer } from './editable-container';
 
