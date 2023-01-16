@@ -11,7 +11,7 @@ export class ConfigLoader implements Loader {
   load<TTemplate>(template: ClassConstructor<TTemplate>, source: ConfigSource, options: LoaderOptions) {
     const plain = this.formatObject(template, overrideObject({}, source), source);
     return (plainToInstance ?? plainToClass)(template, plain, {
-      enableImplicitConversion: options.autoConvertTypes ?? true,
+      enableImplicitConversion: options.enableImplicitConversion ?? true,
       enableCircularCheck: true,
     });
   }

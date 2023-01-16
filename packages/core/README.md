@@ -160,7 +160,7 @@ to disable the default behavior of implicit properties types conversion.
 ```ts
 await Config.register({
   template: AppSettings,
-  autoConvertTypes: false,
+  enableImplicitConversion: false,
   adapter: new CustomAdapter(),
 });
 ```

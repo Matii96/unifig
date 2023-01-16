@@ -39,7 +39,7 @@ describe('@unifig/core (e2e)', () => {
     it('should not transform convert port type', async () => {
       await manager.register({
         template: TransformationTemplate,
-        autoConvertTypes: false,
+        enableImplicitConversion: false,
         adapter: new PlainConfigAdapter({ local: { port: '3000' } }),
       });
       expect(manager.getValues(TransformationTemplate).port).toBe('3000');
