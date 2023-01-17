@@ -1,6 +1,6 @@
 {
   "name": "@unifig/adapter-env",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "Environmental variables adapter for unifig",
   "keywords": [
     "unifig",

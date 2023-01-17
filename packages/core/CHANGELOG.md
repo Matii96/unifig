@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/Matii96/unifig/compare/v0.10.0...v0.11.0) (2023-01-17)
+
+### Bug Fixes
+
+- **core:** isolated adapters load results across templates ([baea3e6](https://github.com/Matii96/unifig/commit/baea3e6a483f296e775c6a63409689b41d1fcc3f))
+
+### Features
+
+- **core:** dropped support for direct subtemplates references ([e9ace65](https://github.com/Matii96/unifig/commit/e9ace65c0fac774b352d019ddb8feb03f7f5565c))
+- **core:** new flag defining whether types should be implicitly conv… ([#8](https://github.com/Matii96/unifig/issues/8)) ([bf11f05](https://github.com/Matii96/unifig/commit/bf11f0583f9ecab4842c1f0d3ee58d3a0ba80408))
+- **core:** support for nesting arrays of objects ([0893fc4](https://github.com/Matii96/unifig/commit/0893fc46ac43cdf4a4182e8517c5a3542e33587e))
+
+### BREAKING CHANGES
+
+- **core:** simplified From decorator interface
+
 # [0.10.0](https://github.com/Matii96/unifig/compare/v0.9.0...v0.10.0) (2023-01-04)
 
 ### Features

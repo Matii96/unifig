@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/Matii96/unifig/compare/v0.10.0...v0.11.0) (2023-01-17)
+
+**Note:** Version bump only for package @unifig/nest
+
 # [0.10.0](https://github.com/Matii96/unifig/compare/v0.9.0...v0.10.0) (2023-01-04)
 
 **Note:** Version bump only for package @unifig/nest
