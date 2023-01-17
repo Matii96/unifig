@@ -28,6 +28,23 @@ describe('@unifig/core (e2e)', () => {
       expect(manager.getValues(TransformationTemplate).db).toEqual({ url: 'localhost:5467', password: 'password' });
     });
 
+    it('should transform convert port type', async () => {
+      await manager.register({
+        template: TransformationTemplate,
+        adapter: new PlainConfigAdapter({ local: { port: '3000' } }),
+      });
+      expect(manager.getValues(TransformationTemplate).port).toBe(3000);
+    });
+
+    it('should not transform convert port type', async () => {
+      await manager.register({
+        template: TransformationTemplate,
+        enableImplicitConversion: false,
+        adapter: new PlainConfigAdapter({ local: { port: '3000' } }),
+      });
+      expect(manager.getValues(TransformationTemplate).port).toBe('3000');
+    });
+
     it('should leave missing properties blank', async () => {
       await manager.register({
         template: TransformationTemplate,

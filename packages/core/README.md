@@ -19,6 +19,7 @@ Universal, typed and validated configuration manager.
   - [Subtemplates](#templates_subtemplates)
 - [Loading](#loading)
   - [Values Adapters](#loading_adapters)
+    - [Types conversion](#loading_adapters_conversion)
   - [Multiple Configurations](#loading_multiple_configurations)
   - [Inline Validation Rejection](#loading_inline_rejection)
 - [Stale Data](#stale_data)
@@ -145,6 +146,21 @@ export class CustomAdapter implements ConfigAdapter {
 ```ts
 await Config.register({
   template: AppSettings,
+  adapter: new CustomAdapter(),
+});
+```
+
+#### Types conversion
+
+<a name="loading_adapters_conversion"></a>
+
+When loading configuration from predefined objects it's handy to
+to disable the default behavior of implicit properties types conversion.
+
+```ts
+await Config.register({
+  template: AppSettings,
+  enableImplicitConversion: false,
   adapter: new CustomAdapter(),
 });
 ```

@@ -15,13 +15,13 @@ describe('ConfigLoader', () => {
     const plain = { PORT: 3000, DB_URL: 'db://localhost', DB_PASSWORD: 'password' };
 
     it('should transform plain 1d object to class instance', () => {
-      const instance = loader.load(TemplateMock, plain);
+      const instance = loader.load(TemplateMock, plain, {});
       expect(instance).toBeInstanceOf(TemplateMock);
       expect(instance.db).toBeInstanceOf(DbConfigMock);
     });
 
     it('should transform plain 1d object into 2d object', () => {
-      const instance = loader.load(TemplateMock, plain);
+      const instance = loader.load(TemplateMock, plain, {});
       expect(instance.port).toEqual(plain.PORT);
       expect(instance.db).toEqual({ url: plain.DB_URL, password: plain.DB_PASSWORD });
     });
@@ -38,7 +38,7 @@ describe('ConfigLoader', () => {
     }
 
     it('should transform plain 2d object into 2d object', () => {
-      const instance = loader.load(MultiDimensionalSourceTemplateMock, plain);
+      const instance = loader.load(MultiDimensionalSourceTemplateMock, plain, {});
       expect(instance.port).toEqual(plain.port);
       expect(instance.dbUrl).toEqual(plain.db.url);
     });
@@ -57,7 +57,7 @@ describe('ConfigLoader', () => {
     const plain = { sub: [{ port: 3000 }] } satisfies ArraySourceTemplateMock;
 
     it('should transform array source into 2d object into 2d object', () => {
-      const instance = loader.load(ArraySourceTemplateMock, plain);
+      const instance = loader.load(ArraySourceTemplateMock, plain, {});
       expect(instance.sub).toEqual(plain.sub);
     });
   });
@@ -73,7 +73,7 @@ describe('ConfigLoader', () => {
     }
 
     it('should complete with default value', () => {
-      const instance = loader.load(DefaultTemplateMock, plain);
+      const instance = loader.load(DefaultTemplateMock, plain, {});
       expect(instance.port).toEqual(plain.port);
       expect(instance.dbUrl).toEqual('db://localhost');
     });

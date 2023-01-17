@@ -17,7 +17,7 @@ describe('ConfigSourceGroup', () => {
     adapter = new ConfigAdapterMock();
     jest.spyOn(adapter, 'load').mockResolvedValueOnce(value);
     sourceGroup = new ConfigSourceGroup(new LoaderMock(), new ValidatorMock(), () => new ConfigContainerMock());
-    sourceGroup.init(adapter, [TemplateMock]);
+    sourceGroup.init(adapter, [TemplateMock], {});
   });
 
   it('should load config from source', async () => {
