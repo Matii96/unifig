@@ -5,7 +5,7 @@ import {
   ConfigManager,
   ConfigManagerFactory,
 } from '../lib';
-import { TransformationTemplate } from './templates/transformation.template';
+import { TransformationArrayTemplate, TransformationTemplate } from './templates/transformation.template';
 import { ValidationTemplate } from './templates/validation.template';
 
 describe('@unifig/core (e2e)', () => {
@@ -48,12 +48,18 @@ describe('@unifig/core (e2e)', () => {
     it('should leave missing properties blank', async () => {
       await manager.register({
         template: TransformationTemplate,
-        adapter: new PlainConfigAdapter({
-          local: { host: 'localhost' },
-          global: { dbUrl: 'localhost:5467', dbPassword: 'password' },
-        }),
+        adapter: new PlainConfigAdapter({ local: { host: 'localhost' } }),
       });
       expect(manager.getValues(TransformationTemplate).port).not.toBeDefined();
+    });
+
+    it('should transform source to array of subtemplates', async () => {
+      const ports = [{ port: 3000 }];
+      await manager.register({
+        template: TransformationArrayTemplate,
+        adapter: new PlainConfigAdapter({ ports } satisfies TransformationArrayTemplate),
+      });
+      expect(manager.getValues(TransformationArrayTemplate).ports).toEqual(ports);
     });
   });
 
