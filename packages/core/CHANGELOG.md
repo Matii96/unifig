@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.1](https://github.com/Matii96/unifig/compare/v0.11.0...v0.12.1) (2023-01-23)
+
+### Bug Fixes
+
+- **core:** patched loader logic when combining From and Nested decorators ([e40ba5b](https://github.com/Matii96/unifig/commit/e40ba5b05d0c04b1b874e7c90af1d577cc0bd08f))
+
 # [0.11.0](https://github.com/Matii96/unifig/compare/v0.10.0...v0.11.0) (2023-01-17)
 
 ### Bug Fixes
