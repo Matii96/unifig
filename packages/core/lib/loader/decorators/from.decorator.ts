@@ -1,5 +1,5 @@
-import { Expose, Transform } from 'class-transformer';
-import { mappedPropertyKey, PROPERTIES_MAPPING_METADATA } from '../constants';
+import { Transform } from 'class-transformer';
+import { PROPERTIES_MAPPING_METADATA } from '../constants';
 import { PropertiesMapping } from '../types';
 
 interface FromOptions {
@@ -22,7 +22,5 @@ export function From(args: FromOptions | string): PropertyDecorator {
     mapping.set(key, options.key);
 
     Transform(({ value }) => value ?? options.default)(target, key);
-    // Apply custom mapping to avoid original properties overwriting.
-    Expose({ name: mappedPropertyKey(key) })(target, key);
   };
 }
