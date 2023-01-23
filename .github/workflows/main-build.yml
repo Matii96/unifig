@@ -136,4 +136,4 @@ jobs:
         run: |
           echo "access=public" >> .npmrc
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
-          yarn lerna publish --preid dev --dist-tag dev -y
+          yarn lerna publish --canary --preid dev --dist-tag dev -y
