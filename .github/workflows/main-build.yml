@@ -107,7 +107,10 @@ jobs:
       - unit-tests
       - e2e-tests
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout current branch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Load yarn & node modules
         uses: actions/cache@v3
         env:
