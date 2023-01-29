@@ -49,58 +49,31 @@ bootstrap();
 ```json
 [
   {
-    "template": "StorageOptions",
+    "template": "TemplateMock",
     "errors": [
       {
         "property": "port",
+        "type": "Number",
         "source": "PORT",
         "currentValue": "not-a-port",
-        "failedConstraints": [
-          {
-            "details": "port must be an integer number",
-            "name": "isInt"
-          }
-        ]
+        "failedConstraints": [{ "name": "isInt", "details": "port must be an integer number" }]
       },
       {
         "property": "db",
         "children": [
           {
             "property": "url",
+            "type": "String",
             "source": "DB_URL",
-            "failedConstraints": [
-              {
-                "details": "url must be a string",
-                "name": "isString"
-              }
-            ]
+            "failedConstraints": [{ "name": "isString", "details": "url must be a string" }]
           },
           {
             "property": "password",
+            "type": "String",
             "source": "DB_PASSWORD",
-            "failedConstraints": [
-              {
-                "details": "password must be a string",
-                "name": "isString"
-              }
-            ]
+            "failedConstraints": [{ "name": "isString", "details": "password must be a string" }]
           }
         ]
-      }
-    ]
-  },
-  {
-    "template": "NetworkOptions",
-    "errors": [
-      {
-        "property": "ipRange",
-        "failedConstraints": [
-          {
-            "details": "ipRange must be defined",
-            "name": "isDefined"
-          }
-        ],
-        "children": []
       }
     ]
   }

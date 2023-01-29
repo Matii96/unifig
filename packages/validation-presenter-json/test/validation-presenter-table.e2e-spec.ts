@@ -1,13 +1,14 @@
-import { ConfigValidationError } from '@unifig/core';
-import { mockFailed1dValidation, mockFailed2dValidation } from '../lib/validator.mocks';
+import { Config, PlainConfigAdapter } from '@unifig/core';
 import { toJSON } from '../lib';
+import { TemplateMock } from './mocks';
 
 describe('@unifig/validation-presenter-json (e2e)', () => {
-  it('should print 2d errors in json format in one line', () => {
-    expect(toJSON(new ConfigValidationError([mockFailed1dValidation()]))).toMatchSnapshot();
-  });
-
-  it('should pretty print 2d errors in json format', () => {
-    expect(toJSON(new ConfigValidationError(mockFailed2dValidation()), { space: 2 })).toMatchSnapshot();
+  it('should format table from validation errors', async () => {
+    const validationError = await Config.register({
+      templates: [TemplateMock],
+      enableImplicitConversion: false,
+      adapter: new PlainConfigAdapter({ PORT: 'not-a-port' }),
+    });
+    expect(toJSON(validationError!)).toMatchSnapshot();
   });
 });

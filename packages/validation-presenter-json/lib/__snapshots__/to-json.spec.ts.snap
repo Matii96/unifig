@@ -1,3 +1,67 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`toJSON should format json from 1d error 1`] = `"[{"template":"StorageOptions","errors":[{"property":"port","source":"PORT","currentValue":"not-a-port","failedConstraints":[{"details":"port must be an integer number","name":"isInt"}]}]}]"`;
+exports[`toJSON should pretty print 2d errors in json format 1`] = `
+"[
+  {
+    "template": "StorageOptions",
+    "errors": [
+      {
+        "property": "port",
+        "type": "Number",
+        "source": "PORT",
+        "currentValue": "not-a-port",
+        "failedConstraints": [
+          {
+            "details": "port must be an integer number",
+            "name": "isInt"
+          }
+        ]
+      },
+      {
+        "property": "db",
+        "children": [
+          {
+            "property": "url",
+            "type": "String",
+            "source": "DB_URL",
+            "failedConstraints": [
+              {
+                "details": "url must be a string",
+                "name": "isString"
+              }
+            ]
+          },
+          {
+            "property": "password",
+            "type": "String",
+            "source": "DB_PASSWORD",
+            "failedConstraints": [
+              {
+                "details": "password must be a string",
+                "name": "isString"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "template": "NetworkOptions",
+    "errors": [
+      {
+        "property": "ipRange",
+        "failedConstraints": [
+          {
+            "details": "ipRange must be defined",
+            "name": "isDefined"
+          }
+        ],
+        "children": []
+      }
+    ]
+  }
+]"
+`;
+
+exports[`toJSON should print 2d errors in json format in one line 1`] = `"[{"template":"StorageOptions","errors":[{"property":"port","type":"Number","source":"PORT","currentValue":"not-a-port","failedConstraints":[{"details":"port must be an integer number","name":"isInt"}]}]}]"`;
