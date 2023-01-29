@@ -1,6 +1,6 @@
 import { validateSync, ValidationError } from 'class-validator';
-import { PROPERTIES_MAPPING_METADATA } from '../loader/constants';
-import { PropertiesMapping } from '../loader/types';
+import { PROPERTIES_MAPPING_METADATA, PROPERTIES_NESTING_METADATA } from '../loader/constants';
+import { PropertiesMapping, PropertiesNesting, PropertyType } from '../shared/types';
 import { ClassConstructor } from '../utils/class-constructor.interface';
 import { ConfigPropertyValidationError } from './errors/property.validation.error';
 import { ConfigSubtemplateValidationError } from './errors/subtemplate.validation.error';
@@ -41,6 +41,7 @@ export class ClassValidator implements Validator {
       : undefined;
     return new ConfigPropertyValidationError({
       property: error.property,
+      type: this.getPropertyType(error.target!, error.property),
       source: propertiesMapping?.get(error.property),
       currentValue: error.value,
       failedConstraints: this.toFailedConstraints(error.constraints) ?? [],
@@ -56,5 +57,11 @@ export class ClassValidator implements Validator {
       return;
     }
     return constraintsKeys.map((name) => ({ name, details: constraints[name] }));
+  }
+
+  private getPropertyType(config: object, property: string): PropertyType {
+    const nesting: PropertiesNesting = Reflect.getMetadata(PROPERTIES_NESTING_METADATA, config.constructor);
+    const propertyNestingType = nesting?.get(property);
+    return (propertyNestingType ? propertyNestingType() : Reflect.getMetadata('design:type', config, property)).name;
   }
 }

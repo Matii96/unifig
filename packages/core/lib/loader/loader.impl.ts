@@ -3,7 +3,7 @@ import { ClassConstructor } from '../utils/class-constructor.interface';
 import { overrideObject } from '../utils/override-object/override-object';
 import { ConfigSource, ConfigSourceEntry } from '../adapters/adapter';
 import { PROPERTIES_MAPPING_METADATA, PROPERTIES_NESTING_METADATA } from './constants';
-import { PropertiesMapping, PropertiesNesting, PropertySource } from './types';
+import { PropertiesMapping, PropertiesNesting, PropertySource } from '../shared/types';
 import { LoaderOptions } from './loader.options';
 import { Loader } from './loader';
 

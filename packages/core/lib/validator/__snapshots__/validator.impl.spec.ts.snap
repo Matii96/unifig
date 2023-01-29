@@ -14,6 +14,7 @@ exports[`ClassValidator should structure validation errors 1`] = `
         ],
         "property": "port",
         "source": "PORT",
+        "type": "Number",
       },
       ConfigSubtemplateValidationError {
         "children": [
@@ -27,6 +28,7 @@ exports[`ClassValidator should structure validation errors 1`] = `
             ],
             "property": "url",
             "source": "DB_URL",
+            "type": "String",
           },
           ConfigPropertyValidationError {
             "currentValue": undefined,
@@ -38,6 +40,7 @@ exports[`ClassValidator should structure validation errors 1`] = `
             ],
             "property": "password",
             "source": "DB_PASSWORD",
+            "type": "String",
           },
         ],
         "failedConstraints": undefined,
