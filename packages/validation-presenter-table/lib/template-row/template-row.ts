@@ -3,6 +3,7 @@ import { ConfigPropertyValidationError, ConfigSubtemplateValidationError, Failed
 export class TemplateRow {
   propertyParentPrefix?: string;
   property: string;
+  type?: string;
   source?: string;
   currentValue?: any;
   failedConstraints?: FailedConstraint[];
@@ -14,6 +15,7 @@ export class TemplateRow {
     const row = new TemplateRow();
     row.propertyParentPrefix = propertyParentPrefix;
     row.property = error.property;
+    row.type = error instanceof ConfigPropertyValidationError ? error.type : undefined;
     row.failedConstraints = error.failedConstraints;
 
     if (error instanceof ConfigPropertyValidationError) {
@@ -24,12 +26,13 @@ export class TemplateRow {
     return row;
   }
 
-  toArray(): [string, string, string, string, string] {
+  toArray(): [string, string, string, string, string, string] {
     return [
       '',
       (this.propertyParentPrefix ?? '') + this.property,
+      this.type ?? '',
       this.source ?? '',
-      this.currentValue ?? 'undefined',
+      this.formatValue(),
       this.failedConstraintsToNames(),
     ];
   }
@@ -38,5 +41,12 @@ export class TemplateRow {
     return this.failedConstraints
       ? this.failedConstraints.map((failedConstraint) => failedConstraint.name).join(', ')
       : '';
+  }
+
+  private formatValue() {
+    if (Number.isNaN(this.currentValue)) {
+      return 'Not-A-Number';
+    }
+    return JSON.stringify(this.currentValue);
   }
 }

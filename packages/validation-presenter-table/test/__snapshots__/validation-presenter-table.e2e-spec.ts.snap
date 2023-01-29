@@ -1,25 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`@unifig/validation-presenter-table (e2e) should format table from 1d error 1`] = `
-"┌──────────────────┬──────────┬────────┬───────────────┬────────────────────┐
-│ Template         │ Property │ Source │ Current Value │ Failed constraints │
-├──────────────────┼──────────┼────────┼───────────────┼────────────────────┤
-│ StorageOptions   │ port     │ PORT   │ not-a-port    │ isInt              │
-└──────────────────┴──────────┴────────┴───────────────┴────────────────────┘
-"
-`;
-
-exports[`@unifig/validation-presenter-table (e2e) should format table from 2d errors 1`] = `
-"┌──────────────────┬─────────────┬─────────────┬───────────────┬────────────────────┐
-│ Template         │ Property    │ Source      │ Current Value │ Failed constraints │
-├──────────────────┼─────────────┼─────────────┼───────────────┼────────────────────┤
-│                  │ port        │ PORT        │ not-a-port    │ isInt              │
-│                  ├─────────────┼─────────────┼───────────────┼────────────────────┤
-│ StorageOptions   │ db.url      │ DB_URL      │ undefined     │ isString           │
-│                  ├─────────────┼─────────────┼───────────────┼────────────────────┤
-│                  │ db.password │ DB_PASSWORD │ undefined     │ isString           │
-├──────────────────┼─────────────┼─────────────┼───────────────┼────────────────────┤
-│ NetworkOptions   │ ipRange     │             │ undefined     │ isDefined          │
-└──────────────────┴─────────────┴─────────────┴───────────────┴────────────────────┘
+exports[`@unifig/validation-presenter-table (e2e) should format table from validation errors 1`] = `
+"┌──────────────────┬─────────────┬────────┬─────────────┬───────────────┬────────────────────┐
+│ Template         │ Property    │ Type   │ Source      │ Current Value │ Failed constraints │
+├──────────────────┼─────────────┼────────┼─────────────┼───────────────┼────────────────────┤
+│                  │ port        │ Number │ PORT        │ "not-a-port"  │ isInt              │
+│                  ├─────────────┼────────┼─────────────┼───────────────┼────────────────────┤
+│ TemplateMock     │ db.url      │ String │ DB_URL      │ undefined     │ isString           │
+│                  ├─────────────┼────────┼─────────────┼───────────────┼────────────────────┤
+│                  │ db.password │ String │ DB_PASSWORD │ undefined     │ isString           │
+└──────────────────┴─────────────┴────────┴─────────────┴───────────────┴────────────────────┘
 "
 `;
