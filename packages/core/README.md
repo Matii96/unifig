@@ -108,6 +108,18 @@ async function bootstrap() {
     }),
   });
 
+  // OR
+
+  const validationError = Config.registerSync({
+    template: AppSettings,
+    adapter: new PlainConfigAdapter({
+      PORT: 3000,
+      DB_URL: 'localhost:5467',
+      DB_PASSWORD: 'password',
+      DB_RECONNECT_DELAYS: '56,98,34,72',
+    }),
+  });
+
   if (validationError) {
     console.error(validationError.message);
     process.exit(1);
@@ -121,6 +133,8 @@ bootstrap();
 
 Above example uses built-in adapter which transforms static object into Settings. See full list of adapters [here](https://github.com/Matii96/unifig#packages).
 
+<a name="loading"></a>
+
 ### Values adapters
 
 <a name="loading_adapters"></a>
@@ -131,8 +145,8 @@ Implementation of the adapter consist of class which exposes `load` method, whic
 ```ts
 import { ConfigAdapter, ConfigSource } from '@unifig/core';
 
-export class CustomAdapter implements ConfigAdapter {
-  async load(): Promise<ConfigSource> {
+export class CustomAdapter implements ConfigSyncAdapter {
+  load(): ConfigSource {
     return {
       PORT: '3000', // will be parsed to number as declared in template
       DB_URL: 'localhost:5467',
@@ -144,9 +158,30 @@ export class CustomAdapter implements ConfigAdapter {
 ```
 
 ```ts
-await Config.register({
+Config.registerSync({
   template: AppSettings,
   adapter: new CustomAdapter(),
+});
+```
+
+In case of asynchronous way of loading config (like cloud remote configuration service) the adapter needs to implement `ConfigAdapter` interface.
+
+```ts
+import { ConfigAdapter, ConfigSource } from '@unifig/core';
+
+export class RemoteConfigAdapter implements ConfigAdapter {
+  async load(): Promise<ConfigSource> {
+    return { ... };
+  }
+}
+```
+
+Such adapter requires to be used by async `register` method.
+
+```ts
+await Config.register({
+  template: AppSettings,
+  adapter: new RemoteConfigAdapter(),
 });
 ```
 
@@ -154,8 +189,7 @@ await Config.register({
 
 <a name="loading_adapters_conversion"></a>
 
-When loading configuration from predefined objects it's handy to
-to disable the default behavior of implicit properties types conversion.
+When loading configuration from predefined objects it's handy to disable the default behavior of implicit properties types conversion.
 
 ```ts
 await Config.register({

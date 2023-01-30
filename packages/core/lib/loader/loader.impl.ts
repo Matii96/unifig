@@ -1,7 +1,7 @@
 import { plainToInstance, plainToClass } from 'class-transformer';
-import { ClassConstructor } from '../utils/class-constructor.interface';
+import { ClassConstructor } from '../utils/class-constructor';
 import { overrideObject } from '../utils/override-object/override-object';
-import { ConfigSource, ConfigSourceEntry } from '../adapters/adapter';
+import { ConfigSource, ConfigSourceEntry } from '../adapters/types';
 import { PROPERTIES_MAPPING_METADATA, PROPERTIES_NESTING_METADATA } from './constants';
 import { PropertiesMapping, PropertiesNesting, PropertySource } from './types';
 import { LoaderOptions } from './loader.options';

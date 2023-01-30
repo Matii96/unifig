@@ -1,4 +1,4 @@
-import { ClassConstructor } from '../utils/class-constructor.interface';
+import { ClassConstructor } from '../utils/class-constructor';
 
 export type PropertySource = string;
 export type PropertyTarget = string;

@@ -16,19 +16,38 @@ describe('@unifig/core (e2e)', () => {
   });
 
   describe('transformation', () => {
-    it('should transform source to config instance', async () => {
-      await manager.register({
-        template: TransformationTemplate,
-        adapter: new PlainConfigAdapter({
-          local: { port: 3000 },
-          global: { dbUrl: 'localhost:5467', dbPassword: 'password' },
-        }),
+    describe('plain source', () => {
+      const source = {
+        local: { port: 3000 },
+        global: { dbUrl: 'localhost:5467', dbPassword: 'password' },
+      };
+
+      it('should async transform source to config instance', async () => {
+        await manager.register({
+          template: TransformationTemplate,
+          adapter: new PlainConfigAdapter(source),
+        });
+        expect(manager.getValues(TransformationTemplate).port).toBe(source.local.port);
+        expect(manager.getValues(TransformationTemplate).db).toEqual({
+          url: source.global.dbUrl,
+          password: source.global.dbPassword,
+        });
       });
-      expect(manager.getValues(TransformationTemplate).port).toBe(3000);
-      expect(manager.getValues(TransformationTemplate).db).toEqual({ url: 'localhost:5467', password: 'password' });
+
+      it('should sync transform source to config instance', () => {
+        manager.registerSync({
+          template: TransformationTemplate,
+          adapter: new PlainConfigAdapter(source),
+        });
+        expect(manager.getValues(TransformationTemplate).port).toBe(source.local.port);
+        expect(manager.getValues(TransformationTemplate).db).toEqual({
+          url: source.global.dbUrl,
+          password: source.global.dbPassword,
+        });
+      });
     });
 
-    it('should transform convert port type', async () => {
+    it('should convert port type', async () => {
       await manager.register({
         template: TransformationTemplate,
         adapter: new PlainConfigAdapter({ local: { port: '3000' } }),
@@ -36,7 +55,7 @@ describe('@unifig/core (e2e)', () => {
       expect(manager.getValues(TransformationTemplate).port).toBe(3000);
     });
 
-    it('should not transform convert port type', async () => {
+    it('should not convert port type', async () => {
       await manager.register({
         template: TransformationTemplate,
         enableImplicitConversion: false,

@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { TemplateMock } from '../core.mocks';
-import { ConfigAdapterMock } from '../adapters/adapter.mock';
+import { ConfigAdapterMock, ConfigSyncAdapterMock } from '../adapters/adapter.mock';
 import { ValidatorMock } from '../validator/validator.mock';
 import { Validator } from '../validator/validator';
 import { ConfigValidationError } from '../validator';
@@ -23,10 +23,14 @@ describe('InternalConfigManager', () => {
   });
 
   describe('registration', () => {
-    it('should validate config', async () => {
+    it('should async register config', async () => {
       const adapter = new ConfigAdapterMock();
-      await manager.register({ template: TemplateMock, adapter });
-      expect(validator.validate).toHaveBeenCalledTimes(1);
+      expect(await manager.register({ template: TemplateMock, adapter })).toBeUndefined();
+    });
+
+    it('should sync register config', () => {
+      const adapter = new ConfigSyncAdapterMock();
+      expect(manager.registerSync({ template: TemplateMock, adapter })).toBeUndefined();
     });
 
     it('should throw validation exception', async () => {
