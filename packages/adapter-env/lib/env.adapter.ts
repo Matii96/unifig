@@ -1,15 +1,15 @@
 import { join } from 'path';
 import { readFileSync } from 'fs';
-import * as fg from 'fast-glob';
+import { sync } from 'fast-glob';
 import { parse } from 'dotenv';
 import { expand } from 'dotenv-expand';
-import { ConfigSource, ConfigAdapter } from '@unifig/core';
+import { ConfigSource, ConfigSyncAdapter } from '@unifig/core';
 import { EnvConfigAdapterOptions } from './env.adapter.options';
 
 /**
  * Loads configuration from object.
  */
-export class EnvConfigAdapter implements ConfigAdapter {
+export class EnvConfigAdapter implements ConfigSyncAdapter {
   private readonly _options!: EnvConfigAdapterOptions;
   private readonly _envFilesPaths!: string[];
 
@@ -18,9 +18,9 @@ export class EnvConfigAdapter implements ConfigAdapter {
     this._envFilesPaths = [...(options.envFilesPaths ?? []), join(process.cwd(), '.env')];
   }
 
-  async load(): Promise<ConfigSource> {
+  load(): ConfigSource {
     const config: ReturnType<typeof parse> = {};
-    const paths = await fg(this._envFilesPaths, { dot: true, unique: true });
+    const paths = sync(this._envFilesPaths, { dot: true, unique: true });
     for (const envFilePath of paths) {
       this.parseEnvFile(config, envFilePath);
     }
