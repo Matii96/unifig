@@ -1,6 +1,7 @@
 import { ClassConstructor } from '../utils/class-constructor.interface';
+import { Flavor } from '../utils/flavor';
 
-export type PropertySource = string;
-export type PropertyTarget = string;
+export type PropertySource = Flavor<string, 'propertySource'>;
+export type PropertyTarget = Flavor<string, 'propertyTarget'>;
 export type PropertiesMapping = Map<PropertyTarget, PropertySource>;
 export type PropertiesNesting = Map<PropertyTarget, () => ClassConstructor>;
