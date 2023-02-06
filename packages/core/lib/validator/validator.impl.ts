@@ -1,7 +1,7 @@
 import { validateSync, ValidationError } from 'class-validator';
 import { PROPERTIES_MAPPING_METADATA, PROPERTIES_NESTING_METADATA } from '../loader/constants';
 import { PropertiesMapping, PropertiesNesting, PropertyType } from '../shared/types';
-import { ClassConstructor } from '../utils/class-constructor.interface';
+import { ClassConstructor } from '../utils/class-constructor';
 import { ConfigPropertyValidationError } from './errors/property.validation.error';
 import { ConfigSubtemplateValidationError } from './errors/subtemplate.validation.error';
 import { ConfigTemplateValidationError } from './errors/template.validation.error';

@@ -1,8 +1,8 @@
 import { ConfigSource } from './types';
 
-export interface ConfigAdapter {
+export interface ConfigSyncAdapter {
   /**
    * Loads configuration from source.
    */
-  load(): Promise<ConfigSource>;
+  load(): ConfigSource;
 }

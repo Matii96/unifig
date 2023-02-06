@@ -9,8 +9,7 @@ jest.mock('dotenv');
 jest.mock('dotenv-expand');
 
 describe('EnvConfigAdapter', () => {
-  // @ts-ignore
-  fg.mockResolvedValue(['']);
+  jest.spyOn(fg, 'sync').mockReturnValue(['']);
   jest.spyOn(dotenv, 'parse').mockReturnValue({ someValue: 'true' });
   jest
     .spyOn(dotenvExpand, 'expand')

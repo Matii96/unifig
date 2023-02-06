@@ -1,4 +1,4 @@
-import { ClassConstructor } from '../utils/class-constructor.interface';
+import { ClassConstructor } from '../utils/class-constructor';
 import { Flavor } from '../utils/flavor';
 
 export type PropertySource = Flavor<string, 'propertySource'>;

@@ -1,6 +1,6 @@
 import { Type } from 'class-transformer';
 import { ValidateNested } from 'class-validator';
-import { ClassConstructor } from '../../utils/class-constructor.interface';
+import { ClassConstructor } from '../../utils/class-constructor';
 import { PROPERTIES_NESTING_METADATA } from '../constants';
 import { PropertiesNesting } from '../../shared/types';
 

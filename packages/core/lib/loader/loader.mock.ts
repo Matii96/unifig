@@ -1,5 +1,5 @@
-import { ClassConstructor } from '../utils/class-constructor.interface';
-import { ConfigSource } from '../adapters/adapter';
+import { ClassConstructor } from '../utils/class-constructor';
+import { ConfigSource } from '../adapters/types';
 import { Loader } from './loader';
 
 export class LoaderMock implements Loader {

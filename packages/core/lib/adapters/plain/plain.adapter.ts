@@ -1,16 +1,17 @@
-import { ConfigAdapter, ConfigSource } from '../adapter';
+import { ConfigSyncAdapter } from '../sync-adapter';
+import { ConfigSource } from '../types';
 
 /**
  * Loads configuration from object.
  */
-export class PlainConfigAdapter implements ConfigAdapter {
+export class PlainConfigAdapter implements ConfigSyncAdapter {
   private readonly _source: ConfigSource;
 
   constructor(source: ConfigSource) {
     this._source = source;
   }
 
-  async load() {
+  load() {
     return this._source;
   }
 }

@@ -1,12 +1,13 @@
 import 'reflect-metadata';
-import { ClassConstructor } from '../utils/class-constructor.interface';
+import { ClassConstructor } from '../utils/class-constructor';
 import { Validator } from '../validator/validator';
-import { ConfigNotInitializedException } from './exceptions/config-not-initialized.exception';
 import {
   ConfigManagerRegisterOptions,
   RegisterSingleTemplateOptions,
   RegisterMultipleTemplatesOptions,
-} from './manager.options';
+  ConfigManagerRegisterSyncOptions,
+} from './options';
+import { ConfigNotInitializedException } from './exceptions/config-not-initialized.exception';
 import { SourceGroup } from './source-group/source-group';
 import { sourceGroupFactory } from './source-group/source-group.factory';
 import { ConfigContainer } from './container';
@@ -22,14 +23,14 @@ export class InternalConfigManager implements ConfigManager {
 
   async register(...options: ConfigManagerRegisterOptions[]) {
     const groups = options.map((config) => this.initSourceGroups(config));
-    const loadResults = await Promise.all(groups.map((group) => group.load(true)));
-    const configsValues = ([] as any[]).concat(...loadResults);
+    const sources = await Promise.all(groups.map((group) => group.load(true)));
+    return this.registerSourceGroupsTemplates(groups, sources);
+  }
 
-    const validationResult = this._validator.validate(configsValues);
-    if (validationResult) {
-      return validationResult;
-    }
-    groups.forEach((group) => group.templates.forEach((template) => this._groups.set(template, group)));
+  registerSync(...options: ConfigManagerRegisterSyncOptions[]) {
+    const groups = options.map((config) => this.initSourceGroups(config));
+    const sources = groups.map((group) => group.loadSync(true));
+    return this.registerSourceGroupsTemplates(groups, sources);
   }
 
   async registerOrReject(...configs: ConfigManagerRegisterOptions[]) {
@@ -37,6 +38,15 @@ export class InternalConfigManager implements ConfigManager {
     if (validationResult) {
       throw validationResult;
     }
+  }
+
+  private registerSourceGroupsTemplates(groups: SourceGroup[], sources: object[][]) {
+    const configsValues = ([] as any[]).concat(...sources);
+    const validationResult = this._validator.validate(configsValues);
+    if (validationResult) {
+      return validationResult;
+    }
+    groups.forEach((group) => group.templates.forEach((template) => this._groups.set(template, group)));
   }
 
   private initSourceGroups(options: ConfigManagerRegisterOptions) {
