@@ -1,4 +1,4 @@
-import { ClassConstructor } from '../../utils/class-constructor.interface';
+import { ClassConstructor } from '../../utils/class-constructor';
 import { ConfigPropertyValidationError } from './property.validation.error';
 import { ConfigSubtemplateValidationError } from './subtemplate.validation.error';
 

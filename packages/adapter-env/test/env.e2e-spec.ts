@@ -21,13 +21,11 @@ describe('@unifig/adapter-env (e2e)', () => {
     expect(manager.getValues(Settings).port).toBe(300010);
   });
 
-  it('should overwrite file configuration with environment variables', async () => {
+  it('should overwrite file configuration with environment variables', () => {
     process.env.PORT = '4588';
-    await manager.register({
+    manager.registerSync({
       template: Settings,
-      adapter: new EnvConfigAdapter({
-        envFilesPaths: [join(__dirname, '.env')],
-      }),
+      adapter: new EnvConfigAdapter({ envFilesPaths: [join(__dirname, '.env')] }),
     });
     expect(manager.getValues(Settings).port).toBe(4588);
     process.env.PORT = undefined;

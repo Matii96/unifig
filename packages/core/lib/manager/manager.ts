@@ -1,11 +1,12 @@
 import { DeepReadonly } from '../utils';
-import { ClassConstructor } from '../utils/class-constructor.interface';
+import { ClassConstructor } from '../utils/class-constructor';
 import { ConfigValidationError } from '../validator';
-import { ConfigManagerRegisterOptions } from './manager.options';
+import { ConfigManagerRegisterSyncOptions, ConfigManagerRegisterOptions } from './options';
 import { ConfigContainer } from './container';
 
 export interface ConfigManager {
   register(...configs: ConfigManagerRegisterOptions[]): Promise<ConfigValidationError | undefined>;
+  registerSync(...configs: ConfigManagerRegisterSyncOptions[]): ConfigValidationError | undefined;
   registerOrReject(...configs: ConfigManagerRegisterOptions[]): Promise<void>;
 
   /**

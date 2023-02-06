@@ -1,5 +1,5 @@
 import { UnifigException } from '../../exceptions/unifig.exception';
-import { ClassConstructor } from '../../utils/class-constructor.interface';
+import { ClassConstructor } from '../../utils/class-constructor';
 
 export class ConfigNotInitializedException extends UnifigException {
   constructor(template: ClassConstructor) {

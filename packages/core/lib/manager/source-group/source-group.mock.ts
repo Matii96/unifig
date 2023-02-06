@@ -7,4 +7,5 @@ export class SourceGroupMock implements SourceGroup {
   init = jest.fn();
   getContainer = jest.fn(() => new ConfigContainerMock());
   load = jest.fn();
+  loadSync = jest.fn();
 }
