@@ -4,8 +4,9 @@ exports[`TemplateRow should format row from 1d error 1`] = `
 [
   "",
   "port",
+  "Number",
   "PORT",
-  "not-a-port",
+  ""not-a-port"",
   "isInt",
 ]
 `;
@@ -15,7 +16,8 @@ exports[`TemplateRow should format table from 2d errors 1`] = `
   "",
   "db",
   "",
-  "undefined",
+  "",
+  undefined,
   "",
 ]
 `;

@@ -1,6 +1,6 @@
 import { Transform } from 'class-transformer';
 import { PROPERTIES_MAPPING_METADATA } from '../constants';
-import { PropertiesMapping } from '../types';
+import { PropertiesMapping } from '../../shared/types';
 
 interface FromOptions {
   key: string;

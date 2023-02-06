@@ -1,4 +1,4 @@
-import { PropertyTarget } from '../../loader/types';
+import { PropertyTarget } from '../../shared/types';
 import { ConfigPropertyValidationError } from './property.validation.error';
 import { FailedConstraint } from './failed-constraint';
 

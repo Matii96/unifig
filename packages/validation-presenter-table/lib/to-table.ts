@@ -8,7 +8,7 @@ import { getBorderCharacters, SpanningCellConfig, table } from 'table';
 import { TemplateRow } from './template-row/template-row';
 import { ToTableOptions } from './to-table.options';
 
-const HEADER = ['Template', 'Property', 'Source', 'Current Value', 'Failed constraints'];
+const HEADER = ['Template', 'Property', 'Type', 'Source', 'Current Value', 'Failed constraints'];
 
 export const toTable = (validationException: ConfigValidationError, options: ToTableOptions = {}): string => {
   const tableRows = formatTableRowsGroup(validationException.errors);
