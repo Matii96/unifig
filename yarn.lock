@@ -2661,7 +2661,7 @@ __metadata:
     reflect-metadata: ^0.1.13
   peerDependencies:
     class-transformer: ^0.5.1
-    class-validator: ^0.14.0
+    class-validator: ^0.13.2
     reflect-metadata: ^0.1.13
   languageName: unknown
   linkType: soft
