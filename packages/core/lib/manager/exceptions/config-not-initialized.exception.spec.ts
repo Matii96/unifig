@@ -5,6 +5,6 @@ import { ConfigNotInitializedException } from './config-not-initialized.exceptio
 describe('ConfigNotInitializedException', () => {
   it('should format message', () => {
     const exception = new ConfigNotInitializedException(TemplateMock);
-    expect(exception.message).toContain(TemplateMock.name);
+    expect(exception.message).toMatchSnapshot();
   });
 });
