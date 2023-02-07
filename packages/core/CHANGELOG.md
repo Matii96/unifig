@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/Matii96/unifig/compare/v0.12.1...v0.13.0) (2023-02-07)
+
+### Features
+
+- **core:** added possible reasons to config not initialized message ([57896d8](https://github.com/Matii96/unifig/commit/57896d80087588acc3374e9ae35d07e5f148179c))
+- **core:** added properties types to validation error ([967f4a5](https://github.com/Matii96/unifig/commit/967f4a59d58a351f099e331d0177aa17b2e545d2))
+- **core:** synchronous option to load configuration ([b61db11](https://github.com/Matii96/unifig/commit/b61db111fb84d13a7d99c9d7b237b33727a01bb9))
+
 ## [0.12.1](https://github.com/Matii96/unifig/compare/v0.11.0...v0.12.1) (2023-01-23)
 
 ### Bug Fixes

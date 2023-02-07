@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/Matii96/unifig/compare/v0.12.1...v0.13.0) (2023-02-07)
+
+### Features
+
+- **validation-presenter-table:** added properties types ([22d9b95](https://github.com/Matii96/unifig/commit/22d9b95e20b7a1066952303bcb6b09e95887a656))
+
 ## [0.12.1](https://github.com/Matii96/unifig/compare/v0.11.0...v0.12.1) (2023-01-23)
 
 **Note:** Version bump only for package @unifig/validation-presenter-table
