@@ -83,7 +83,7 @@ exports[`ClassValidator should structure validation errors 1`] = `
             "type": "String",
           },
           ConfigPropertyValidationError {
-            "currentValue": undefined,
+            "currentValue": "******",
             "failedConstraints": [
               {
                 "details": "password must contain a ? string",
