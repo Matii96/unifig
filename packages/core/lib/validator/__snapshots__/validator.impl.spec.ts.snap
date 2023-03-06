@@ -1,5 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ClassValidator should hide secret value 1`] = `
+[
+  ConfigTemplateValidationError {
+    "errors": [
+      ConfigPropertyValidationError {
+        "currentValue": undefined,
+        "failedConstraints": [
+          {
+            "details": "port must be an integer number",
+            "name": "isInt",
+          },
+        ],
+        "property": "port",
+        "source": "PORT",
+        "type": "Number",
+      },
+      ConfigSubtemplateValidationError {
+        "children": [
+          ConfigPropertyValidationError {
+            "currentValue": undefined,
+            "failedConstraints": [
+              {
+                "details": "url must be a string",
+                "name": "isString",
+              },
+            ],
+            "property": "url",
+            "source": "DB_URL",
+            "type": "String",
+          },
+          ConfigPropertyValidationError {
+            "currentValue": "******",
+            "failedConstraints": [
+              {
+                "details": "password must contain a ? string",
+                "name": "contains",
+              },
+            ],
+            "property": "password",
+            "source": "DB_PASSWORD",
+            "type": "String",
+          },
+        ],
+        "failedConstraints": undefined,
+        "property": "db",
+      },
+    ],
+    "template": [Function],
+  },
+]
+`;
+
 exports[`ClassValidator should structure validation errors 1`] = `
 [
   ConfigTemplateValidationError {
@@ -33,6 +85,10 @@ exports[`ClassValidator should structure validation errors 1`] = `
           ConfigPropertyValidationError {
             "currentValue": undefined,
             "failedConstraints": [
+              {
+                "details": "password must contain a ? string",
+                "name": "contains",
+              },
               {
                 "details": "password must be a string",
                 "name": "isString",

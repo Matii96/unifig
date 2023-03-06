@@ -22,6 +22,9 @@ Universal, typed and validated configuration manager.
     - [Types conversion](#loading_adapters_conversion)
   - [Multiple Configurations](#loading_multiple_configurations)
   - [Inline Validation Rejection](#loading_inline_rejection)
+- [Validation](#validation)
+  - [Presenters](#validation_presenters)
+  - [Secrets](#validation_secrets)
 - [Stale Data](#stale_data)
 - [Todo Before 1.0.0](#100todo)
 - [License](#license)
@@ -232,6 +235,51 @@ Upon changing application's configuration one must be usually restared to re-fet
 ```ts
 await Config.getContainer(Settings).refresh();
 ```
+
+## Validation
+
+<a name="validation"></a>
+
+Template errors can be handled in various ways, usually exiting the application early to prevent unexpected behavior.
+
+```ts
+const validationError = Config.registerSync({ ... });
+
+if (validationError) {
+  console.error(validationError.message);
+  process.exit(1);
+}
+```
+
+### Presenters
+
+<a name="validation_presenters"></a>
+
+Message contains list of templates names that failed validation. The errors object contains details about what and why doesn't fullfil requirements. Presenters are to utilize this information in a readable manner.
+
+- [Validation presenter: table](https://github.com/Matii96/unifig/tree/main/packages/validation-presenter-table) - 2d table format
+- [Validation presenter: JSON](https://github.com/Matii96/unifig/tree/main/packages/validation-presenter-json) - JSON string
+
+### Secrets
+
+<a name="validation_secrets"></a>
+
+Validation report involves properties values that didn't pass validation. In some cases it's required to hide them. For such cases there is a `Secret` decorator.
+
+```ts
+export class DbConfigMock {
+  @From('DB_URL')
+  @IsString()
+  url: string;
+
+  @From('DB_PASSWORD')
+  @Secret()
+  @IsString()
+  password: string;
+}
+```
+
+With it applied, `password` value will be transformed into `******` in potential validation report.
 
 ## Todo before 1.0.0 release
 
