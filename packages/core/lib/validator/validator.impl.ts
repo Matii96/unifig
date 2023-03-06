@@ -67,19 +67,15 @@ export class ClassValidator implements Validator {
   }
 
   private formatPropertyValue(config: object, propertyKey: string, value: any) {
-    switch (typeof value) {
-      case 'string':
-        const isSecret: boolean | undefined = Reflect.getMetadata(
-          SECRET_PROPERTY_METADATA,
-          config.constructor,
-          propertyKey
-        );
-        if (isSecret) {
-          return '******';
-        }
-        return value;
-      default:
-        return value;
+    const isSecret: boolean | undefined = Reflect.getMetadata(
+      SECRET_PROPERTY_METADATA,
+      config.constructor,
+      propertyKey
+    );
+    if (isSecret) {
+      return '******';
     }
+
+    return value;
   }
 }
