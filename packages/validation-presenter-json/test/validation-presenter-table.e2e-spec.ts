@@ -7,7 +7,7 @@ describe('@unifig/validation-presenter-json (e2e)', () => {
     const validationError = await Config.register({
       templates: [TemplateMock],
       enableImplicitConversion: false,
-      adapter: new PlainConfigAdapter({ PORT: 'not-a-port' }),
+      adapter: new PlainConfigAdapter({ PORT: 'not-a-port', DB_PASSWORD: 'my-password' }),
     });
     expect(toJSON(validationError!)).toMatchSnapshot();
   });

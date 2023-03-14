@@ -22,4 +22,12 @@ describe('ClassValidator', () => {
     const validationResult = validator.validate([config])!;
     expect(validationResult.errors).toMatchSnapshot();
   });
+
+  it('should hide secret value', () => {
+    const config = new TemplateMock();
+    config.db = new DbConfigMock();
+    config.db.password = 'my-password';
+    const validationResult = validator.validate([config])!;
+    expect(validationResult.errors).toMatchSnapshot();
+  });
 });

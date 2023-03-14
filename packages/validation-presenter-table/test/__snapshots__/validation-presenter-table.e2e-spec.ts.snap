@@ -8,7 +8,7 @@ exports[`@unifig/validation-presenter-table (e2e) should format table from valid
 │                  ├─────────────┼────────┼─────────────┼───────────────┼────────────────────┤
 │ TemplateMock     │ db.url      │ String │ DB_URL      │ undefined     │ isString           │
 │                  ├─────────────┼────────┼─────────────┼───────────────┼────────────────────┤
-│                  │ db.password │ String │ DB_PASSWORD │ undefined     │ isString           │
+│                  │ db.password │ String │ DB_PASSWORD │ "******"      │ contains           │
 └──────────────────┴─────────────┴────────┴─────────────┴───────────────┴────────────────────┘
 "
 `;
