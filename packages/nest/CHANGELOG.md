@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.1](https://github.com/Matii96/unifig/compare/v0.14.0...v0.14.1) (2023-04-10)
+
+### Bug Fixes
+
+- **nest:** inherit InjectConfig return type from Nest Inject ([cfc00d7](https://github.com/Matii96/unifig/commit/cfc00d760b7a2fc35c3b44b9817635542edf678c))
+
 # [0.14.0](https://github.com/Matii96/unifig/compare/v0.13.0...v0.14.0) (2023-03-14)
 
 **Note:** Version bump only for package @unifig/nest
