@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/Matii96/unifig",
   "dependencies": {
-    "dotenv": "^16.0.3",
+    "dotenv": "^16.3.1",
     "dotenv-expand": "^10.0.0",
     "fast-glob": "^3.2.12"
   },
