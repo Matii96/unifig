@@ -1,4 +1,4 @@
-import { ConfigSource } from './types';
+import { ConfigSource } from '../types';
 
 export interface ConfigSyncAdapter {
   /**

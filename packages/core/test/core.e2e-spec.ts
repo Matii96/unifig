@@ -5,7 +5,10 @@ import {
   ConfigManager,
   ConfigManagerFactory,
 } from '../lib';
-import { TransformationArrayTemplate, TransformationTemplate } from './templates/transformation.template';
+import {
+  TransformationArrayTemplate,
+  TransformationTemplate,
+} from './templates/transformation.template';
 import { ValidationTemplate } from './templates/validation.template';
 
 describe('@unifig/core (e2e)', () => {

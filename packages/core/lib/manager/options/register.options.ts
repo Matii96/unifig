@@ -1,11 +1,13 @@
-import { ConfigAdapter, ConfigSyncAdapter } from '../../adapters';
+import { TemplateAdapter } from '../../adapters';
 import { ClassConstructor } from '../../utils/class-constructor';
 import { SourceGroupOptions } from '../source-group/source-group.options';
 
-export type ConfigManagerRegisterOptions = RegisterSingleTemplateOptions | RegisterMultipleTemplatesOptions;
+export type ConfigManagerRegisterOptions =
+  | RegisterSingleTemplateOptions
+  | RegisterMultipleTemplatesOptions;
 
 interface RegisterTemplatesOptions extends SourceGroupOptions {
-  adapter: ConfigSyncAdapter | ConfigAdapter;
+  adapter: TemplateAdapter;
 }
 
 export interface RegisterSingleTemplateOptions extends RegisterTemplatesOptions {

@@ -11,19 +11,25 @@ export class ConfigModule {
    * @returns {DynamicModule}
    */
   static forRoot(opts: ConfigModuleForRootOptions): DynamicModule {
-    const providers = [...(opts.default ? [opts.default] : []), ...(opts.templates ?? [])].map<FactoryProvider>(
-      (template) => ({
-        provide: getConfigContainerToken(template),
-        useFactory: () => Config.getContainer(template),
-      })
-    );
+    const providers = [
+      ...(opts.default ? [opts.default] : []),
+      ...(opts.templates ?? []),
+    ].map<FactoryProvider>((template) => ({
+      provide: getConfigContainerToken(template),
+      useFactory: () => Config.getContainer(template),
+    }));
     if (opts.default) {
       providers.push({
         provide: getConfigContainerToken(),
         useFactory: () => Config.getContainer(opts.default as Type<any>),
       });
     }
-    return { global: true, module: ConfigModule, providers, exports: providers.map(({ provide }) => provide) };
+    return {
+      global: true,
+      module: ConfigModule,
+      providers,
+      exports: providers.map(({ provide }) => provide),
+    };
   }
 
   /**

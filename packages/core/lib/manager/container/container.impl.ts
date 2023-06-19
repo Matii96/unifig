@@ -2,7 +2,7 @@ import { deepReadonly } from '../../utils/deep-readonly/deep-readonly';
 import { SourceGroup } from '../source-group/source-group';
 import { EditableConfigContainer } from './editable-container';
 
-export class InternalConfigContainer<TTemplate extends Record<string, any> = any>
+export class InternalConfigContainer<TTemplate extends Record<string, any> = Record<string, any>>
   implements EditableConfigContainer<TTemplate>
 {
   private _values: TTemplate;

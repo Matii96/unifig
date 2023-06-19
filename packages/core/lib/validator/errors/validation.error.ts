@@ -7,6 +7,7 @@ export class ConfigValidationError extends Error {
     super();
     this.errors = errors;
     this.message =
-      'Following configurations failed validation: ' + errors.map(({ template }) => template.name).join(', ');
+      'Following configurations failed validation: ' +
+      errors.map(({ template }) => template.name).join(', ');
   }
 }

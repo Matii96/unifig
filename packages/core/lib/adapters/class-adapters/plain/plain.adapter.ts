@@ -1,5 +1,5 @@
 import { ConfigSyncAdapter } from '../sync-adapter';
-import { ConfigSource } from '../types';
+import { ConfigSource } from '../../types';
 
 /**
  * Loads configuration from object.

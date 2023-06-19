@@ -13,17 +13,19 @@ describe('EnvConfigAdapter', () => {
   jest.spyOn(dotenv, 'parse').mockReturnValue({ someValue: 'true' });
   jest
     .spyOn(dotenvExpand, 'expand')
-    .mockImplementation((options: dotenvExpand.DotenvExpandOptions) => options.parsed as Record<string, string>);
+    .mockImplementation(
+      (options: dotenvExpand.DotenvExpandOptions) => options.parsed as Record<string, string>
+    );
 
-  it('should load config from file', async () => {
+  it('should load config from file', () => {
     const adapter = new EnvConfigAdapter({ envFilesPaths: ['path/env'], ignoreEnvVars: true });
-    const source = await adapter.load();
+    const source = adapter.load();
     expect(source.someValue).toBe('true');
   });
 
-  it('should load config from process.env', async () => {
+  it('should load config from process.env', () => {
     const adapter = new EnvConfigAdapter({ envFilesPaths: ['path/env'], expandVariables: true });
-    const source = await adapter.load();
+    const source = adapter.load();
     expect(source.NODE_ENV).toBeDefined();
   });
 });

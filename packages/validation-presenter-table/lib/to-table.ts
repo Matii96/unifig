@@ -10,7 +10,10 @@ import { ToTableOptions } from './to-table.options';
 
 const HEADER = ['Template', 'Property', 'Type', 'Source', 'Current Value', 'Failed constraints'];
 
-export const toTable = (validationException: ConfigValidationError, options: ToTableOptions = {}): string => {
+export const toTable = (
+  validationException: ConfigValidationError,
+  options: ToTableOptions = {}
+): string => {
   const tableRows = formatTableRowsGroup(validationException.errors);
   const tableData = [HEADER, ...tableRows.flatMap(({ templateTableData }) => templateTableData)];
 
@@ -49,8 +52,12 @@ const formatTemplateRows = (
   }
   if (error instanceof ConfigSubtemplateValidationError) {
     const propertyParentPrefix = parentPrefix + error.property + '.';
-    const subtemplateRows = error.children.flatMap((child) => formatTemplateRows(child, propertyParentPrefix));
-    return error.failedConstraints ? [TemplateRow.fromValidationError(error), ...subtemplateRows] : subtemplateRows;
+    const subtemplateRows = error.children.flatMap((child) =>
+      formatTemplateRows(child, propertyParentPrefix)
+    );
+    return error.failedConstraints
+      ? [TemplateRow.fromValidationError(error), ...subtemplateRows]
+      : subtemplateRows;
   }
   throw new Error('Passed plain validation object: ' + JSON.stringify(error));
 };
