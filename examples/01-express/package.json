@@ -1,0 +1,30 @@
+{
+  "name": "example-express",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Unifig usage example with plain node and express",
+  "main": "dist/main.js",
+  "scripts": {
+    "start:dev": "tsc-watch --onSuccess \"node .\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matii96/unifig.git"
+  },
+  "author": "Matii96",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Matii96/unifig/issues"
+  },
+  "homepage": "https://github.com/Matii96/unifig#readme",
+  "dependencies": {
+    "@unifig/adapter-env": "workspace:^",
+    "@unifig/core": "workspace:^",
+    "@unifig/validation-presenter-table": "workspace:^",
+    "class-validator": "^0.14.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "tsc-watch": "^6.0.0"
+  }
+}

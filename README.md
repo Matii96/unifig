@@ -16,8 +16,8 @@ Universal, typed and validated configuration manager.
 
 - [Goal](#goal)
 - [Packages](#packages)
-- [Local development](#local_development)
-  - [Building packages](#local_development_building_packages)
+- [Local Development](#local_development)
+  - [Building Packages](#local_development_building_packages)
   - [Testing](#local_development_testing)
   - [Committing](#local_development_committing)
 - [Authors](#authors)
@@ -41,7 +41,7 @@ Adapted configuration data is transformed into templates and validated via [clas
 - [Validation presenter: table](https://github.com/Matii96/unifig/tree/main/packages/validation-presenter-table) - transforms configuration validation errors into table format
 - [Validation presenter: JSON](https://github.com/Matii96/unifig/tree/main/packages/validation-presenter-json) - transforms configuration validation errors into JSON string
 
-## Local development
+## Local Development
 
 <a name="local_development"></a>
 
@@ -51,7 +51,7 @@ Project uses [yarn workspaces](https://yarnpkg.com/features/workspaces) in combi
 yarn
 ```
 
-### Building packages
+### Building Packages
 
 <a name="local_development_building_packages"></a>
 
