@@ -32,8 +32,14 @@ export class EnvConfigAdapter implements ConfigSyncAdapter {
 
   private parseEnvFile(config: ReturnType<typeof parse>, envFilePath: string) {
     Object.assign(config, parse(readFileSync(envFilePath)));
-    if (this._options.expandVariables) {
-      Object.assign(config, expand({ parsed: config, ignoreProcessEnv: true }).parsed || config);
+
+    if (!this._options.expandVariables) {
+      return;
+    }
+
+    const { parsed } = expand({ parsed: config, ignoreProcessEnv: true });
+    if (parsed) {
+      Object.assign(config, parsed);
     }
   }
 }
