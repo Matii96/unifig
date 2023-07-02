@@ -16,6 +16,7 @@ Universal, typed and validated configuration manager.
 
 - [Goal](#goal)
 - [Packages](#packages)
+- [Examples](#examples)
 - [Local Development](#local_development)
   - [Building Packages](#local_development_building_packages)
   - [Testing](#local_development_testing)
@@ -40,6 +41,13 @@ Adapted configuration data is transformed into templates and validated via [clas
 - [Adapter: env](https://github.com/Matii96/unifig/tree/main/packages/adapter-env) - adapter for environment variables and .env files
 - [Validation presenter: table](https://github.com/Matii96/unifig/tree/main/packages/validation-presenter-table) - transforms configuration validation errors into table format
 - [Validation presenter: JSON](https://github.com/Matii96/unifig/tree/main/packages/validation-presenter-json) - transforms configuration validation errors into JSON string
+
+## Examples
+
+<a name="examples"></a>
+
+- [Express + typescript](https://github.com/Matii96/unifig/tree/main/examples/01-express)
+- [NestJS](https://github.com/Matii96/unifig/tree/main/examples/02-nest)
 
 ## Local Development
 
