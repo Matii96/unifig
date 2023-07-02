@@ -8,6 +8,8 @@ describe('toJSON', () => {
   });
 
   it('should pretty print 2d errors in json format', () => {
-    expect(toJSON(new ConfigValidationError(mockFailed2dValidation()), { space: 2 })).toMatchSnapshot();
+    expect(
+      toJSON(new ConfigValidationError(mockFailed2dValidation()), { space: 2 })
+    ).toMatchSnapshot();
   });
 });

@@ -22,13 +22,16 @@ export class ClassValidator implements Validator {
   private validateTemplate(config: object): ConfigTemplateValidationError {
     return new ConfigTemplateValidationError({
       template: config.constructor as ClassConstructor,
-      errors: validateSync(config, { skipMissingProperties: false, forbidUnknownValues: false }).map((error) =>
-        this.toPropertyError(error)
-      ),
+      errors: validateSync(config, {
+        skipMissingProperties: false,
+        forbidUnknownValues: false,
+      }).map((error) => this.toPropertyError(error)),
     });
   }
 
-  private toPropertyError(error: ValidationError): ConfigPropertyValidationError | ConfigSubtemplateValidationError {
+  private toPropertyError(
+    error: ValidationError
+  ): ConfigPropertyValidationError | ConfigSubtemplateValidationError {
     if (error.children && error.children.length > 0) {
       return new ConfigSubtemplateValidationError({
         property: error.property,
@@ -61,9 +64,16 @@ export class ClassValidator implements Validator {
   }
 
   private getPropertyType(config: object, propertyKey: string): PropertyType {
-    const nesting: PropertiesNesting = Reflect.getMetadata(PROPERTIES_NESTING_METADATA, config.constructor);
+    const nesting: PropertiesNesting = Reflect.getMetadata(
+      PROPERTIES_NESTING_METADATA,
+      config.constructor
+    );
     const propertyNestingType = nesting?.get(propertyKey);
-    return (propertyNestingType ? propertyNestingType() : Reflect.getMetadata('design:type', config, propertyKey)).name;
+    return (
+      propertyNestingType
+        ? propertyNestingType()
+        : Reflect.getMetadata('design:type', config, propertyKey)
+    ).name;
   }
 
   private formatPropertyValue(config: object, propertyKey: string, value: any) {

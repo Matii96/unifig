@@ -6,7 +6,10 @@ import { PropertiesNesting } from '../../shared/types';
 
 export function Nested<T>(type: () => ClassConstructor<T>): PropertyDecorator {
   return (target, key: string) => {
-    let mapping: PropertiesNesting = Reflect.getMetadata(PROPERTIES_NESTING_METADATA, target.constructor);
+    let mapping: PropertiesNesting = Reflect.getMetadata(
+      PROPERTIES_NESTING_METADATA,
+      target.constructor
+    );
     if (!mapping) {
       mapping = new Map();
       Reflect.defineMetadata(PROPERTIES_NESTING_METADATA, mapping, target.constructor);

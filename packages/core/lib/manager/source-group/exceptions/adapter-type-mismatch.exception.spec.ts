@@ -1,6 +1,6 @@
 import 'reflect-metadata';
-import { ConfigAdapterMock } from '../../../adapters/adapter.mock';
 import { AdapterTypeMismatchException } from './adapter-type-mismatch.exception';
+import { ConfigAdapterMock } from '../../../adapters/class-adapters/adapter.mock';
 
 describe('AdapterTypeMismatchException', () => {
   it('should format message', () => {

@@ -1,4 +1,8 @@
-import { ConfigPropertyValidationError, ConfigSubtemplateValidationError, FailedConstraint } from '@unifig/core';
+import {
+  ConfigPropertyValidationError,
+  ConfigSubtemplateValidationError,
+  FailedConstraint,
+} from '@unifig/core';
 
 export class TemplateRow {
   propertyParentPrefix?: string;

@@ -46,7 +46,9 @@ export class InternalConfigManager implements ConfigManager {
     if (validationResult) {
       return validationResult;
     }
-    groups.forEach((group) => group.templates.forEach((template) => this._groups.set(template, group)));
+    groups.forEach((group) =>
+      group.templates.forEach((template) => this._groups.set(template, group))
+    );
   }
 
   private initSourceGroups(options: ConfigManagerRegisterOptions) {

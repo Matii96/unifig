@@ -17,9 +17,11 @@ Universal, typed and validated configuration manager.
 - [Installation](#installation)
 - [Setting up Templates](#templates)
   - [Subtemplates](#templates_subtemplates)
-- [Loading](#loading)
+- [Using Configuration](#loading)
+  - [Quick Start](#loading_quick_start)
   - [Values Adapters](#loading_adapters)
     - [Types conversion](#loading_adapters_conversion)
+    - [Functions adapters](#loading_adapters_functions)
   - [Multiple Configurations](#loading_multiple_configurations)
   - [Inline Validation Rejection](#loading_inline_rejection)
 - [Validation](#validation)
@@ -91,11 +93,15 @@ export class AppSettings {
 }
 ```
 
-## Loading configuration
+## Using Configuration
 
 <a name="loading"></a>
 
-After defining template they should be loaded before any other action in the application takes place.
+Such defined templates should be loaded before any other action in the application takes place. After that configuration can be accessed from any place in the app via global `Config` reference.
+
+### Quick Start
+
+<a name="loading_quick_start"></a>
 
 ```ts
 import { Config, PlainConfigAdapter } from '@unifig/core';
@@ -103,19 +109,7 @@ import { Config, PlainConfigAdapter } from '@unifig/core';
 async function bootstrap() {
   const validationError = await Config.register({
     template: AppSettings,
-    adapter: new PlainConfigAdapter({
-      PORT: 3000,
-      DB_URL: 'localhost:5467',
-      DB_PASSWORD: 'password',
-      DB_RECONNECT_DELAYS: '56,98,34,72',
-    }),
-  });
-
-  // OR
-
-  const validationError = Config.registerSync({
-    template: AppSettings,
-    adapter: new PlainConfigAdapter({
+    adapter: async () => ({
       PORT: 3000,
       DB_URL: 'localhost:5467',
       DB_PASSWORD: 'password',
@@ -128,15 +122,13 @@ async function bootstrap() {
     process.exit(1);
   }
 
-  console.log(Config.getValues(AppSettings).port); // output: 3000
+  const options = Config.getValues(AppSettings);
+  console.log(options.port); // output: 3000
+  console.log(options.db.url); // output: localhost:5467
 }
 
 bootstrap();
 ```
-
-Above example uses built-in adapter which transforms static object into Settings. See full list of adapters [here](https://github.com/Matii96/unifig#packages).
-
-<a name="loading"></a>
 
 ### Values adapters
 
@@ -188,7 +180,27 @@ await Config.register({
 });
 ```
 
-#### Types conversion
+See full list of adapters [here](https://github.com/Matii96/unifig#packages).
+
+#### Functions Adapters
+
+<a name="loading_adapters_functions"></a>
+
+Alternatively adapter can be defined as standalone sync or async function with same rules applied.
+
+```ts
+Config.registerSync({
+  template: AppSettings,
+  adapter: () => ({
+    PORT: '3000',
+    DB_URL: 'localhost:5467',
+    DB_PASSWORD: 'password',
+    DB_RECONNECT_DELAYS: '56,98,34,72',
+  }),
+});
+```
+
+#### Types Conversion
 
 <a name="loading_adapters_conversion"></a>
 
@@ -216,7 +228,7 @@ await Config.register(
 );
 ```
 
-### Inline validation rejection
+### Inline Validation Rejection
 
 <a name="loading_inline_rejection"></a>
 

@@ -14,7 +14,9 @@ export interface ConfigManager {
    * @param {Type<TTemplate>} template
    * @returns {TTemplate} value
    */
-  getValues<TTemplate extends Record<string, any>>(template: ClassConstructor<TTemplate>): DeepReadonly<TTemplate>;
+  getValues<TTemplate extends Record<string, any>>(
+    template: ClassConstructor<TTemplate>
+  ): DeepReadonly<TTemplate>;
 
   /**
    * Retrieves container to manage configuration.

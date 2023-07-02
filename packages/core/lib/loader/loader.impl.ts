@@ -8,7 +8,11 @@ import { LoaderOptions } from './loader.options';
 import { Loader } from './loader';
 
 export class ConfigLoader implements Loader {
-  load<TTemplate>(template: ClassConstructor<TTemplate>, source: ConfigSource, options: LoaderOptions) {
+  load<TTemplate>(
+    template: ClassConstructor<TTemplate>,
+    source: ConfigSource,
+    options: LoaderOptions
+  ) {
     const plain = this.formatObject(template, overrideObject({}, source), source);
     return (plainToInstance ?? plainToClass)(template, plain, {
       enableImplicitConversion: options.enableImplicitConversion ?? true,
@@ -45,11 +49,17 @@ export class ConfigLoader implements Loader {
 
     if (Array.isArray(skeletonValue)) {
       for (const idx in skeletonValue) {
-        Object.assign(skeletonValue[idx], this.formatObject(subTemplate, skeletonValue[idx] as ConfigSource, source));
+        Object.assign(
+          skeletonValue[idx],
+          this.formatObject(subTemplate, skeletonValue[idx] as ConfigSource, source)
+        );
       }
     } else {
       skeleton[targetKey] = skeletonValue ?? {};
-      Object.assign(skeleton[targetKey], this.formatObject(subTemplate, skeleton[targetKey] as ConfigSource, source));
+      Object.assign(
+        skeleton[targetKey],
+        this.formatObject(subTemplate, skeleton[targetKey] as ConfigSource, source)
+      );
     }
   }
 

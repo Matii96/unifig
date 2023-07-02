@@ -1,4 +1,3 @@
-export * from './adapter';
-export * from './plain';
-export * from './sync-adapter';
+export * from './class-adapters';
+export * from './function-adapters';
 export * from './types';

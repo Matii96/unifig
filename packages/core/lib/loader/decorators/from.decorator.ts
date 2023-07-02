@@ -14,7 +14,10 @@ export function From(args: FromOptions | string): PropertyDecorator {
   const options = typeof args === 'string' ? { key: args } : args;
 
   return (target, key: string) => {
-    let mapping: PropertiesMapping = Reflect.getMetadata(PROPERTIES_MAPPING_METADATA, target.constructor);
+    let mapping: PropertiesMapping = Reflect.getMetadata(
+      PROPERTIES_MAPPING_METADATA,
+      target.constructor
+    );
     if (!mapping) {
       mapping = new Map();
       Reflect.defineMetadata(PROPERTIES_MAPPING_METADATA, mapping, target.constructor);
