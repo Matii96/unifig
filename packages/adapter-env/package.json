@@ -19,8 +19,8 @@
   },
   "scripts": {
     "build": "tsc --build tsconfig.build.json",
-    "test": "jest --config ../../jest-units.config.json packages/env-adapter",
-    "test:e2e": "jest --config ../../jest-e2e.config.json packages/env-adapter"
+    "test": "jest --config ../../jest-units.config.json packages/adapter-env",
+    "test:e2e": "jest --config ../../jest-e2e.config.json packages/adapter-env"
   },
   "bugs": {
     "url": "https://github.com/Matii96/unifig/issues"
@@ -29,7 +29,7 @@
   "dependencies": {
     "dotenv": "^16.3.1",
     "dotenv-expand": "^10.0.0",
-    "fast-glob": "^3.2.12"
+    "fast-glob": "^3.3.0"
   },
   "devDependencies": {
     "@unifig/core": "workspace:^"
