@@ -241,7 +241,7 @@ await Config.registerOrReject({ template: DbSettings, adapter: ... });
 
 <a name="stale_data"></a>
 
-Upon changing application's configuration one must be usually restared to re-fetch new values. Unifig delivers an option to reload registered configurations in real time without app's restart.
+Upon changing application's configuration one must be usually restarted to re-fetch new values. Unifig delivers an option to reload registered configurations in real time without app's restart.
 
 ```ts
 await Config.getContainer(Settings).refresh();
