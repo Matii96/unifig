@@ -24,11 +24,10 @@ Universal, typed and validated configuration manager.
     - [Functions adapters](#loading_adapters_functions)
   - [Multiple Configurations](#loading_multiple_configurations)
   - [Inline Validation Rejection](#loading_inline_rejection)
+- [Stale Data](#stale_data)
 - [Validation](#validation)
   - [Presenters](#validation_presenters)
   - [Secrets](#validation_secrets)
-- [Stale Data](#stale_data)
-- [Todo Before 1.0.0](#100todo)
 - [License](#license)
 
 ## 💡 Goal
@@ -292,14 +291,6 @@ export class DbConfigMock {
 ```
 
 With it applied, `password` value will be transformed into `******` in potential validation report.
-
-## Todo before 1.0.0 release
-
-<a name="100todo"></a>
-
-- allow to automate configurations values reloads in user-defined source group scoped intervals
-- add hook for config refreshed event to allow an app react to the change. Pass difference between old and new values?
-- add example project under `/examples` directory
 
 ## License
 
