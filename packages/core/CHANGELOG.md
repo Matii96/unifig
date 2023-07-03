@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/Matii96/unifig/compare/v0.14.1...v1.0.0) (2023-07-03)
+
+### Features
+
+- **core:** functions values adapters ([1e9a539](https://github.com/Matii96/unifig/commit/1e9a53917c11480d12b7bba2861d003273d3a7c3))
+
 # [0.14.0](https://github.com/Matii96/unifig/compare/v0.13.0...v0.14.0) (2023-03-14)
 
 ### Features
