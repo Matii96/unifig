@@ -2,7 +2,7 @@
 
 Transforms configuration validation errors into clear table.
 
-## Table of contents
+## Table of Contents
 
 - [Installation](#installation)
 - [Quick Start](#quick_start)

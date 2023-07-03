@@ -2,11 +2,12 @@
 
 Utilizes Nest's DI system to manage configurations.
 
-## Table of contents
+## Table of Contents
 
 - [Installation](#installation)
 - [Quick Start](#quick_start)
   - [Caveats](#quick_start_caveats)
+- [Multiple Configurations](#multiple_configurations)
 - [Scoped Configurations](#scoped_configurations)
 - [License](#license)
 
@@ -72,9 +73,9 @@ Configurations need to be loaded before `AppModule` import in case of using glob
 
 An example would be [task scheduling](https://docs.nestjs.com/techniques/task-scheduling). Decorator `@Cron('45 * * * * *')` is being called at the moment of containing file import and needs the config to be already loaded.
 
-## Multiple templates
+## Multiple Configurations
 
-<a name="multiple_templates"></a>
+<a name="multiple_configurations"></a>
 
 ```ts
 // main.ts
@@ -120,7 +121,7 @@ In addition to globally-accessible, configs can be injected with module scope.
 ```ts
 // cats.module.ts
 @Module({
-  imports: [ConfigModule.forFeature(CatsConfig, CatsAuthSettings)],
+  imports: [ConfigModule.forFeature(CatsConfig, OtherConfig)],
   providers: [CatsService],
 })
 export class CatsModule {}

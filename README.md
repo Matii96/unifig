@@ -12,7 +12,7 @@ Universal, typed and validated configuration manager.
 
 </div>
 
-## Table of contents
+## Table of Contents
 
 - [Goal](#goal)
 - [Packages](#packages)
