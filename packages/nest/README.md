@@ -28,12 +28,12 @@ yarn add @unifig/core @unifig/nest
 ```ts
 // main.ts
 import { NestFactory } from '@nestjs/core';
-import { Config, PlainConfigAdapter } from '@unifig/core';
+import { Config } from '@unifig/core';
 
 async function bootstrap() {
   await Config.register({
     template: AppSettings,
-    adapter: new PlainConfigAdapter({ port: 3000, helloMessage: 'hello world' }),
+    adapter: () => ({ port: 3000, helloMessage: 'hello world' }),
   });
   const { AppModule } = await import('./app.module');
   const app = await NestFactory.create(AppModule);

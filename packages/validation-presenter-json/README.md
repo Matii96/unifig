@@ -28,8 +28,8 @@ yarn add @unifig/validation-presenter-json
 import { Config, PlainConfigAdapter } from '@unifig/core';
 import { toJSON } from '@unifig/validation-presenter-json';
 
-async function bootstrap() {
-  const validationError = await Config.register({
+function bootstrap() {
+  const validationError = Config.registerSync({
     templates: [StorageOptions, NetworkOptions],
     adapter: new PlainConfigAdapter({}),
   });

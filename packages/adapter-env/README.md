@@ -2,10 +2,8 @@
 
 ## Table of Contents
 
-- [Goal](#goal)
 - [Installation](#installation)
 - [Quick Start](#quick_start)
-- [Properties Mapping](#properties_mapping)
 - [Options](#options)
 - [License](#license)
 
@@ -39,7 +37,7 @@ export class DbSettings {
   password: string;
 }
 
-export class Settings {
+export class AppSettings {
   @From('PORT')
   @IsInt()
   port: number;
@@ -54,38 +52,17 @@ export class Settings {
 import { Config } from '@unifig/core';
 import { EnvConfigAdapter } from '@unifig/adapter-env';
 
-async function bootstrap() {
-  await Config.register({
+function bootstrap() {
+  Config.registerSync({
     template: Settings,
     adapter: new EnvConfigAdapter(),
   });
 
-  console.log(Config.get(Settings).port); // output: 3000
+  const { port } = Config.getValues(AppSettings);
+  console.log(port); // output: 3000
 }
 
 bootstrap();
-```
-
-## Properties Mapping
-
-<a name="properties_mapping"></a>
-
-Environment variables are mapped to 1D dictionary.
-
-```bash
-# .env
-PORT=3000
-DB_HOST=localhost
-DB_PORT=4588
-```
-
-```ts
-// adapter output
-{
-  PORT: 3000,
-  DB_HOST: 'localhost',
-  DB_PORT: 4588
-}
 ```
 
 ## Options
