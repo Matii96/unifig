@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/Matii96/unifig/compare/v1.0.0...v1.0.1) (2023-07-03)
+
+### Bug Fixes
+
+- **core:** outdated docs cleanup ([b46b40b](https://github.com/Matii96/unifig/commit/b46b40b0ac80b3f77876bd71e6e4a8141cd1275d))
+
 # [1.0.0](https://github.com/Matii96/unifig/compare/v0.14.1...v1.0.0) (2023-07-03)
 
 ### Features
