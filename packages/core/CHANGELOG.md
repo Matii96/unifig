@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/Matii96/unifig/compare/v1.0.1...v1.0.2) (2023-07-18)
+
+### Bug Fixes
+
+- **core:** compatibility with next feature versions of typestack ([1ab6d1c](https://github.com/Matii96/unifig/commit/1ab6d1cb89ac69cb73456562a47817000fa3dc3a))
+
 ## [1.0.1](https://github.com/Matii96/unifig/compare/v1.0.0...v1.0.1) (2023-07-03)
 
 ### Bug Fixes
