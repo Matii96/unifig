@@ -5,11 +5,21 @@ import { AppOptions } from './app.options';
 
 @Controller()
 export class AppController {
-  constructor(@InjectConfig(AppOptions) private readonly config: ConfigContainer<AppOptions>) {}
+  constructor(
+    private readonly staticConfig: AppOptions,
+    @InjectConfig(AppOptions) private readonly dynamicConfig: ConfigContainer<AppOptions>,
+  ) {}
 
-  @Get('ping')
-  async ping() {
-    await this.config.refresh();
-    return `Pong from localhost:${this.config.values.port}`;
+  /** Config is loaded only once on app startup */
+  @Get('ping/static')
+  pingStatic() {
+    return 'Pong from localhost:' + this.staticConfig.port;
+  }
+
+  /** Config is loaded on app startup with option to reload it whenever needed */
+  @Get('ping/dynamic')
+  async pingDynamic() {
+    await this.dynamicConfig.refresh();
+    return 'Pong from localhost:' + this.dynamicConfig.values.port;
   }
 }

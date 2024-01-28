@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { Config, PlainConfigAdapter } from '@unifig/core';
+import { Config } from '@unifig/core';
 import { AppConfig } from './mocks/app.config';
 import { AppModule } from './mocks/app.module';
 import { CatsConfig } from './mocks/cats/cats.config';
@@ -12,12 +12,12 @@ describe('@unifig/nest (e2e)', () => {
     await Config.register(
       {
         template: AppConfig,
-        adapter: new PlainConfigAdapter({ port: 3000, host: 'localhost' }),
+        adapter: () => ({ port: 3000, host: 'localhost' }),
       },
       {
         template: CatsConfig,
-        adapter: new PlainConfigAdapter({ catsPort: 3000, catsHost: 'localhost' }),
-      }
+        adapter: () => ({ catsPort: 3000, catsHost: 'localhost' }),
+      },
     );
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
@@ -32,6 +32,10 @@ describe('@unifig/nest (e2e)', () => {
   });
 
   it('should acquire module-scoped config container', () => {
-    expect(service.catsConfig.values).toEqual({ catsPort: 3000, catsHost: 'localhost' });
+    expect(service.catsConfigContainer.values).toEqual({ catsPort: 3000, catsHost: 'localhost' });
+  });
+
+  it('should acquire module-scoped static config', () => {
+    expect(service.catsConfig).toEqual({ catsPort: 3000, catsHost: 'localhost' });
   });
 });
