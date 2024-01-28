@@ -6,7 +6,7 @@ export class ConfigNotInitializedException extends UnifigException {
     super(
       `Config template ${template.name} hasn't been initialized. Possible reasons:\n` +
         "- It wasn't registered before accessing it\n" +
-        '- Its validation failed but was not handled by e.g. exiting the app'
+        '- Its validation failed but was not handled by e.g. exiting the app',
     );
   }
 }

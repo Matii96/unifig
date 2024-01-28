@@ -37,7 +37,7 @@ describe('InternalConfigManager', () => {
       const adapter = new ConfigAdapterMock();
       jest.spyOn(manager, 'register').mockResolvedValueOnce(new ConfigValidationError([]));
       expect(manager.registerOrReject({ template: TemplateMock, adapter })).rejects.toThrow(
-        ConfigValidationError
+        ConfigValidationError,
       );
     });
   });

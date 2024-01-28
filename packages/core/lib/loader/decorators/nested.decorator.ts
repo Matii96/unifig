@@ -8,7 +8,7 @@ export function Nested<T>(type: () => ClassConstructor<T>): PropertyDecorator {
   return (target, key: string) => {
     let mapping: PropertiesNesting = Reflect.getMetadata(
       PROPERTIES_NESTING_METADATA,
-      target.constructor
+      target.constructor,
     );
     if (!mapping) {
       mapping = new Map();

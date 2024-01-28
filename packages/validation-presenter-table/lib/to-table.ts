@@ -12,7 +12,7 @@ const HEADER = ['Template', 'Property', 'Type', 'Source', 'Current Value', 'Fail
 
 export const toTable = (
   validationException: ConfigValidationError,
-  options: ToTableOptions = {}
+  options: ToTableOptions = {},
 ): string => {
   const tableRows = formatTableRowsGroup(validationException.errors);
   const tableData = [HEADER, ...tableRows.flatMap(({ templateTableData }) => templateTableData)];
@@ -45,7 +45,7 @@ const formatTableRowsGroup = (failedValidations: ConfigTemplateValidationError[]
 
 const formatTemplateRows = (
   error: ConfigPropertyValidationError | ConfigSubtemplateValidationError,
-  parentPrefix = ''
+  parentPrefix = '',
 ): TemplateRow[] => {
   if (error instanceof ConfigPropertyValidationError) {
     return [TemplateRow.fromValidationError(error, parentPrefix)];
@@ -53,7 +53,7 @@ const formatTemplateRows = (
   if (error instanceof ConfigSubtemplateValidationError) {
     const propertyParentPrefix = parentPrefix + error.property + '.';
     const subtemplateRows = error.children.flatMap((child) =>
-      formatTemplateRows(child, propertyParentPrefix)
+      formatTemplateRows(child, propertyParentPrefix),
     );
     return error.failedConstraints
       ? [TemplateRow.fromValidationError(error), ...subtemplateRows]

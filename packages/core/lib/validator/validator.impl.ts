@@ -30,7 +30,7 @@ export class ClassValidator implements Validator {
   }
 
   private toPropertyError(
-    error: ValidationError
+    error: ValidationError,
   ): ConfigPropertyValidationError | ConfigSubtemplateValidationError {
     if (error.children && error.children.length > 0) {
       return new ConfigSubtemplateValidationError({
@@ -66,7 +66,7 @@ export class ClassValidator implements Validator {
   private getPropertyType(config: object, propertyKey: string): PropertyType {
     const nesting: PropertiesNesting = Reflect.getMetadata(
       PROPERTIES_NESTING_METADATA,
-      config.constructor
+      config.constructor,
     );
     const propertyNestingType = nesting?.get(propertyKey);
     return (
@@ -80,7 +80,7 @@ export class ClassValidator implements Validator {
     const isSecret: boolean | undefined = Reflect.getMetadata(
       SECRET_PROPERTY_METADATA,
       config.constructor,
-      propertyKey
+      propertyKey,
     );
     if (isSecret) {
       return '******';
