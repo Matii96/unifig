@@ -9,7 +9,7 @@ import {
   TransformationArrayTemplate,
   TransformationTemplate,
 } from './templates/transformation.template';
-import { ValidationTemplate } from './templates/validation.template';
+import { ValidationTemplate, DbConfig } from './templates/validation.template';
 
 describe('@unifig/core (e2e)', () => {
   let manager: ConfigManager;
@@ -79,7 +79,7 @@ describe('@unifig/core (e2e)', () => {
       const ports = [{ port: 3000 }];
       await manager.register({
         template: TransformationArrayTemplate,
-        adapter: () => ({ ports } satisfies TransformationArrayTemplate),
+        adapter: () => ({ ports }) satisfies TransformationArrayTemplate,
       });
       expect(manager.getValues(TransformationArrayTemplate).ports).toEqual(ports);
     });
@@ -99,12 +99,20 @@ describe('@unifig/core (e2e)', () => {
         manager.registerOrReject({
           template: ValidationTemplate,
           adapter: () => ({ port: 3000, db: { port: 5000 } }),
-        })
+        }),
       ).rejects.toThrow(ConfigValidationError);
     });
   });
 
   describe('registration', () => {
+    it('should register and access sub template ', () => {
+      manager.registerSync({
+        template: ValidationTemplate,
+        adapter: () => ({ port: 3000, db: { url: 'db://localhost:5467' } }),
+      });
+      expect(manager.getValues(DbConfig)).toEqual({ url: 'db://localhost:5467' });
+    });
+
     it('should fail to get config before initialization', () => {
       expect(() => manager.getValues(class {})).toThrow(ConfigNotInitializedException);
     });
