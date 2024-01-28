@@ -15,7 +15,7 @@ export interface ConfigManager {
    * @returns {TTemplate} value
    */
   getValues<TTemplate extends Record<string, any>>(
-    template: ClassConstructor<TTemplate>
+    template: ClassConstructor<TTemplate>,
   ): DeepReadonly<TTemplate>;
 
   /**
@@ -24,6 +24,6 @@ export interface ConfigManager {
    * @returns {ConfigContainer<TTemplate>}
    */
   getContainer<TTemplate extends Record<string, any>>(
-    template: ClassConstructor<TTemplate>
+    template: ClassConstructor<TTemplate>,
   ): ConfigContainer<TTemplate>;
 }

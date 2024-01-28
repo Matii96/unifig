@@ -3,7 +3,7 @@ import { ToJSONOptions } from './to-json.options';
 
 export const toJSON = (
   validationException: ConfigValidationError,
-  options: ToJSONOptions = {}
+  options: ToJSONOptions = {},
 ): string =>
   JSON.stringify(
     validationException.errors.map((templateError) => ({
@@ -11,5 +11,5 @@ export const toJSON = (
       errors: templateError.errors,
     })),
     null,
-    options.space
+    options.space,
   );

@@ -11,7 +11,7 @@ export class ConfigLoader implements Loader {
   load<TTemplate>(
     template: ClassConstructor<TTemplate>,
     source: ConfigSource,
-    options: LoaderOptions
+    options: LoaderOptions,
   ) {
     const plain = this.formatObject(template, overrideObject({}, source), source);
     return (plainToInstance ?? plainToClass)(template, plain, {
@@ -42,7 +42,7 @@ export class ConfigLoader implements Loader {
     targetKey: string,
     getSubTemplate: () => ClassConstructor,
     skeleton: ConfigSource,
-    source: ConfigSource
+    source: ConfigSource,
   ) {
     const subTemplate = getSubTemplate();
     const skeletonValue = skeleton[targetKey];
@@ -51,14 +51,14 @@ export class ConfigLoader implements Loader {
       for (const idx in skeletonValue) {
         Object.assign(
           skeletonValue[idx],
-          this.formatObject(subTemplate, skeletonValue[idx] as ConfigSource, source)
+          this.formatObject(subTemplate, skeletonValue[idx] as ConfigSource, source),
         );
       }
     } else {
       skeleton[targetKey] = skeletonValue ?? {};
       Object.assign(
         skeleton[targetKey],
-        this.formatObject(subTemplate, skeleton[targetKey] as ConfigSource, source)
+        this.formatObject(subTemplate, skeleton[targetKey] as ConfigSource, source),
       );
     }
   }

@@ -14,7 +14,7 @@ export class TemplateRow {
 
   static fromValidationError(
     error: ConfigPropertyValidationError | ConfigSubtemplateValidationError,
-    propertyParentPrefix?: string
+    propertyParentPrefix?: string,
   ) {
     const row = new TemplateRow();
     row.propertyParentPrefix = propertyParentPrefix;

@@ -16,7 +16,7 @@ export function From(args: FromOptions | string): PropertyDecorator {
   return (target, key: string) => {
     let mapping: PropertiesMapping = Reflect.getMetadata(
       PROPERTIES_MAPPING_METADATA,
-      target.constructor
+      target.constructor,
     );
     if (!mapping) {
       mapping = new Map();

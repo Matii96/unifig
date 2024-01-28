@@ -6,6 +6,6 @@ export interface Loader {
   load<TTemplate>(
     template: ClassConstructor<TTemplate>,
     source: ConfigSource,
-    options: LoaderOptions
+    options: LoaderOptions,
   ): TTemplate;
 }
