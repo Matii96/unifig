@@ -33,7 +33,7 @@
     "@nestjs/platform-express": ">=8.0.0",
     "@nestjs/testing": ">=8.0.0",
     "@unifig/core": "workspace:^",
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.2.1"
   },
   "peerDependencies": {
     "@nestjs/common": ">=8.0.0",

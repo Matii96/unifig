@@ -24,7 +24,7 @@
     "class-validator": "^0.14.0"
   },
   "devDependencies": {
-    "@types/express": "^4.17.17",
+    "@types/express": "^4.17.21",
     "tsc-watch": "^6.0.4"
   }
 }
