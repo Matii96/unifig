@@ -1,7 +1,7 @@
 import { IsInt, IsString } from 'class-validator';
 import { Nested } from '../../lib';
 
-class DbConfig {
+export class DbConfig {
   @IsString()
   url: string;
 }

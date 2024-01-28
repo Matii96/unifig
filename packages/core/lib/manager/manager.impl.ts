@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import { ClassConstructor } from '../utils/class-constructor';
 import { Validator } from '../validator/validator';
+import { getNestedTemplates } from '../loader';
 import {
   ConfigManagerRegisterOptions,
   RegisterSingleTemplateOptions,
@@ -18,7 +19,7 @@ export class InternalConfigManager implements ConfigManager {
 
   constructor(
     private readonly _validator: Validator,
-    private readonly _sourceGroupFactory: typeof sourceGroupFactory
+    private readonly _sourceGroupFactory: typeof sourceGroupFactory,
   ) {}
 
   async register(...options: ConfigManagerRegisterOptions[]) {
@@ -47,13 +48,17 @@ export class InternalConfigManager implements ConfigManager {
       return validationResult;
     }
     groups.forEach((group) =>
-      group.templates.forEach((template) => this._groups.set(template, group))
+      group.templates.forEach((template) =>
+        getNestedTemplates(template).forEach((template) => this._groups.set(template, group)),
+      ),
     );
   }
 
   private initSourceGroups(options: ConfigManagerRegisterOptions) {
     let templates = (options as RegisterMultipleTemplatesOptions).templates;
-    if (!templates) templates = [(options as RegisterSingleTemplateOptions).template];
+    if (!templates) {
+      templates = [(options as RegisterSingleTemplateOptions).template];
+    }
 
     const sourceGroup = this._sourceGroupFactory();
 
@@ -61,7 +66,7 @@ export class InternalConfigManager implements ConfigManager {
     sourceGroup.init(
       options.adapter,
       templates.filter((template) => !this._groups.has(template)),
-      options
+      options,
     );
     return sourceGroup;
   }
@@ -71,10 +76,12 @@ export class InternalConfigManager implements ConfigManager {
   }
 
   getContainer<TTemplate extends Record<string, any>>(
-    template: ClassConstructor<TTemplate>
+    template: ClassConstructor<TTemplate>,
   ): ConfigContainer<TTemplate> {
     const group = this._groups.get(template);
-    if (!group) throw new ConfigNotInitializedException(template);
+    if (!group) {
+      throw new ConfigNotInitializedException(template);
+    }
     return group.getContainer(template)!;
   }
 }

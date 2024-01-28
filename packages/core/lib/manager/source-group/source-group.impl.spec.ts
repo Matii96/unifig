@@ -10,7 +10,6 @@ import { ConfigAdapter } from '../../adapters';
 import { ConfigContainerMock } from '../container/container.mock';
 import { AdapterTypeMismatchException } from './exceptions';
 import { ConfigSourceGroup } from './source-group.impl';
-import { SourceGroup } from './source-group';
 
 describe('ConfigSourceGroup', () => {
   const source = { port: 3000, db: { url: 'db://localhost', password: 'password' } };
@@ -18,7 +17,7 @@ describe('ConfigSourceGroup', () => {
   describe('async adapter', () => {
     describe('class adapter', () => {
       let adapter: ConfigAdapter;
-      let sourceGroup: SourceGroup;
+      let sourceGroup: ConfigSourceGroup;
 
       beforeEach(() => {
         adapter = new ConfigAdapterMock();
@@ -26,13 +25,14 @@ describe('ConfigSourceGroup', () => {
         sourceGroup = new ConfigSourceGroup(
           new LoaderMock(),
           new ValidatorMock(),
-          () => new ConfigContainerMock()
+          () => new ConfigContainerMock(),
         );
         sourceGroup.init(adapter, [TemplateMock], {});
       });
 
       it('should load config from source', async () => {
         const instances = await sourceGroup.load();
+
         expect(instances).toHaveLength(1);
         expect(instances[0]).toEqual(source);
       });
@@ -43,13 +43,13 @@ describe('ConfigSourceGroup', () => {
     });
 
     describe('function adapter', () => {
-      let sourceGroup: SourceGroup;
+      let sourceGroup: ConfigSourceGroup;
 
       beforeEach(() => {
         sourceGroup = new ConfigSourceGroup(
           new LoaderMock(),
           new ValidatorMock(),
-          () => new ConfigContainerMock()
+          () => new ConfigContainerMock(),
         );
         sourceGroup.init(async () => source, [TemplateMock], {});
       });
@@ -67,13 +67,13 @@ describe('ConfigSourceGroup', () => {
   });
 
   describe('sync adapter', () => {
-    let sourceGroup: SourceGroup;
+    let sourceGroup: ConfigSourceGroup;
 
     beforeEach(() => {
       sourceGroup = new ConfigSourceGroup(
         new LoaderMock(),
         new ValidatorMock(),
-        () => new ConfigContainerMock()
+        () => new ConfigContainerMock(),
       );
     });
 

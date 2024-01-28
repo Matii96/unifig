@@ -16,8 +16,10 @@ async function bootstrap() {
 
   const app = express();
 
-  app.get('/ping', (req, res) => {
-    res.send('pong');
+  app.get('/ping', async (req, res) => {
+    const config = Config.getContainer(AppOptions);
+    await config.refresh();
+    res.send('Pong from localhost:' + config.values.port);
   });
 
   const options = Config.getValues(AppOptions);
