@@ -22,7 +22,7 @@ describe('AppController', () => {
 
   describe('ping', () => {
     it('should respond with pong', async () => {
-      const response = await controller.ping();
+      const response = await controller.pingDynamic();
       expect(response).toBe(`Pong from localhost:${Config.getValues(AppOptions).port}`);
     });
   });
