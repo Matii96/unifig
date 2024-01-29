@@ -106,8 +106,9 @@ export class AppModule {}
 @Injectable()
 export class AppService {
   constructor(
+    private appSettings: AppSettings, // <-- static values loaded only once on app bootstrap
     @InjectConfig() private appSettings: IConfigContainer<AppSettings>,
-    @InjectConfig(AuthSettings) private authSettings: IConfigContainer<AnotherAppSettings>
+    @InjectConfig(AuthSettings) private authSettings: IConfigContainer<AnotherAppSettings>,
   ) {}
 }
 ```

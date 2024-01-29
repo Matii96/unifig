@@ -16,13 +16,14 @@ Universal, typed and validated configuration manager.
 
 - [Installation](#installation)
 - [Setting up Templates](#templates)
-  - [Subtemplates](#templates_subtemplates)
+  - [Nested Configuration](#templates_subtemplates)
 - [Using Configuration](#loading)
   - [Quick Start](#loading_quick_start)
   - [Values Adapters](#loading_adapters)
     - [Types conversion](#loading_adapters_conversion)
     - [Functions adapters](#loading_adapters_functions)
   - [Multiple Configurations](#loading_multiple_configurations)
+  - [Accessing Nested Configuration](#loading_accessing_nested_configuration)
   - [Inline Validation Rejection](#loading_inline_rejection)
 - [Stale Data](#stale_data)
 - [Validation](#validation)
@@ -75,11 +76,11 @@ class DbSettings {
 }
 ```
 
-### Subtemplates
+### Nested Configuration
 
 <a name="templates_subtemplates"></a>
 
-They allow to keep config structure organized by grouping inseparable properties and allowing reusing of them. The subtemplate itself is declared just as regular template, including option to nest further subtemplates in it.
+Allows to keep config structure organized by grouping inseparable properties and allowing reusage of them. The subtemplate itself is declared just as regular template, including option to nest further subtemplates in it.
 
 ```ts
 export class AppSettings {
@@ -92,11 +93,11 @@ export class AppSettings {
 }
 ```
 
-## Using Configuration
+## Accessing Configuration
 
 <a name="loading"></a>
 
-Such defined templates should be loaded before any other action in the application takes place. After that configuration can be accessed from any place in the app via global `Config` reference.
+Templates should be loaded before any other action in the application takes place. After that configuration can be accessed from any place in the app via global `Config` reference.
 
 ### Quick Start
 
@@ -225,6 +226,34 @@ await Config.register(
   { template: AuthSettings, adapter: ... },
   { templates: [FilesStorageSettings, CacheSettings], adapter: ... },
 );
+```
+
+### Accessing Nested Configuration
+
+<a name="loading_accessing_nested_configuration"></a>
+
+[Nested config values](#templates_subtemplates) can be accessed directly after parent initialization.
+
+```ts
+class DbConfig {
+  @IsString()
+  url: string;
+}
+
+class AppConfig {
+  @IsInt()
+  port: number;
+
+  @Nested(() => DbConfig)
+  db: DbConfig;
+}
+
+Config.registerSync({
+  template: AppConfig,
+  adapter: () => ({ port: 3000, db: { url: 'db://localhost:5467' } }),
+});
+
+console.log('Db url: ' + Config.getValues(DbConfig).url); // => Db url: db://localhost:5467
 ```
 
 ### Inline Validation Rejection
