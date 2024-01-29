@@ -2326,7 +2326,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/supertest@npm:^2.0.16":
+"@types/supertest@npm:^2.0.12":
   version: 2.0.16
   resolution: "@types/supertest@npm:2.0.16"
   dependencies:
@@ -4946,7 +4946,7 @@ __metadata:
     "@nestjs/testing": "npm:^10.1.0"
     "@types/express": "npm:^4.17.21"
     "@types/node": "npm:^20.11.9"
-    "@types/supertest": "npm:^2.0.16"
+    "@types/supertest": "npm:^2.0.12"
     "@unifig/adapter-env": "workspace:^"
     "@unifig/core": "workspace:^"
     "@unifig/nest": "workspace:^"
