@@ -8,6 +8,6 @@ import { CatsConfig } from './cats.config';
 export class CatsService {
   constructor(
     @InjectConfig() readonly appConfig: ConfigContainer<AppConfig>,
-    @InjectConfig(CatsConfig) readonly catsConfig: ConfigContainer<CatsConfig>
+    @InjectConfig(CatsConfig) readonly catsConfig: ConfigContainer<CatsConfig>,
   ) {}
 }

@@ -97,7 +97,7 @@ export class ConfigSourceGroup implements SourceGroup {
     }
     for (const [targetKey, getSubTemplate] of nesting) {
       const value = values[targetKey];
-      if (value) {
+      if (typeof value !== 'undefined') {
         this.setContainerValues(getSubTemplate(), value);
       }
     }

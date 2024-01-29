@@ -14,7 +14,7 @@ describe('EnvConfigAdapter', () => {
   jest
     .spyOn(dotenvExpand, 'expand')
     .mockImplementation(
-      (options: dotenvExpand.DotenvExpandOptions) => options.parsed as Record<string, string>
+      (options: dotenvExpand.DotenvExpandOptions) => options.parsed as Record<string, string>,
     );
 
   it('should load config from file', () => {
