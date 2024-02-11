@@ -5,7 +5,7 @@ describe('ConfigModule', () => {
     const injectionsWithArgument = 3;
     const injectionsWithoutArgument = 1;
     expect(
-      ConfigModule.forRoot({ default: class {}, templates: [class {}, class {}] }).providers
+      ConfigModule.forRoot({ default: class {}, templates: [class {}, class {}] }).providers,
     ).toHaveLength(injectionsWithArgument + injectionsWithoutArgument);
   });
 

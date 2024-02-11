@@ -17,7 +17,7 @@ describe('@unifig/nest (e2e)', () => {
       {
         template: CatsConfig,
         adapter: new PlainConfigAdapter({ catsPort: 3000, catsHost: 'localhost' }),
-      }
+      },
     );
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
