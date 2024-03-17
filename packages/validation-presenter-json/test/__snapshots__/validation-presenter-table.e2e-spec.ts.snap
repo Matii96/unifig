@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`@unifig/validation-presenter-json (e2e) should format table from validation errors 1`] = `"[{"template":"TemplateMock","errors":[{"property":"port","type":"Number","source":"PORT","currentValue":"not-a-port","failedConstraints":[{"name":"isInt","details":"port must be an integer number"}]},{"property":"db","children":[{"property":"url","type":"String","source":"DB_URL","failedConstraints":[{"name":"isString","details":"url must be a string"}]},{"property":"password","type":"String","source":"DB_PASSWORD","currentValue":"******","failedConstraints":[{"name":"contains","details":"password must contain a ? string"}]}]}]}]"`;

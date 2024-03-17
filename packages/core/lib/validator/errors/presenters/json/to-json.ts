@@ -1,4 +1,4 @@
-import { ConfigValidationError } from '@unifig/core';
+import { ConfigValidationError } from '../../validation.error';
 import { ToJSONOptions } from './to-json.options';
 
 export const toJSON = (

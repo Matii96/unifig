@@ -1,5 +1,5 @@
-import { ConfigValidationError } from '@unifig/core';
-import { mockFailed1dValidation, mockFailed2dValidation } from './validator.mocks';
+import { ConfigValidationError } from '../../validation.error';
+import { mockFailed1dValidation, mockFailed2dValidation } from '../validator.mocks';
 import { toJSON } from './to-json';
 
 describe('toJSON', () => {
