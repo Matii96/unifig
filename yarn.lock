@@ -1338,7 +1338,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/common@npm:>=8.0.0, @nestjs/common@npm:^10.1.0":
+"@nestjs/common@npm:>=8.0.0":
+  version: 10.3.3
+  resolution: "@nestjs/common@npm:10.3.3"
+  dependencies:
+    iterare: "npm:1.2.1"
+    tslib: "npm:2.6.2"
+    uid: "npm:2.0.2"
+  peerDependencies:
+    class-transformer: "*"
+    class-validator: "*"
+    reflect-metadata: ^0.1.12 || ^0.2.0
+    rxjs: ^7.1.0
+  peerDependenciesMeta:
+    class-transformer:
+      optional: true
+    class-validator:
+      optional: true
+  checksum: e0873b24169eb04d59ce95375740a73d2fc03c06799d7d316d462f4be798ccb4a68b3100bb704b7644e8c28deb3503612350cce8d25f4bf4a318a3ce01bbec0e
+  languageName: node
+  linkType: hard
+
+"@nestjs/common@npm:^10.1.0":
   version: 10.1.0
   resolution: "@nestjs/common@npm:10.1.0"
   dependencies:
@@ -1359,7 +1380,35 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/core@npm:>=8.0.0, @nestjs/core@npm:^10.1.0":
+"@nestjs/core@npm:>=8.0.0":
+  version: 10.3.3
+  resolution: "@nestjs/core@npm:10.3.3"
+  dependencies:
+    "@nuxtjs/opencollective": "npm:0.3.2"
+    fast-safe-stringify: "npm:2.1.1"
+    iterare: "npm:1.2.1"
+    path-to-regexp: "npm:3.2.0"
+    tslib: "npm:2.6.2"
+    uid: "npm:2.0.2"
+  peerDependencies:
+    "@nestjs/common": ^10.0.0
+    "@nestjs/microservices": ^10.0.0
+    "@nestjs/platform-express": ^10.0.0
+    "@nestjs/websockets": ^10.0.0
+    reflect-metadata: ^0.1.12 || ^0.2.0
+    rxjs: ^7.1.0
+  peerDependenciesMeta:
+    "@nestjs/microservices":
+      optional: true
+    "@nestjs/platform-express":
+      optional: true
+    "@nestjs/websockets":
+      optional: true
+  checksum: 691b3e6dd1aa9bd6e4af56a6d434b05c492984a1d656810e987819f49c1565cc8a01276bf01c6d4baa4aefa74a94027335b892eb285c4c8d9d58e5a593632f4c
+  languageName: node
+  linkType: hard
+
+"@nestjs/core@npm:^10.1.0":
   version: 10.1.0
   resolution: "@nestjs/core@npm:10.1.0"
   dependencies:
@@ -1387,7 +1436,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/platform-express@npm:>=8.0.0, @nestjs/platform-express@npm:^10.1.0":
+"@nestjs/platform-express@npm:>=8.0.0":
+  version: 10.3.3
+  resolution: "@nestjs/platform-express@npm:10.3.3"
+  dependencies:
+    body-parser: "npm:1.20.2"
+    cors: "npm:2.8.5"
+    express: "npm:4.18.2"
+    multer: "npm:1.4.4-lts.1"
+    tslib: "npm:2.6.2"
+  peerDependencies:
+    "@nestjs/common": ^10.0.0
+    "@nestjs/core": ^10.0.0
+  checksum: cff06e604e7258681c188460f3ad3dfa215657844d58fa0f5e94a844639f9b785b1a649d5fc4824ac5b1ae4e95ef9e2a701d1d5222f1e0e04a2911ae5ef2ccd3
+  languageName: node
+  linkType: hard
+
+"@nestjs/platform-express@npm:^10.1.0":
   version: 10.1.0
   resolution: "@nestjs/platform-express@npm:10.1.0"
   dependencies:
@@ -1418,7 +1483,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/testing@npm:>=8.0.0, @nestjs/testing@npm:^10.1.0":
+"@nestjs/testing@npm:>=8.0.0":
+  version: 10.3.3
+  resolution: "@nestjs/testing@npm:10.3.3"
+  dependencies:
+    tslib: "npm:2.6.2"
+  peerDependencies:
+    "@nestjs/common": ^10.0.0
+    "@nestjs/core": ^10.0.0
+    "@nestjs/microservices": ^10.0.0
+    "@nestjs/platform-express": ^10.0.0
+  peerDependenciesMeta:
+    "@nestjs/microservices":
+      optional: true
+    "@nestjs/platform-express":
+      optional: true
+  checksum: 3e63abb62d3fe36d6a0f4c9bf24a3f7d719779d04430e1632c50a5af993e776e7606dbfa793e5965041ecf04f71cee237b272755bece692fd5cd9b9d47cbff1f
+  languageName: node
+  linkType: hard
+
+"@nestjs/testing@npm:^10.1.0":
   version: 10.1.0
   resolution: "@nestjs/testing@npm:10.1.0"
   dependencies:
@@ -2514,13 +2598,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@unifig/core@workspace:packages/core"
   dependencies:
-    class-transformer: "npm:^0.5.1"
-    class-validator: "npm:^0.14.1"
-    reflect-metadata: "npm:^0.2.1"
+    class-transformer: "npm:>=0.5.1"
+    class-validator: "npm:>=0.13.2"
+    reflect-metadata: "npm:>=0.1.13"
   peerDependencies:
     class-transformer: ">=0.5.1"
     class-validator: ">=0.13.2"
-    reflect-metadata: ">=0.2.1"
+    reflect-metadata: ">=0.1.13"
   languageName: unknown
   linkType: soft
 
@@ -2533,12 +2617,12 @@ __metadata:
     "@nestjs/platform-express": "npm:>=8.0.0"
     "@nestjs/testing": "npm:>=8.0.0"
     "@unifig/core": "workspace:^"
-    reflect-metadata: "npm:^0.2.1"
+    reflect-metadata: "npm:>=0.1.13"
   peerDependencies:
     "@nestjs/common": ">=8.0.0"
     "@nestjs/core": ">=8.0.0"
     "@unifig/core": ">=0.1.0"
-    reflect-metadata: ">=0.2.1"
+    reflect-metadata: ">=0.1.13"
     rxjs: ">=7.8.1"
   languageName: unknown
   linkType: soft
@@ -3599,14 +3683,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"class-transformer@npm:^0.5.1":
+"class-transformer@npm:>=0.5.1":
   version: 0.5.1
   resolution: "class-transformer@npm:0.5.1"
   checksum: 19809914e51c6db42c036166839906420bb60367df14e15f49c45c8c1231bf25ae661ebe94736ee29cc688b77101ef851a8acca299375cc52fc141b64acde18a
   languageName: node
   linkType: hard
 
-"class-validator@npm:^0.14.1":
+"class-validator@npm:>=0.13.2, class-validator@npm:^0.14.1":
   version: 0.14.1
   resolution: "class-validator@npm:0.14.1"
   dependencies:
@@ -9753,7 +9837,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"reflect-metadata@npm:^0.2.1":
+"reflect-metadata@npm:>=0.1.13, reflect-metadata@npm:^0.2.1":
   version: 0.2.1
   resolution: "reflect-metadata@npm:0.2.1"
   checksum: 6ca3c674bb43cf8ec3a3f5f38c8730a6116335f8e562fcdcdf3a492af168c5a7f0e8f17476a5710c3fe6bf9b5d22e8a463f14c0e26e326339cab65e099900ef7
@@ -11067,7 +11151,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.6.2":
+"tslib@npm:2.6.2, tslib@npm:^2.6.2":
   version: 2.6.2
   resolution: "tslib@npm:2.6.2"
   checksum: e03a8a4271152c8b26604ed45535954c0a45296e32445b4b87f8a5abdb2421f40b59b4ca437c4346af0f28179780d604094eb64546bee2019d903d01c6c19bdb
