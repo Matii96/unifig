@@ -2543,16 +2543,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@unifig/validation-presenter-json@workspace:packages/validation-presenter-json":
-  version: 0.0.0-use.local
-  resolution: "@unifig/validation-presenter-json@workspace:packages/validation-presenter-json"
-  dependencies:
-    "@unifig/core": "workspace:^"
-  peerDependencies:
-    "@unifig/core": ">=0.1.0"
-  languageName: unknown
-  linkType: soft
-
 "@unifig/validation-presenter-table@workspace:^, @unifig/validation-presenter-table@workspace:packages/validation-presenter-table":
   version: 0.0.0-use.local
   resolution: "@unifig/validation-presenter-table@workspace:packages/validation-presenter-table"

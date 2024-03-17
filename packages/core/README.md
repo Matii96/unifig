@@ -298,7 +298,6 @@ if (validationError) {
 Message contains list of templates names that failed validation. The errors object contains details about what and why doesn't fullfil requirements. Presenters are to utilize this information in a readable manner.
 
 - [Validation presenter: table](https://github.com/Matii96/unifig/tree/main/packages/validation-presenter-table) - 2d table format
-- [Validation presenter: JSON](https://github.com/Matii96/unifig/tree/main/packages/validation-presenter-json) - JSON string
 
 ### Secrets
 
