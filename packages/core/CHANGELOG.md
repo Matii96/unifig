@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/Matii96/unifig/compare/v1.0.2...v1.1.0) (2024-03-17)
+
+### Bug Fixes
+
+- **core:** peer reflect metadata versioning ([5aefedb](https://github.com/Matii96/unifig/commit/5aefedbfe9492a61a7a0f7414bfabc603151feea))
+
+### Features
+
+- **core:** direct subtemplates access ([fdca8de](https://github.com/Matii96/unifig/commit/fdca8de911053eda7cbce5d0239717cf07d80075))
+- **core:** errors validation presenter json migration to core ([d3a8b32](https://github.com/Matii96/unifig/commit/d3a8b32d5c9a639e3dc4a977654d382bfbd42798))
+
 ## [1.0.2](https://github.com/Matii96/unifig/compare/v1.0.1...v1.0.2) (2023-07-18)
 
 ### Bug Fixes

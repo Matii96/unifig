@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/Matii96/unifig/compare/v1.0.2...v1.1.0) (2024-03-17)
+
+### Bug Fixes
+
+- **adapter-env:** proper env overriding ([6cd01c9](https://github.com/Matii96/unifig/commit/6cd01c95a0e0f2c2b82155418574e3a48166aad0))
+
+### Features
+
+- **adapter-env:** dotenv-expand upgrade ([18bbcd4](https://github.com/Matii96/unifig/commit/18bbcd48927a0250a492c953057793e040ae8719))
+- **core:** direct subtemplates access ([fdca8de](https://github.com/Matii96/unifig/commit/fdca8de911053eda7cbce5d0239717cf07d80075))
+
 ## [1.0.2](https://github.com/Matii96/unifig/compare/v1.0.1...v1.0.2) (2023-07-18)
 
 **Note:** Version bump only for package @unifig/adapter-env
