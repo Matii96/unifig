@@ -30,7 +30,7 @@
   "homepage": "https://github.com/Matii96/unifig",
   "devDependencies": {
     "class-transformer": "^0.5.1",
-    "class-validator": "^0.14.0",
+    "class-validator": "^0.14.1",
     "reflect-metadata": "^0.2.1"
   },
   "peerDependencies": {
