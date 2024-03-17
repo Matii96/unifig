@@ -37,7 +37,7 @@ export class EnvConfigAdapter implements ConfigSyncAdapter {
       return;
     }
 
-    const { parsed } = expand({ parsed: config });
+    const { parsed } = expand({ parsed: config, processEnv: {} });
     if (parsed) {
       Object.assign(config, parsed);
     }
