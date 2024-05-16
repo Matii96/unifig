@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/Matii96/unifig/compare/v1.1.0...v1.1.1) (2024-05-16)
+
+### Bug Fixes
+
+- **core:** omitting custom object deep copy ([385ceab](https://github.com/Matii96/unifig/commit/385ceabef83e7606319e796228d62ca2089da260))
+
 # [1.1.0](https://github.com/Matii96/unifig/compare/v1.0.2...v1.1.0) (2024-03-17)
 
 ### Bug Fixes
