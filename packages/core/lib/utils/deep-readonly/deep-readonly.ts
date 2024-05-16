@@ -18,7 +18,7 @@ export const deepReadonly = <TObject extends object>(object: TObject) => {
   for (const key in copy) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    if (typeof copy[key] === 'object') {
+    if (typeof copy[key] === 'object' && Object.getPrototypeOf(copy[key]) === Object.prototype) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       copy[key] = deepReadonly(copy[key]);
