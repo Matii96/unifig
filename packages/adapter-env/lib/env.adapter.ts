@@ -11,22 +11,25 @@ import { EnvConfigAdapterOptions } from './env.adapter.options';
  */
 export class EnvConfigAdapter implements ConfigSyncAdapter {
   private readonly _options!: EnvConfigAdapterOptions;
-  private readonly _envFilesPaths!: string[];
 
   constructor(options: EnvConfigAdapterOptions = {}) {
     this._options = options;
-    this._envFilesPaths = [...(options.envFilesPaths ?? []), join(process.cwd(), '.env')];
   }
 
   load(): ConfigSource {
     const config: ReturnType<typeof parse> = {};
-    const paths = sync(this._envFilesPaths, { dot: true, unique: true });
+    const paths = [...(this._options.envFilesPaths ?? []), join(process.cwd(), '.env')].flatMap(
+      (path) => sync(path, { dot: true, unique: true }),
+    );
+
     for (const envFilePath of paths) {
       this.parseEnvFile(config, envFilePath);
     }
+
     if (!this._options.ignoreEnvVars) {
       Object.assign(config, process.env);
     }
+
     return config;
   }
 
