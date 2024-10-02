@@ -19,7 +19,7 @@ describe('deepReadonly', () => {
     expect(readonlyArray[1].val).toBe(date);
   });
 
-  it('should omit nulled values', () => {
+  it('should omit freezing nulled values', () => {
     const array = [{ val: 1 }, { val: null }];
 
     const readonlyArray = deepReadonly(array);
